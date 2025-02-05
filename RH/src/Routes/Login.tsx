@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react"
 import Input from "../components/Input"
+import { Link } from "react-router-dom"
 
 
 const Login:FunctionComponent = ()=>{
@@ -9,9 +10,11 @@ const Login:FunctionComponent = ()=>{
             <form className="w-10/12 bg-white flex flex-col items-center shadow-lg p-3 rounded-lg gap-4">
                 <Input label="Email" type="email" id="email" placeholder="Digite seu email"/>
                 <Input label="Senha" type="password" id="senha" placeholder="Digite sua senha"/>
-                <button className="bg-blue-600 w-full p-1 rounded-md">
+                <Link to="/home" className="bg-blue-600 w-full p-1 rounded-md text-center">
+                <button>
                     Entrar
                 </button>
+                </Link>
             </form>
 
         </main>
