@@ -2,21 +2,25 @@ import './App.css'
 import NavBar from './components/NavBar'
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import Login from './Routes/Login'
-import Home from './Routes/Home';
+import Ponto from './Routes/Ponto';
+import Home from './Routes/Home'
+import Recrutamento from './Routes/Recrutamento';
 
 function App() {
 
   return (
     <main className='bg-slate-50 h-screen'>
 
-      <NavBar/>
-
       <Router>
+
+      <NavBar/>
 
         <Routes>
 
-          <Route path='/' element={<Login/>}/>
-          <Route path='/home' element={<Home/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/ponto' element={<Ponto/>}/>
+          <Route path='/recrutamento' element={<Recrutamento/>}/>
           
         </Routes>
 
