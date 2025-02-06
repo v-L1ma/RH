@@ -8,22 +8,30 @@ import { FaStopwatch } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import Logo from "../assets/LogoRH.png"
 
 const NavBar: FunctionComponent = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   return (
     <>
-    <nav className="bg-zinc-900 h-14 flex items-center pl-2 md:hidden">
-      <h1>RHonline</h1>
-      <button className=" text-white p-2 text-3xl" onClick={() => setOpenMenu(true)}>
-        <TiThMenu />
-      </button>
+    <nav className="bg-white h-16 flex items-center md:hidden">
+      <div className="w-full flex justify-between items-center px-2">
+        <img src={Logo} alt="" className="h-16 mt-1"/>
 
-      <SlidingPanel isOpen={openMenu} type={"left"} size={50}>
-        <div className="overflow-hidden bg-blue-600 p-5 h-full">
-          <div className="flex justify-between items-start">
-          <h1 className="text-3xl text-white font-black mb-10 text-center">RHonline</h1>
+        <div className="flex items-center gap-3">
+          <Link to="/" className="border-teal-500 border-2 px-3 rounded-full">
+            Portal de vagas
+          </Link>
+          <button className=" text-teal-500 p-2 text-3xl" onClick={() => setOpenMenu(true)}>
+            <TiThMenu />
+          </button>
+        </div>
+      </div>
+
+      <SlidingPanel isOpen={openMenu} type={"top"} size={50}>
+        <div className="overflow-hidden bg-teal-600 p-5 h-full">
+          <div className="flex justify-end">
             <button onClick={() => setOpenMenu(false)} className="text-4xl text-white">
               <IoIosCloseCircle />
             </button>
@@ -45,6 +53,10 @@ const NavBar: FunctionComponent = () => {
               </li>
             </Link>
           </ul>
+          <hr />
+          <div>
+            <p>Área do cliente</p>
+          </div>
         </div>
       </SlidingPanel>
     </nav>

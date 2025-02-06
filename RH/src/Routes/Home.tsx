@@ -7,11 +7,13 @@ import { MdMoreTime } from "react-icons/md";
 
 const Home: FunctionComponent = () => {
   return (
-    <main>
-      <section>
-        <div>
-          <img src={Banner} alt="Banner" />
+    <main className="h-full">
+      <section className="h-3/5">
+        <div className="h-full">
+          <img className="h-full" src={Banner} alt="Banner" />
         </div>
+      </section>
+      <section>
         <div className="flex w-4/5 justify-center gap-5 md:gap-10 ml-auto mr-auto mt-10 flex-wrap md:-mt-20 ">
 
           <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-md">
