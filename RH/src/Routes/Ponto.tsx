@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import Timer from "../components/Timer";
+import Input from "../components/Input";
 
 interface TimeType {
   hours: number;
@@ -37,10 +38,10 @@ const Ponto:FunctionComponent = () => {
 
   return (
     <div className="flex relative">
-      <main className="ml-10 flex flex-col items-center w-full gap-5">
-        <h1>Ponto eletrônico</h1>
+      <main className=" flex flex-col items-center w-full gap-5 md:ml-10">
+        <h1 className="text-2xl mt-5 font-bold">Ponto eletrônico</h1>
 
-        <div className="flex items-center gap-5 bg-gradient-to-tl from-cyan-300 to-sky-600 p-4 rounded-lg shadow-md text-white">
+        <div className="w-11/12 flex items-center justify-center gap-5 bg-gradient-to-tl from-neutral-800 to-teal-600 p-4 pt-0 rounded-lg shadow-md text-white">
           <Timer label="Horas" time={time?.hours} />
           <p className="text-3xl font-extrabold mb-7">:</p>
           <Timer label="Minutos" time={time?.minutes} />
@@ -48,9 +49,14 @@ const Ponto:FunctionComponent = () => {
           <Timer label="Segundos" time={time?.seconds} />
         </div>
 
+        <form className="w-11/12 flex bg-white p-4 rounded-lg shadow-md text-zinc-800">
+            <Input id="email" label="email" placeholder="Digite seu email" type="number"/>
+
+        </form>
+
         <button
           onClick={() => baterPonto()}
-          className="bg-blue-600 p-2 rounded-md w-7/12"
+          className="bg-zinc-800 p-2 rounded-md w-11/12 text-white font-extrabold shadow-md"
         >
           Bater o ponto
         </button>

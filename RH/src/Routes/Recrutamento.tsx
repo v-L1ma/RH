@@ -47,7 +47,7 @@ const Recrutamento: FunctionComponent = () => {
     <div>
       <main className="h-screen flex flex-col items-center pt-5">
         <h1 className="text-4xl text-zinc-800 mb-5 font-black">
-          Banco de talentos
+          CENTRAL DE VAGAS
         </h1>
 
         <div

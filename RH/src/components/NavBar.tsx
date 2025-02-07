@@ -17,7 +17,7 @@ const NavBar: FunctionComponent = () => {
     <>
     <nav className="bg-white h-16 flex items-center md:hidden">
       <div className="w-full flex justify-between items-center px-2">
-        <img src={Logo} alt="" className="h-16 mt-1"/>
+        <Link to="/"><img src={Logo} alt="" className="h-16 mt-1"/></Link>
 
         <div className="flex items-center gap-3">
           <Link to="/" className="border-teal-500 border-2 px-3 rounded-full">
@@ -37,7 +37,7 @@ const NavBar: FunctionComponent = () => {
             </button>
           </div>
           <ul className="text-white flex flex-col items-start gap-3">
-            <Link to="/home">
+            <Link to="/">
             <li className="text-xl flex overflow-hidden cursor-pointer items-center gap-4">
                 <FaHome /> <span>Início</span>
               </li>
@@ -55,8 +55,10 @@ const NavBar: FunctionComponent = () => {
           </ul>
           <hr className="mt-10"/>
           <div className="p-5">
-            <p className="text-center bg-white p-2 w-3/5 rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
-            Área do cliente</p>
+            <Link to="/login">
+              <p className="text-center bg-white p-2 w-3/5 rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
+              Área do cliente</p>
+            </Link>
           </div>
         </div>
       </SlidingPanel>
