@@ -20,7 +20,7 @@ const NavBar: FunctionComponent = () => {
         <Link to="/"><img src={Logo} alt="" className="h-16 mt-1"/></Link>
 
         <div className="flex items-center gap-3">
-          <Link to="/" className="border-teal-500 border-2 px-3 rounded-full">
+          <Link to="/portal-vagas" className="border-teal-500 border-2 px-3 rounded-full">
             Portal de vagas
           </Link>
           <button className=" text-teal-500 p-2 text-3xl" onClick={() => setOpenMenu(true)}>

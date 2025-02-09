@@ -24,6 +24,8 @@ const Recrutamento: FunctionComponent = () => {
 
   const inputCargoRef = useRef<HTMLInputElement>(null);
   const inputDescricaoRef = useRef<HTMLInputElement>(null);
+  const inputSalarioRef = useRef<HTMLInputElement>(null)
+  const inputOcultarRef = useRef<HTMLInputElement>(null)
 
   /*function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
         if (e && e.target instanceof HTMLInputElement) {
@@ -84,13 +86,16 @@ const Recrutamento: FunctionComponent = () => {
                 id="salario"
                 label="Salário"
                 placeholder="Insira o salário da vaga"
-                ref={inputCargoRef}
+                ref={inputSalarioRef}
               />
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
                   name="ocultarSalario"
                   id="ocultarSalario"
+                  ref={inputOcultarRef
+                    
+                  }
                 />
                 <label htmlFor="ocultarSalario">Ocultar para candidato?</label>
               </div>

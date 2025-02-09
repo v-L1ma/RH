@@ -5,6 +5,7 @@ import Login from './Routes/Login'
 import Ponto from './Routes/Ponto';
 import Home from './Routes/Home'
 import Recrutamento from './Routes/Recrutamento';
+import PortalVagas from './Routes/PortalVagas';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/ponto' element={<Ponto/>}/>
           <Route path='/recrutamento' element={<Recrutamento/>}/>
+          <Route path='/portal-vagas' element={<PortalVagas/>}/>
           
         </Routes>
 

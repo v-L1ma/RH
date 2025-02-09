@@ -6,9 +6,10 @@ interface TimeType {
   hours: number;
   minutes: number;
   seconds: number;
+  today: string;
 }
 
-const Ponto:FunctionComponent = () => {
+const Ponto: FunctionComponent = () => {
   const [sucess, setSucess] = useState<boolean>(false);
   const [time, setTime] = useState<TimeType>();
 
@@ -17,23 +18,24 @@ const Ponto:FunctionComponent = () => {
     const hours: number = date.getHours();
     const minutes: number = date.getMinutes();
     const seconds: number = date.getSeconds();
+    const today: string = `${date.getDay}/${date.getMonth}/${date.getFullYear}`
 
-    return { hours, minutes, seconds };
+    return { hours, minutes, seconds, today };
   }
 
-  function baterPonto(){
-    console.log(time?.hours,time?.minutes,time?.seconds)
-    setSucess(true)
+  function baterPonto() {
+    console.log(time?.hours, time?.minutes, time?.seconds);
+    console.log(time?.today)
+    setSucess(true);
   }
 
   useEffect(() => {
-
-    const interval = setInterval(()=>{
-        const currentTime = getCurrentTime();
-        setTime(currentTime);
+    const interval = setInterval(() => {
+      const currentTime = getCurrentTime();
+      setTime(currentTime);
     }, 1000);
 
-    return ()=> clearInterval(interval);
+    return () => clearInterval(interval);
   });
 
   return (
@@ -49,26 +51,28 @@ const Ponto:FunctionComponent = () => {
           <Timer label="Segundos" time={time?.seconds} />
         </div>
 
-        <form className="w-11/12 flex bg-white p-4 rounded-lg shadow-md text-zinc-800">
-            <Input id="email" label="email" placeholder="Digite seu email" type="number"/>
+        <form className="w-11/12 flex flex-col items-center gap-4 bg-white p-4 rounded-lg shadow-md text-zinc-800">
+          <Input
+            id="email"
+            label="Email"
+            placeholder="Digite seu email"
+            type="number"
+          />
 
+          <button
+            onClick={() => baterPonto()}
+            className="bg-zinc-800 p-2 rounded-md w-full text-white font-extrabold shadow-md"
+          >
+            Bater o ponto
+          </button>
         </form>
 
-        <button
-          onClick={() => baterPonto()}
-          className="bg-zinc-800 p-2 rounded-md w-11/12 text-white font-extrabold shadow-md"
-        >
-          Bater o ponto
-        </button>
-
-        {
-          sucess && <h2 className="text-green-300">Ponto registrado com sucesso</h2>
-        }
-
-        
+        {sucess && (
+          <h2 className="text-green-300">Ponto registrado com sucesso</h2>
+        )}
       </main>
     </div>
   );
 };
 
-export default Ponto
+export default Ponto;

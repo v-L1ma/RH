@@ -1,16 +1,18 @@
 import { FunctionComponent } from "react";
-import Banner from "../assets/9524851_4184677.jpg";
+import BannerFoto from "../assets/9524851_4184677.jpg";
 import Foto from "../assets/44053.jpg";
 import { ImAlarm } from "react-icons/im";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { MdMoreTime } from "react-icons/md";
+import Banner from "../components/Banner";
 
 const Home: FunctionComponent = () => {
   return (
     <main className="h-full">
       <section className="h-3/5">
+        <Banner/>
         <div className="h-full">
-          <img className="h-full" src={Banner} alt="Banner" />
+          <img className="h-full" src={BannerFoto} alt="Banner" />
         </div>
       </section>
       <section>
