@@ -64,15 +64,42 @@ const NavBar: FunctionComponent = () => {
       </SlidingPanel>
     </nav>
 
-    <nav className="hidden md:flex justify-between pr-5">
-      <div className="bg-gradient-to-r from-green-900 to-green-600 p-5">RHOnline</div>
-      <ul className="flex items-center">
-        <li>Vagas</li>
-      </ul>
-      <div className="flex items-center">
-        <button className="bg-gradient-to-r from-green-900 to-green-600 p-3 rounded-3xl text-white flex items-center font-bold gap-2">Área do RH<span className="text-xl">
-          <FaArrowRight />
-        </span></button>
+    <nav className="hidden md:flex justify-center bg-white">
+      <div className="w-7/12 flex justify-between items-center">
+        <div className="bg-black ">
+        <Link to="/"><img src={Logo} alt="" className="h-28 p-0"/></Link>
+        </div>
+        
+        <ul className="text-white flex items-center">
+            <Link to="/">
+            <li className="text-teal-600 text-xl flex overflow-hidden cursor-pointer items-center gap-4">
+                <FaHome /><span>Início</span>
+              </li>
+            </Link>
+            <Link to="/ponto">
+              <li className="text-teal-600 text-xl flex overflow-hidden cursor-pointer items-center gap-4">
+                <FaStopwatch /> <span>Controle de ponto</span>
+              </li>
+            </Link>
+            <Link to="/recrutamento">
+              <li className="text-teal-600 text-xl flex overflow-hidden pl-1 cursor-pointer items-center gap-4">
+                <FaUserCheck /><span>Recrutamento</span>
+              </li>
+            </Link>
+          </ul>
+          <hr className="mt-10"/>
+          <div className="p-5">
+            <Link to="/login">
+              <p className="text-center bg-white p-2 w-3/5 rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
+              Área do cliente</p>
+            </Link>
+          </div>
+
+        <div className="flex items-center">
+          <button className="bg-gradient-to-r from-green-900 to-green-600 p-3 rounded-3xl text-white flex items-center font-bold gap-2">Área do RH<span className="text-xl">
+            <FaArrowRight />
+          </span></button>
+        </div>
       </div>
 
     </nav>
