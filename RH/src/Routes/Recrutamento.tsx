@@ -24,8 +24,8 @@ const Recrutamento: FunctionComponent = () => {
 
   const inputCargoRef = useRef<HTMLInputElement>(null);
   const inputDescricaoRef = useRef<HTMLInputElement>(null);
-  const inputSalarioRef = useRef<HTMLInputElement>(null)
-  const inputOcultarRef = useRef<HTMLInputElement>(null)
+  const inputSalarioRef = useRef<HTMLInputElement>(null);
+  const inputOcultarRef = useRef<HTMLInputElement>(null);
 
   /*function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
         if (e && e.target instanceof HTMLInputElement) {
@@ -48,7 +48,7 @@ const Recrutamento: FunctionComponent = () => {
   return (
     <div>
       <main className="h-screen flex flex-col items-center pt-5">
-        <h1 className="text-4xl text-zinc-800 mb-5 font-black">
+        <h1 className="text-4xl md:text-2xl text-zinc-800 mb-5 font-black">
           CENTRAL DE VAGAS
         </h1>
 
@@ -65,11 +65,15 @@ const Recrutamento: FunctionComponent = () => {
         </div>
 
         {isOpen && (
-          <div className="bg-white z-10 absolute w-11/12 p-5 shadow-lg rounded-lg">
+          <div className="bg-white z-10 absolute
+           w-11/12 md:w-6/12 p-5 shadow-lg rounded-lg">
             <div className="flex justify-end">
-                <p className="text-3xl cursor-pointer" onClick={() => setIsOpen(false)}>
-                  <IoIosCloseCircle />
-                </p>
+              <p
+                className="text-3xl cursor-pointer"
+                onClick={() => setIsOpen(false)}
+              >
+                <IoIosCloseCircle />
+              </p>
             </div>
             <h1 className="text-2xl font-bold text-center">Criar nova vaga</h1>
 
@@ -93,9 +97,7 @@ const Recrutamento: FunctionComponent = () => {
                   type="checkbox"
                   name="ocultarSalario"
                   id="ocultarSalario"
-                  ref={inputOcultarRef
-                    
-                  }
+                  ref={inputOcultarRef}
                 />
                 <label htmlFor="ocultarSalario">Ocultar para candidato?</label>
               </div>
@@ -118,7 +120,7 @@ const Recrutamento: FunctionComponent = () => {
           </div>
         )}
 
-        <div className="w-full flex flex-col items-center gap-5">
+        <div className="w-full md:w-10/12 flex flex-col md:flex-row md:flex-wrap gap-5 md:gap-5 items-center justify-center">
           {vagas.map((vaga) => (
             <CardVaga
               id={vaga.id}

@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import BannerFoto from "../assets/9524851_4184677.jpg";
 import Foto from "../assets/44053.jpg";
 import { ImAlarm } from "react-icons/im";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
@@ -11,12 +10,9 @@ const Home: FunctionComponent = () => {
     <main className="h-full">
       <section className="h-3/5">
         <Banner/>
-        <div className="h-full">
-          <img className="h-full" src={BannerFoto} alt="Banner" />
-        </div>
       </section>
       <section>
-        <div className="flex w-4/5 justify-center gap-5 md:gap-10 ml-auto mr-auto mt-10 flex-wrap md:-mt-20 ">
+        <div className="flex w-4/5 justify-center gap-5 md:gap-10 ml-auto mr-auto mt-10 flex-wrap">
 
           <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-md">
             <span className="text-6xl">

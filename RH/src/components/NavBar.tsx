@@ -64,39 +64,36 @@ const NavBar: FunctionComponent = () => {
       </SlidingPanel>
     </nav>
 
-    <nav className="hidden md:flex justify-center bg-white">
-      <div className="w-7/12 flex justify-between items-center">
-        <div className="bg-black ">
-        <Link to="/"><img src={Logo} alt="" className="h-28 p-0"/></Link>
+    <nav className="hidden md:flex w-9/12 m-auto">
+      <div className="w-full flex justify-around items-center gap-4 p-0">
+        <div>
+        <Link to="/"><img src={Logo} alt="" className="h-16 p-0"/></Link>
         </div>
         
-        <ul className="text-white flex items-center">
+        <ul className="text-white flex items-center gap-5">
             <Link to="/">
             <li className="text-teal-600 text-xl flex overflow-hidden cursor-pointer items-center gap-4">
-                <FaHome /><span>Início</span>
+                <span>Início</span>
               </li>
             </Link>
             <Link to="/ponto">
               <li className="text-teal-600 text-xl flex overflow-hidden cursor-pointer items-center gap-4">
-                <FaStopwatch /> <span>Controle de ponto</span>
+                <span>Controle de ponto</span>
               </li>
             </Link>
             <Link to="/recrutamento">
               <li className="text-teal-600 text-xl flex overflow-hidden pl-1 cursor-pointer items-center gap-4">
-                <FaUserCheck /><span>Recrutamento</span>
+                <span>Recrutamento</span>
               </li>
             </Link>
           </ul>
-          <hr className="mt-10"/>
-          <div className="p-5">
+          <div className="p-5 flex items-center gap-3">
             <Link to="/login">
-              <p className="text-center bg-white p-2 w-3/5 rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
-              Área do cliente</p>
+              <p className="text-center p-2  rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
+              Portal de vagas</p>
             </Link>
-          </div>
 
-        <div className="flex items-center">
-          <button className="bg-gradient-to-r from-green-900 to-green-600 p-3 rounded-3xl text-white flex items-center font-bold gap-2">Área do RH<span className="text-xl">
+          <button className="bg-teal-600  p-3 rounded-3xl text-white flex items-center font-bold gap-2">Área do RH<span className="text-xl">
             <FaArrowRight />
           </span></button>
         </div>
