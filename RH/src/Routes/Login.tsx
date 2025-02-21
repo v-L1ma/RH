@@ -2,13 +2,20 @@ import { FunctionComponent } from "react"
 import Input from "../components/Input"
 import { Link } from "react-router-dom"
 import BannerFoto from "../assets/9524851_4184677.jpg";
+import { IoIosArrowBack } from "react-icons/io";
 
 
 const Login:FunctionComponent = ()=>{
+
     return(
         <main className="flex flex-col md:flex-row items-center md:items-start w-full h-full  bg-gradient-to-tr from-teal-300 to-teal-700 py-10 md:p-0">
 
-            <form className="w-11/12 md:w-5/12 md:h-screen bg-white flex flex-col items-center shadow-lg p-10 rounded-lg gap-10">
+
+            <form className="w-11/12 md:w-5/12 md:h-screen bg-white flex flex-col items-center shadow-lg p-10 rounded-lg gap-10 md:justify-center">
+
+                <Link to="/" className="mr-auto -mt-40 mb-28 flex items-center font-bold text-xl">
+                <span><IoIosArrowBack/></span><h1>Voltar</h1>
+                </Link>
 
                 <h1 className="text-2xl font-bold text-center">Login</h1>
 
@@ -26,7 +33,9 @@ const Login:FunctionComponent = ()=>{
 
                 <div className="flex flex-col items-center gap-2">
                 <p>Ou cadastre aqui</p>
-                <p className="text-xs">CADASTRAR-SE</p>
+                <Link to="/cadastro">
+                    <p className="text-xs">CADASTRAR-SE</p>
+                </Link>
                 </div>
             </form>
 

@@ -4,9 +4,14 @@ import { ImAlarm } from "react-icons/im";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { MdMoreTime } from "react-icons/md";
 import Banner from "../components/Banner";
+import NavBar from "../components/NavBar";
 
 const Home: FunctionComponent = () => {
   return (
+    <>
+    <header>
+      <NavBar/>
+    </header>
     <main className="h-full">
       <section className="h-3/5">
         <Banner/>
@@ -81,6 +86,7 @@ const Home: FunctionComponent = () => {
         </div>
       </section>
     </main>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import Ponto from './Routes/Ponto';
 import Home from './Routes/Home'
 import Recrutamento from './Routes/Recrutamento';
 import PortalVagas from './Routes/PortalVagas';
+import Cadastrar from './Routes/Cadastrar';
 
 function App() {
 
@@ -14,12 +15,11 @@ function App() {
 
       <Router>
 
-      <NavBar/>
-
         <Routes>
 
           <Route path='/' element={<Home/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/cadastro' element={<Cadastrar/>}/>
           <Route path='/ponto' element={<Ponto/>}/>
           <Route path='/recrutamento' element={<Recrutamento/>}/>
           <Route path='/portal-vagas' element={<PortalVagas/>}/>

@@ -88,14 +88,16 @@ const NavBar: FunctionComponent = () => {
             </Link>
           </ul>
           <div className="p-5 flex items-center gap-3">
-            <Link to="/login">
+            <Link to="">
               <p className="text-center p-2  rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
               Portal de vagas</p>
             </Link>
 
-          <button className="bg-teal-600  p-3 rounded-3xl text-white flex items-center font-bold gap-2">Área do RH<span className="text-xl">
-            <FaArrowRight />
-          </span></button>
+          <Link to="/login">
+            <button className="bg-teal-600  p-3 rounded-3xl text-white flex items-center font-bold gap-2">Área do RH<span className="text-xl">
+              <FaArrowRight />
+            </span></button>
+          </Link>
         </div>
       </div>
 
