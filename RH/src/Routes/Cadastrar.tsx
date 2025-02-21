@@ -37,40 +37,39 @@ const Cadastrar: FunctionComponent = () => {
           <h1>Voltar</h1>
         </Link>
 
-        <h1 className="text-2xl font-bold text-center">Cadastro</h1>
+        <h1 className="text-2xl font-bold text-center">Crie sua conta</h1>
 
-        <div className="w-full">
-          <label htmlFor="nome">Nome Completo</label>
+        <div className="w-full flex flex-col gap-2">
+          <label htmlFor="nome" className="font-extrabold">Nome Completo</label>
           <input
             type="text"
             id="nome"
             placeholder="Digite seu nome completo"
             ref={nameRef}
+            className="border-2 border-black border-opacity-15 p-1 rounded-lg"
           />
 
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="font-extrabold">Email</label>
           <input
             type="email"
             id="email"
             placeholder="Digite seu email"
             ref={emailRef}
+            className="border-2 border-black border-opacity-15 p-1 rounded-lg"
           />
 
-          <label htmlFor="password">Senha</label>
+          <label htmlFor="password" className="font-extrabold">Senha</label>
           <input
             type="password"
             id="password"
             placeholder="Digite sua senha"
             ref={passwordRef}
+            className="border-2 border-black border-opacity-15 p-1 rounded-lg"
           />
         </div>
 
-        <button type="submit">Entrar</button>
+        <button type="submit" className="bg-gradient-to-r from-teal-300 to-teal-600 w-full p-2 rounded-lg text-center text-white font-bold">Cadastrar</button>
 
-        <div className="flex flex-col items-center gap-2">
-          <p>Ou cadastre-se aqui</p>
-          <p className="text-xs">CADASTRAR-SE</p>
-        </div>
       </form>
 
       <div>
