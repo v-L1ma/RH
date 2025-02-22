@@ -24,19 +24,21 @@ const Cadastrar: FunctionComponent = () => {
   return (
     <main className="flex flex-col md:flex-row items-center md:items-start w-full h-full bg-gradient-to-tr from-teal-300 to-teal-700 py-10 md:p-0">
       <form
-        className="w-11/12 md:w-5/12 md:h-screen bg-white flex flex-col items-center shadow-lg p-10 rounded-lg gap-10 md:justify-center"
+        className="w-11/12 md:w-5/12 md:h-screen bg-white flex flex-col items-left shadow-lg p-10 rounded-lg gap-10 md:justify-center"
         onSubmit={onSubmit} // Vinculando a função de envio ao formulário
       >
-        <Link
-          to="/"
-          className="mr-auto -mt-40 mb-28 flex items-center font-bold text-xl"
-        >
-          <span>
-            <IoIosArrowBack />
-          </span>
-          <h1>Voltar</h1>
-        </Link>
-
+        <div>
+          <Link
+            to="/"
+            className="flex items-center font-bold text-xl"
+          >
+            <span>
+              <IoIosArrowBack />
+            </span>
+            <h1>Voltar</h1>
+          </Link>
+        </div>
+        
         <h1 className="text-2xl font-bold text-center">Crie sua conta</h1>
 
         <div className="w-full flex flex-col gap-2">
