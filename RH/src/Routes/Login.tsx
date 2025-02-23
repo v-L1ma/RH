@@ -1,5 +1,5 @@
 import { FunctionComponent, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BannerFoto from "../assets/9524851_4184677.jpg";
 import { IoIosArrowBack } from "react-icons/io";
 import api from "../service/api";
@@ -10,6 +10,8 @@ const Login: FunctionComponent = () => {
   const [isLoading, setIsloading] = useState<boolean>(false);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+
+  const navigate = useNavigate()
 
   async function onSubmit(e:React.FormEvent<HTMLFormElement>):Promise<void> {
     e.preventDefault();
@@ -25,8 +27,9 @@ const Login: FunctionComponent = () => {
 
     const {user, token} = response.data
 
-    console.log(user)
-    console.log(token)
+    localStorage.setItem("Token", token)
+    localStorage.setItem("UserInfo", user)
+    navigate("/painel")
     
     } catch(error){
       console.log(error);

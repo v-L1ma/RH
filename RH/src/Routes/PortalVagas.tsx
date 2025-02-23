@@ -1,7 +1,10 @@
 import Input from "../components/Input";
+import NavBar from "../components/NavBar";
 
 const PortalVagas = () => {
   return (
+    <>
+    <NavBar/>
     <main className="h-screen">
       <section className="h-3/6 relative">
         <div className="bg-green-800 h-2/6"></div>
@@ -44,6 +47,7 @@ const PortalVagas = () => {
 
 
     </main>
+    </>
   );
 };
 

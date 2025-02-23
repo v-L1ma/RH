@@ -3,6 +3,7 @@ import CardVaga from "../components/CardVaga";
 import { FaPlus } from "react-icons/fa";
 import Input from "../components/Input";
 import { IoIosCloseCircle } from "react-icons/io";
+import NavBar from "../components/NavBar";
 
 interface VagasType {
   id: number;
@@ -46,6 +47,8 @@ const Recrutamento: FunctionComponent = () => {
   };
 
   return (
+    <>
+    <NavBar/>
     <div>
       <main className="h-screen flex flex-col items-center pt-5">
         <h1 className="text-4xl md:text-2xl text-zinc-800 mb-5 font-black">
@@ -132,6 +135,7 @@ const Recrutamento: FunctionComponent = () => {
         </div>
       </main>
     </div>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ import Home from './Routes/Home'
 import Recrutamento from './Routes/Recrutamento';
 import PortalVagas from './Routes/PortalVagas';
 import Cadastrar from './Routes/Cadastrar';
+import { Painel } from './Routes/Painel';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/ponto' element={<Ponto/>}/>
           <Route path='/recrutamento' element={<Recrutamento/>}/>
           <Route path='/portal-vagas' element={<PortalVagas/>}/>
+          <Route path='/painel' element={<Painel/>}/>
           
         </Routes>
 

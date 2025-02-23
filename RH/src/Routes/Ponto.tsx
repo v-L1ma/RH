@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import Timer from "../components/Timer";
 import Input from "../components/Input";
+import NavBar from "../components/NavBar";
 
 interface TimeType {
   hours: number;
@@ -39,6 +40,8 @@ const Ponto: FunctionComponent = () => {
   });
 
   return (
+    <>
+    <NavBar/>
     <div className="flex relative">
       <main className=" flex flex-col items-center w-full gap-5 md:ml-10">
         <h1 className="text-2xl mt-5 font-bold">Ponto eletrônico</h1>
@@ -72,6 +75,7 @@ const Ponto: FunctionComponent = () => {
         )}
       </main>
     </div>
+    </>
   );
 };
 
