@@ -1,21 +1,14 @@
-import { FunctionComponent} from "react"
-import { BsBriefcaseFill } from "react-icons/bs";
+import { FunctionComponent } from "react";
 import { SideBar } from "../components/SideBar";
+import { Outlet } from "react-router-dom";
 
-export const Painel:FunctionComponent = () =>{
-
-    return(
-        <body className="flex h-screen bg-slate-100">
-        <SideBar/>
-        <main className="w-full p-20 flex flex-wrap gap-5">
-            <div className="bg-white w-full h-full rounded-lg">
-
-            </div>
-
-
-        </main>
-        </body>
-
-    )
-}
-
+export const Painel: FunctionComponent = () => {
+  return (
+    <body className="flex w-full h-full bg-slate-100">
+      <SideBar />
+      <main className=" w-full h-full p-16 flex flex-wrap gap-5">
+        <Outlet />
+      </main>
+    </body>
+  );
+};
