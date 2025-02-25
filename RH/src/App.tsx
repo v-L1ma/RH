@@ -8,6 +8,7 @@ import PortalVagas from "./Routes/PortalVagas";
 import Cadastrar from "./Routes/Cadastrar";
 import { Painel } from "./Routes/Painel";
 import { GestaoVagas } from "./Routes/GestãoVagas";
+import { NovaVaga } from "./Routes/NovaVaga";
 
 function App() {
   return (
@@ -20,8 +21,10 @@ function App() {
           <Route path="ponto" element={<Ponto />} />
           <Route path="recrutamento" element={<Recrutamento />} />
           <Route path="portal-vagas" element={<PortalVagas />} />
+          
           <Route path="painel" element={<Painel />}>
-            <Route path="gestao-vagas" element={<GestaoVagas/>}/>
+            <Route path="gestao-vagas" element={<GestaoVagas />} />
+            <Route path="gestao-vagas/nova-vaga" element={<NovaVaga />} />
           </Route>
         </Routes>
       </Router>

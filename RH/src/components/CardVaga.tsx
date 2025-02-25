@@ -19,7 +19,7 @@ const CardVaga:FunctionComponent<CardVagaProps> = ({id,Cargo,DataCriacao, Locali
         <div className="bg-white p-5 rounded-md flex flex-col shadow-md w-11/12 md:w-6/12" key={id}>
             <div className="flex justify-between items-center">
                 <p className="bg-green-300 px-3 py-1 rounded-md">Em andamento</p>
-                <BsThreeDotsVertical className="text-xl"/>
+                <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer"/>
             </div>
             <div className="flex flex-col gap-3">
                 <h1 className="text-xl text-zinc-800 font-semibold">{Cargo}</h1>
