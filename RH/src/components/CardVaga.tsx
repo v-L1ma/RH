@@ -1,8 +1,9 @@
-import { FunctionComponent } from "react"
+import { FunctionComponent } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa6";
 import { IoMdBriefcase } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 interface CardVagaProps{
     id: number;
@@ -22,7 +23,10 @@ const CardVaga:FunctionComponent<CardVagaProps> = ({id,Cargo,DataCriacao, Locali
                 <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer"/>
             </div>
             <div className="flex flex-col gap-3">
-                <h1 className="text-xl text-zinc-800 font-semibold">{Cargo}</h1>
+                
+                <Link to={`vaga/${1}`}>
+                    <h1 className="text-xl text-zinc-800 font-semibold">{Cargo}</h1>
+                </Link>
                 <h2>Criada em: {DataCriacao}</h2>
                 
                 <div className="flex gap-5">

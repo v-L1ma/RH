@@ -9,6 +9,7 @@ import Cadastrar from "./Routes/Cadastrar";
 import { Painel } from "./Routes/Painel";
 import { GestaoVagas } from "./Routes/GestãoVagas";
 import { NovaVaga } from "./Routes/NovaVaga";
+import { CandidatosVaga } from "./Routes/CandidatosVaga";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="painel" element={<Painel />}>
             <Route path="gestao-vagas" element={<GestaoVagas />} />
             <Route path="gestao-vagas/nova-vaga" element={<NovaVaga />} />
+            <Route path="gestao-vagas/vaga/:id" element={<CandidatosVaga/>}/>
           </Route>
         </Routes>
       </Router>

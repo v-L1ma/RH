@@ -27,11 +27,7 @@ export const GestaoVagas: FunctionComponent = () => {
       </div>
 
       <div className=" w-full">
-
-          <CardVaga Cargo="Operador de estacionamento" Descriçao="daskjdakjasdk" DataCriacao="24/02/2025" id={1} Localizacao="Santos" Vagas={3} setor="Estacionamento"/>
-
-        
-
+        <CardVaga Cargo="Operador de estacionamento" Descriçao="daskjdakjasdk" DataCriacao="24/02/2025" id={1} Localizacao="Santos" Vagas={3} setor="Estacionamento"/>
       </div>
 
     </div>
