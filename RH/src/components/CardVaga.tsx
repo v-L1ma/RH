@@ -19,7 +19,7 @@ interface CardVagaProps{
 
 const CardVaga:FunctionComponent<CardVagaProps> = ({id,Cargo,DataCriacao, Localizacao, Vagas, setor}) =>{
     return(
-        <div className="bg-white p-5 rounded-md flex flex-col shadow-md w-11/12 md:w-6/12 " key={id}>
+        <div className="bg-white p-5 rounded-md flex flex-col shadow-mdlg:w-auto" key={id}>
             <div className="flex items-center justify-between group">
                 <p className="bg-green-300 px-3 py-1 rounded-md">Em andamento</p>
                 <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer group"/>
@@ -42,7 +42,7 @@ const CardVaga:FunctionComponent<CardVagaProps> = ({id,Cargo,DataCriacao, Locali
                 </Link>
                 <h2>Criada em: {DataCriacao}</h2>
                 
-                <div className="flex gap-5">
+                <div className="flex gap-5 flex-wrap">
                 <p className="flex gap-5"><FaLocationDot/>{Localizacao}</p>
                 <p className="flex gap-5"><FaUsers/>{Vagas} vaga(as)</p>
                 <p className="flex gap-5"><IoMdBriefcase/>{setor}</p>
