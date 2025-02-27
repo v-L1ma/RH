@@ -6,7 +6,7 @@ export const Painel: FunctionComponent = () => {
   return (
     <body className="flex w-full h-full bg-slate-100">
       <SideBar />
-      <main className=" w-full h-full p-16 flex flex-wrap gap-5 overflow-scroll">
+      <main className=" w-full h-full p-16 flex flex-wrap gap-5 overflow-y-scroll">
         <Outlet />
       </main>
     </body>
