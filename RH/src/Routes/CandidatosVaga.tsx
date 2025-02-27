@@ -1,10 +1,15 @@
 import { FunctionComponent } from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 export const CandidatosVaga: FunctionComponent = () => {
+
+  const navigate:NavigateFunction = useNavigate();
+
   return (
     <div className="w-full flex flex-col gap-10">
       <div className="flex justify-between">
         <h1 className="text-3xl font-extrabold">Candidatos para a vaga</h1>
+        <button className="underline mr-1" onClick={()=>navigate(-1)}>Voltar</button>
       </div>
 
       <div className="bg-white w-full rounded-lg shadow-md shadow-gray-200 p-5 flex flex-col gap-5">
@@ -13,7 +18,7 @@ export const CandidatosVaga: FunctionComponent = () => {
           <p>Os candidatos que se inscreverem param esta vaga.</p>
         </div>
 
-        <div>
+        <div className="overflow-x-scroll">
           <table className="w-full">
             <thead>
               <tr>
