@@ -24,7 +24,7 @@ export const SideBar: FunctionComponent = () => {
             <Link to="gestao-vagas">
                 <li>Gestão de vagas</li>
             </Link>
-            <Link to="">
+            <Link to="banco-de-talentos">
             <li>Banco de talentos</li>
             </Link>
             <li>Triagem e Avaliação</li>
