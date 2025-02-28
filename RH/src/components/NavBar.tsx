@@ -88,7 +88,7 @@ const NavBar: FunctionComponent = () => {
             </Link>
           </ul>
           <div className="p-5 flex items-center gap-3">
-            <Link to="">
+            <Link to="portal-vagas">
               <p className="text-center p-2  rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
               Portal de vagas</p>
             </Link>
