@@ -14,7 +14,7 @@ const NavBar: FunctionComponent = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   return (
-    <>
+    <div className="bg-white border-b">
     <nav className="bg-white h-16 flex items-center md:hidden">
       <div className="w-full flex justify-between items-center px-2">
         <Link to="/"><img src={Logo} alt="" className="h-16 mt-1"/></Link>
@@ -64,7 +64,7 @@ const NavBar: FunctionComponent = () => {
       </SlidingPanel>
     </nav>
 
-    <nav className="hidden md:flex w-9/12 m-auto">
+    <nav className="hidden md:flex w-9/12 m-auto ">
       <div className="w-full flex justify-around items-center gap-4 p-0">
         <div>
         <Link to="/"><img src={Logo} alt="" className="h-16 p-0"/></Link>
@@ -88,7 +88,7 @@ const NavBar: FunctionComponent = () => {
             </Link>
           </ul>
           <div className="p-5 flex items-center gap-3">
-            <Link to="portal-vagas">
+            <Link to="/portal-vagas">
               <p className="text-center p-2  rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
               Portal de vagas</p>
             </Link>
@@ -102,7 +102,7 @@ const NavBar: FunctionComponent = () => {
       </div>
 
     </nav>
-    </>
+    </div>
   );
 };
 
