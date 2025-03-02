@@ -26,9 +26,9 @@ const Vaga: FunctionComponent = () => {
 
               <div className="flex items-center gap-4">
                 <button>
-                  <CiHeart className="text-3xl text-green-700"/>
+                  <CiHeart className="text-3xl text-teal-600"/>
                 </button>
-                <button className="bg-green-700 rounded-md text-white font-bold shadow-md text-xl py-2 px-12">Candidatar-se</button>
+                <button className="bg-teal-600  rounded-md text-white font-bold shadow-md text-xl py-2 px-12">Candidatar-se</button>
               </div>
               
             </div>
@@ -51,9 +51,9 @@ const Vaga: FunctionComponent = () => {
               </div>
 
         <div className="flex gap-2">
-          <p className="bg-green-300 px-3 py-1 rounded-md">Tags</p>
-          <p className="bg-green-300 px-3 py-1 rounded-md">Tags</p>
-          <p className="bg-green-300 px-3 py-1 rounded-md">Tags</p>
+          <p className="bg-teal-200 px-3 py-1 rounded-md">Tags</p>
+          <p className="bg-teal-200 px-3 py-1 rounded-md">Tags</p>
+          <p className="bg-teal-200 px-3 py-1 rounded-md">Tags</p>
         </div>
 
         <div>

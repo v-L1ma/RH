@@ -12,7 +12,7 @@ export const GestaoVagas: FunctionComponent = () => {
         
 
         <Link to="nova-vaga">
-          <button className="bg-green-700 py-3 px-5  rounded-xl shadow-md text-white font-extrabold flex items-center gap-2">
+          <button className="bg-teal-600 py-3 px-5  rounded-xl shadow-md text-white font-extrabold flex items-center gap-2">
             <FaPlus />
             Criar vaga
           </button>
@@ -23,7 +23,7 @@ export const GestaoVagas: FunctionComponent = () => {
         <h1 className="text-xl font-bold">Vagas em aberto</h1>
         <div className="flex gap-7">
             <input type="text" className="border-2 border-black rounded-md p-2 w-full border-opacity-10 "/>
-            <button className="bg-green-600 px-10 rounded-md text-white font-bold">Buscar</button>
+            <button className="bg-teal-600 px-10 rounded-md text-white font-bold">Buscar</button>
         </div>
       </div>
 

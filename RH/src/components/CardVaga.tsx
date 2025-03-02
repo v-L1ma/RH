@@ -22,19 +22,19 @@ interface CardVagaProps {
 const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
   return (
     <div
-      className="bg-white p-5 rounded-md flex flex-col shadow-mdlg:w-auto"
+      className="bg-white p-5 rounded-md flex flex-col shadow-md lg:w-auto"
       key={props.id}
     >
       {!props.Candidato && (
-        <div className="flex items-center justify-between group">
-          <p className="bg-green-300 px-3 py-1 rounded-md">Em andamento</p>
+        <div className="flex items-center justify-between group relative">
+          <p className="bg-teal-100  px-3 py-1 rounded-md">Em andamento</p>
           <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer group" />
 
-          <div className="invisible bg-white shadow-md rounded-lg absolute left-2/4 top-2/4 group-hover:visible flex flex-col p-5">
-            <button className="flex gap-2 items-center rounded-lg hover:bg-slate-200 hover:font-semibold p-2">
+          <div className="invisible bg-white shadow-md rounded-lg absolute right-0 top-2/4 group-hover:visible flex flex-col overflow-hidden">
+            <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3">
               <MdEdit /> Editar
             </button>
-            <button className="flex gap-2 items-center rounded-lg hover:bg-slate-200 hover:font-semibold p-2">
+            <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3">
               <MdDeleteForever className="text-red-500" /> Excluir
             </button>
           </div>

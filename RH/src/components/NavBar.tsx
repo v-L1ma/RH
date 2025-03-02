@@ -64,29 +64,12 @@ const NavBar: FunctionComponent = () => {
       </SlidingPanel>
     </nav>
 
-    <nav className="hidden md:flex w-9/12 m-auto ">
-      <div className="w-full flex justify-around items-center gap-4 p-0">
+    <nav className="hidden md:flex w-7/12 m-auto ">
+      <div className="w-full flex justify-between items-center gap-4 p-0">
         <div>
         <Link to="/"><img src={Logo} alt="" className="h-16 p-0"/></Link>
         </div>
-        
-        <ul className="text-white flex items-center gap-5">
-            <Link to="/">
-            <li className="text-teal-600 text-xl flex overflow-hidden cursor-pointer items-center gap-4">
-                <span>Início</span>
-              </li>
-            </Link>
-            <Link to="/ponto">
-              <li className="text-teal-600 text-xl flex overflow-hidden cursor-pointer items-center gap-4">
-                <span>Controle de ponto</span>
-              </li>
-            </Link>
-            <Link to="/recrutamento">
-              <li className="text-teal-600 text-xl flex overflow-hidden pl-1 cursor-pointer items-center gap-4">
-                <span>Recrutamento</span>
-              </li>
-            </Link>
-          </ul>
+
           <div className="p-5 flex items-center gap-3">
             <Link to="/portal-vagas">
               <p className="text-center p-2  rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
