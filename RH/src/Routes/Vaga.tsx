@@ -1,18 +1,20 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import NavBar from "../components/NavBar";
 import { CiHeart } from "react-icons/ci";
 import { IoChevronBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { FaLocationDot, FaUsers } from "react-icons/fa6";
 import { IoMdBriefcase } from "react-icons/io";
+import PopUpCandidatura from "../components/PopUpCandidatura";
 
 const Vaga: FunctionComponent = () => {
   const navigate = useNavigate();
+  const [popUpOpen, setPopUpOpen] = useState<boolean>(false)
   return (
     <>
       <NavBar />
 
-      <main className="h-screen bg-slate-50">
+      <main className="h-screen bg-slate-50 relative">
 
       <section className="bg-white flex justify-center shadow-md">
             <div className="flex w-4/6 p-5 justify-between">
@@ -28,7 +30,7 @@ const Vaga: FunctionComponent = () => {
                 <button>
                   <CiHeart className="text-3xl text-teal-600"/>
                 </button>
-                <button className="bg-teal-600  rounded-md text-white font-bold shadow-md text-xl py-2 px-12">Candidatar-se</button>
+                <button className="bg-teal-600  rounded-md text-white font-bold shadow-md text-xl py-2 px-12" onClick={()=>setPopUpOpen(true)}>Candidatar-se</button>
               </div>
               
             </div>
@@ -63,6 +65,11 @@ const Vaga: FunctionComponent = () => {
         </div>
 
       </section>
+
+      {
+        popUpOpen &&          
+          <PopUpCandidatura/>
+      }
 
       </main>
     </>
