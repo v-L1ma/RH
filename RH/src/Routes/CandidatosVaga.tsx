@@ -29,13 +29,13 @@ export const CandidatosVaga: FunctionComponent = () => {
               </tr>
             </thead>
             <tbody>
-                <tr className="border-t mt-10 ">
+                <tr className="border-t mt-10 hover:bg-gray-100">
                   <td className="px-4 py-2">Vinicius</td>
                   <td className="px-4 py-2">1398165216</td>
                   <td className="px-4 py-2">vinicius@email</td>
                   <td className="px-4 py-2">Currículo</td>
                 </tr>
-              <tr className="border-t mt-10 ">
+              <tr className="border-t mt-10 hover:bg-gray-100">
                 <td className="px-4 py-2">Vinicius</td>
                 <td className="px-4 py-2">1398165216</td>
                 <td className="px-4 py-2">vinicius@email</td>
