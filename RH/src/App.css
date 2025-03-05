@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    /* Remove as setas do input number para navegadores baseados em WebKit (Chrome, Edge, Safari) */
+    .no-spinner::-webkit-inner-spin-button,
+    .no-spinner::-webkit-outer-spin-button {
+      @apply appearance-none;
+    }
+    /* Remove as setas do input number no Firefox */
+    .no-spinner {
+      -moz-appearance: textfield;
+    }
+  }

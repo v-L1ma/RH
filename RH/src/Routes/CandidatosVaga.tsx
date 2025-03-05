@@ -19,8 +19,8 @@ export const CandidatosVaga: FunctionComponent = () => {
         </div>
 
         <div className="overflow-x-scroll">
-          <table className="w-full">
-            <thead>
+          <table className="w-full rounded-lg overflow-hidden">
+            <thead className="bg-gray-100">
               <tr>
                 <th className="px-4 py-0 text-left border-l">Nome</th>
                 <th className="px-4 py-2 text-left border-l">Telefone</th>
@@ -29,12 +29,12 @@ export const CandidatosVaga: FunctionComponent = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-t mt-10 ">
-                <td className="px-4 py-2">Vinicius</td>
-                <td className="px-4 py-2">1398165216</td>
-                <td className="px-4 py-2">vinicius@email</td>
-                <td className="px-4 py-2">Currículo</td>
-              </tr>
+                <tr className="border-t mt-10 ">
+                  <td className="px-4 py-2">Vinicius</td>
+                  <td className="px-4 py-2">1398165216</td>
+                  <td className="px-4 py-2">vinicius@email</td>
+                  <td className="px-4 py-2">Currículo</td>
+                </tr>
               <tr className="border-t mt-10 ">
                 <td className="px-4 py-2">Vinicius</td>
                 <td className="px-4 py-2">1398165216</td>

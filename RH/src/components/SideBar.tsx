@@ -1,37 +1,35 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent} from "react";
 import { Link } from "react-router-dom";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import Logo from "../assets/LogoRH.png";
+import { LuBriefcaseBusiness } from "react-icons/lu";
+import { RiUserStarLine } from "react-icons/ri";
+import { FaChartBar } from "react-icons/fa";
 
 export const SideBar: FunctionComponent = () => {
-  const [dropDownListOpen, setDropDownListOpen] = useState<boolean>(false);
-
   return (
-    <aside className="flex flex-col w-1/6 items-center p-3 rounded-r-xl bg-white">
+    <aside className="flex flex-col items-center p-10 rounded-r-xl bg-white">
       <div className="flex items-center">
         <img src={Logo} alt="" className="h-20" />
-        <h1>Facilita RH</h1>
+        <h1 className="text-lg text-gray-500 font-bold">Facilita RH</h1>
       </div>
-      <ul>
-        <li
-          className="mt-10 flex items-center text-xl"
-          onClick={() => setDropDownListOpen(!dropDownListOpen)}
-        >
-          <MdOutlineKeyboardArrowDown /> Recrutamento e seleção
+
+      <ul className="flex flex-col gap-10 mt-20">
+        <Link to="gestao-vagas">
+          <li className="flex items-end gap-5 text-lg text-gray-500 font-bold">
+            <LuBriefcaseBusiness className="text-2xl" />
+            Gestão de vagas
+          </li>
+        </Link>
+        <Link to="banco-de-talentos">
+          <li className="flex items-end gap-5 text-lg text-gray-500 font-bold">
+            <RiUserStarLine className="text-2xl" />
+            Banco de talentos
+          </li>
+        </Link>
+        <li className="flex items-center gap-5 text-lg text-gray-500 font-bold">
+          <FaChartBar className="text-2xl" />
+          Relatórios e Dashboards
         </li>
-        {dropDownListOpen && (
-          <ul className="mt-5 ml-7 flex flex-col gap-5 ">
-            <Link to="gestao-vagas">
-                <li>Gestão de vagas</li>
-            </Link>
-            <Link to="banco-de-talentos">
-            <li>Banco de talentos</li>
-            </Link>
-            <li>Triagem e Avaliação</li>
-            <li>Fluxo de Seleção</li>
-            <li>Relatórios e Dashboards</li>
-          </ul>
-        )}
       </ul>
     </aside>
   );

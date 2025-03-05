@@ -13,13 +13,14 @@ import { CandidatosVaga } from "./Routes/CandidatosVaga";
 import { BancoTalentos } from "./Routes/BancoTalentos";
 import NotFound from "./Routes/NotFound";
 import Vaga from "./Routes/Vaga";
+import PainelHome from "./Routes/PainelHome";
 
 function App() {
   return (
     <main className="bg-slate-50 h-screen">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="cadastro" element={<Cadastrar />} />
           <Route path="ponto" element={<Ponto />} />
@@ -27,6 +28,7 @@ function App() {
           <Route path="portal-vagas" element={<PortalVagas />}/>
           <Route path="portal-vagas/vaga/:id" element={<Vaga/>}/>
           <Route path="painel" element={<Painel />}>
+            <Route path="" element={<PainelHome/>}/>
             <Route path="gestao-vagas" element={<GestaoVagas />} />
             <Route path="gestao-vagas/nova-vaga" element={<NovaVaga />} />
             <Route path="gestao-vagas/vaga/:id" element={<CandidatosVaga/>}/>
