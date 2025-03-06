@@ -1,6 +1,21 @@
 import { FunctionComponent } from "react";
+import DadosPessoaisForm from "./multiStepForm/DadosPessoaisForm";
+import ExperienciaProfissionalForm from "./multiStepForm/ExperienciaProfissionalForm";
+import FormacaoAcademicaForm from "./multiStepForm/FormacaoAcademicaForm";
+
+import { useMultiStepForm } from "../hooks/useMultiStepForm";
+
 
 const PopUpCandidatura: FunctionComponent = () => {
+
+  const formComponents = [
+    <DadosPessoaisForm/>,
+    <ExperienciaProfissionalForm/>,
+    <FormacaoAcademicaForm/>
+  ];
+
+  const {currentStep, currentComponent, changeStep} = useMultiStepForm(formComponents)
+
   return (
     <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center">
       <div className="flex flex-col bg-white rounded-lg shadow-lg w-3/6 h-5/6 mt-10 p-10 justify-between box-content">
@@ -28,94 +43,15 @@ const PopUpCandidatura: FunctionComponent = () => {
           </div>
         </div>
 
-        <h1 className="text-center"> Formação Acadêmica</h1>
+        <form className="flex flex-col gap-5" onSubmit={(e)=>changeStep({steps: currentStep+1, event: e})}>
 
-        <form action="" className="flex flex-col gap-5">
-
-            <div className="flex gap-5">
-                <div className="flex gap-2">
-                 <input type="radio" name="" id="" />
-                 <label htmlFor="">Concluído</label>
-                </div>
-                <div className="flex gap-2">
-                 <input type="radio" name="" id="" />
-                 <label htmlFor="">Cursando</label>
-                </div>
-
-                <div className="flex gap-2">
-                 <input type="radio" name="" id="" />
-                 <label htmlFor="">Incompleto</label>
-                </div>
-            </div>
-
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-            Nível de escolaridade
-            </label>
-            <select name="" id="" className="border-2 w-full p-2 rounded-lg">
-                <option value="">Selecione...</option>
-                <option value="">Ensino fundamental</option>
-                <option value="">Ensino médio</option>
-                <option value="">Graduação</option>
-                <option value="">Pós-Graduação</option>
-
-            </select>
-          </div>
-
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-              Curso
-            </label>
-            <input
-              type="text"
-              id="titulo"
-              className="border-2 w-full p-2 rounded-lg"
-              placeholder="Digite o nome do curso (Sem abreviações)."
-            />
-          </div>
-
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-              Instituição de ensino
-            </label>
-            <input
-              type="text"
-              id="titulo"
-              className="border-2 w-full p-2 rounded-lg"
-              placeholder="Digite o nome da empresa."
-            />
-          </div>
-
-          <div className="flex gap-5">
-            <div className="w-full flex flex-col gap-2">
-              <label htmlFor="titulo" className="font-bold">
-                Data de ínicio
-              </label>
-              <input
-                type="date"
-                id="titulo"
-                className="border-2 w-full p-2 rounded-lg"
-                placeholder="Digite o seu melhor email."
-              />
-            </div>
-            <div className="w-full flex flex-col gap-2">
-              <label htmlFor="titulo" className="font-bold">
-                Data de término
-              </label>
-              <input
-                type="date"
-                id="titulo"
-                className="border-2 w-full p-2 rounded-lg"
-                placeholder="Digite o seu melhor email."
-              />
-            </div>
-          </div>
-
-        
+            {
+              currentComponent
+            }
 
           <div className="flex justify-end w-full gap-2">
-            <button className="border-2 py-3 px-7 rounded-lg">Cancelar</button>
-            <button className="bg-teal-500 py-3 px-7  rounded-lg">
+            <button className="border-2 py-3 px-7 rounded-lg" onClick={()=> changeStep({steps: currentStep-1})}>Voltar</button>
+            <button type="submit" className="bg-teal-500 py-3 px-7  rounded-lg">
               Avançar
             </button>
           </div>
@@ -182,164 +118,7 @@ export default PopUpCandidatura;
 
 /*
 
-<h1>Experiência Profissional</h1>
 
-        <form action="" className="flex flex-col gap-5">
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-              Cargo
-            </label>
-            <input
-              type="text"
-              id="titulo"
-              className="border-2 w-full p-2 rounded-lg"
-              placeholder="Digite o nome do cargo."
-            />
-          </div>
 
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-              Empresa
-            </label>
-            <input
-              type="text"
-              id="titulo"
-              className="border-2 w-full p-2 rounded-lg"
-              placeholder="Digite o nome da empresa."
-            />
-          </div>
-
-          <div className="flex gap-5">
-              <div className="w-full flex flex-col gap-2">
-                <label htmlFor="titulo" className="font-bold">
-                  Data de ínicio
-                </label>
-                <input
-                  type="date"
-                  id="titulo"
-                  className="border-2 w-full p-2 rounded-lg"
-                  placeholder="Digite o seu melhor email."
-                />
-              </div>
-              <div className="w-full flex flex-col gap-2">
-                <label htmlFor="titulo" className="font-bold">
-                  Data de término
-                </label>
-                <input
-                  type="date"
-                  id="titulo"
-                  className="border-2 w-full p-2 rounded-lg"
-                  placeholder="Digite o seu melhor email."
-                />
-              </div>
-          </div>
-
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-              Descrição das atividades
-            </label>
-            <textarea name="" id="" className="border-2 rounded-lg resize-none"></textarea>
-          </div>
-
-          <div className="flex justify-end w-full gap-2">
-            <button className="border-2 py-3 px-7 rounded-lg">Cancelar</button>
-            <button className="bg-teal-500 py-3 px-7  rounded-lg">
-              Avançar
-            </button>
-          </div>
-        </form>
-*/
-
-/*<h1 className="text-center"> Formação Acadêmica</h1>
-
-        <form action="" className="flex flex-col gap-5">
-
-            <div className="flex gap-5">
-                <div className="flex gap-2">
-                 <input type="radio" name="" id="" />
-                 <label htmlFor="">Concluído</label>
-                </div>
-                <div className="flex gap-2">
-                 <input type="radio" name="" id="" />
-                 <label htmlFor="">Cursando</label>
-                </div>
-
-                <div className="flex gap-2">
-                 <input type="radio" name="" id="" />
-                 <label htmlFor="">Incompleto</label>
-                </div>
-            </div>
-
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-            Nível de escolaridade
-            </label>
-            <select name="" id="" className="border-2 w-full p-2 rounded-lg">
-                <option value="">Selecione...</option>
-                <option value="">Ensino fundamental</option>
-                <option value="">Ensino médio</option>
-                <option value="">Graduação</option>
-                <option value="">Pós-Graduação</option>
-
-            </select>
-          </div>
-
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-              Curso
-            </label>
-            <input
-              type="text"
-              id="titulo"
-              className="border-2 w-full p-2 rounded-lg"
-              placeholder="Digite o nome do curso (Sem abreviações)."
-            />
-          </div>
-
-          <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
-              Instituição de ensino
-            </label>
-            <input
-              type="text"
-              id="titulo"
-              className="border-2 w-full p-2 rounded-lg"
-              placeholder="Digite o nome da empresa."
-            />
-          </div>
-
-          <div className="flex gap-5">
-            <div className="w-full flex flex-col gap-2">
-              <label htmlFor="titulo" className="font-bold">
-                Data de ínicio
-              </label>
-              <input
-                type="date"
-                id="titulo"
-                className="border-2 w-full p-2 rounded-lg"
-                placeholder="Digite o seu melhor email."
-              />
-            </div>
-            <div className="w-full flex flex-col gap-2">
-              <label htmlFor="titulo" className="font-bold">
-                Data de término
-              </label>
-              <input
-                type="date"
-                id="titulo"
-                className="border-2 w-full p-2 rounded-lg"
-                placeholder="Digite o seu melhor email."
-              />
-            </div>
-          </div>
-
-        
-
-          <div className="flex justify-end w-full gap-2">
-            <button className="border-2 py-3 px-7 rounded-lg">Cancelar</button>
-            <button className="bg-teal-500 py-3 px-7  rounded-lg">
-              Avançar
-            </button>
-          </div>
-        </form>
+/*
         */
