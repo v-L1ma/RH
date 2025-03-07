@@ -2,10 +2,10 @@ import { FunctionComponent } from "react";
 
 const ExperienciaProfissionalForm: FunctionComponent = () => {
   return (
-    <div>
-      <h1>Experiência Profissional</h1>
+    <div className="flex flex-col gap-10">
+      <h1 className="text-center">Experiência Profissional</h1>
 
-      <form action="" className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5">
         <div className="w-full flex flex-col gap-2">
           <label htmlFor="titulo" className="font-bold">
             Cargo
@@ -65,7 +65,7 @@ const ExperienciaProfissionalForm: FunctionComponent = () => {
             className="border-2 rounded-lg resize-none"
           ></textarea>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 
 const FormacaoAcademicaForm: FunctionComponent = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-10">
       <h1 className="text-center"> Formação Acadêmica</h1>
 
       <div className="flex gap-5">
