@@ -1,9 +1,10 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import DadosPessoaisForm from "./multiStepForm/DadosPessoaisForm";
 import ExperienciaProfissionalForm from "./multiStepForm/ExperienciaProfissionalForm";
 import FormacaoAcademicaForm from "./multiStepForm/FormacaoAcademicaForm";
 
 import { useMultiStepForm } from "../hooks/useMultiStepForm";
+import { formDataType } from "../types/formDataType";
 
 const PopUpCandidatura: FunctionComponent = () => {
   const formComponents = [
@@ -12,8 +13,33 @@ const PopUpCandidatura: FunctionComponent = () => {
     <FormacaoAcademicaForm />,
   ];
 
-  const { currentStep, currentComponent, changeStep, isLastStep } =
+  const { currentStep, currentComponent, changeStep, isLastStep, isFirstStep } =
     useMultiStepForm(formComponents);
+
+  const [data, setData] = useState<formDataType>({
+    nomeCompleto: "",
+    email: "",
+    telefone: "",
+    dataNasc: "",
+    cpf: "",
+
+    cargo: "",
+    ultima: "",
+    tempo: "",
+    descricaoATVD: "",
+
+    escolaridade: "",
+    curso: "",
+    instituição: "",
+    anoConclusão: "",}
+  )
+
+  const updateFieldHandler = (key,value) => {
+    setData((prev)=>{
+      return{...prev}
+    })
+  }
+
 
   return (
     <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center">
@@ -23,23 +49,19 @@ const PopUpCandidatura: FunctionComponent = () => {
             1
           </div>
 
-          <div className={`${currentStep>=0 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
+          <div className={`${currentStep>=1 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
 
           <div className={`${currentStep>=1 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
             2
           </div>
 
-          <div className={`${currentStep>=1 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
+          <div className={`${currentStep>=2 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
 
           <div className={`${currentStep>=2 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
             3
           </div>
 
-          <div className={`${currentStep>=2 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
-
-          <div className={`${currentStep>=3 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
-            4
-          </div>
+          
         </div>
 
         <form
@@ -49,6 +71,7 @@ const PopUpCandidatura: FunctionComponent = () => {
           {currentComponent}
 
           <div className="flex justify-end w-full gap-2">
+           { !isFirstStep &&
             <button
               className="border-2 py-3 px-7 rounded-lg"
               onClick={() => changeStep({ steps: currentStep - 1 })}
@@ -56,9 +79,11 @@ const PopUpCandidatura: FunctionComponent = () => {
             >
               Voltar
             </button>
+            }
+
             {isLastStep ? (
               <button
-                type="submit"
+                type="button"
                 className="bg-teal-500 py-3 px-7  rounded-lg"
               >
                 Enviar
