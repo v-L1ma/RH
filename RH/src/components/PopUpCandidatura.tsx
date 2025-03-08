@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import DadosPessoaisForm from "./multiStepForm/DadosPessoaisForm";
 import ExperienciaProfissionalForm from "./multiStepForm/ExperienciaProfissionalForm";
 import FormacaoAcademicaForm from "./multiStepForm/FormacaoAcademicaForm";
@@ -7,15 +7,7 @@ import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { formDataType } from "../types/formDataType";
 
 const PopUpCandidatura: FunctionComponent = () => {
-  const formComponents = [
-    <DadosPessoaisForm />,
-    <ExperienciaProfissionalForm />,
-    <FormacaoAcademicaForm />,
-  ];
-
-  const { currentStep, currentComponent, changeStep, isLastStep, isFirstStep } =
-    useMultiStepForm(formComponents);
-
+  
   const [data, setData] = useState<formDataType>({
     nomeCompleto: "",
     email: "",
@@ -24,22 +16,44 @@ const PopUpCandidatura: FunctionComponent = () => {
     cpf: "",
 
     cargo: "",
+    empresa: "",
     ultima: "",
-    tempo: "",
+    dataInicioEmpresa: "",
+    dataTerminoEmpresa: "",
     descricaoATVD: "",
 
     escolaridade: "",
     curso: "",
     instituição: "",
-    anoConclusão: "",}
-  )
+    dataInicioEstudo: "",
+    dataTerminoEstudos: "",
+  })
 
-  const updateFieldHandler = (key,value) => {
+  
+  const updateFieldHandler = (key: string,value: string) => {
     setData((prev)=>{
-      return{...prev}
+      return{...prev, [key]: value}
     })
   }
 
+  const sendForm = (e:React.FormEvent) => {
+    e.preventDefault();
+    ;
+    console.log(data)
+
+  }
+
+  const formComponents = [
+    <DadosPessoaisForm data={data} updateFieldHandler={updateFieldHandler}/>,
+    <ExperienciaProfissionalForm data={data} updateFieldHandler={updateFieldHandler}/>,
+    <FormacaoAcademicaForm data={data} updateFieldHandler={updateFieldHandler}/>,
+  ];
+
+  const { currentStep, currentComponent, changeStep, isLastStep, isFirstStep } =
+    useMultiStepForm(formComponents);
+
+  
+  
 
   return (
     <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center">
@@ -49,7 +63,7 @@ const PopUpCandidatura: FunctionComponent = () => {
             1
           </div>
 
-          <div className={`${currentStep>=1 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
+          <div className={`${currentStep>=-0 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
 
           <div className={`${currentStep>=1 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
             2
@@ -85,6 +99,7 @@ const PopUpCandidatura: FunctionComponent = () => {
               <button
                 type="button"
                 className="bg-teal-500 py-3 px-7  rounded-lg"
+                onClick={(e)=>sendForm(e)}
               >
                 Enviar
               </button>

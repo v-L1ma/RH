@@ -6,12 +6,16 @@ export type formDataType = {
     cpf: string | "";
 
     cargo: string | "";
+    empresa: string | "",
     ultima: string | "";
-    tempo: string | "";
+    dataInicioEmpresa: string | "";
+    dataTerminoEmpresa: string | "";
     descricaoATVD: string | "";
 
     escolaridade: string | "";
     curso: string | "";
     instituição: string | "";
-    anoConclusão: string | "";
+    dataInicioEstudo: string | "";
+    dataTerminoEstudos: string | "";
+    
 }
