@@ -11,89 +11,117 @@ const FormacaoAcademicaForm: FunctionComponent<{
 
       <div className="flex gap-5">
         <div className="flex gap-2">
-          <input type="radio" name="" id="" 
-            />
-          <label htmlFor="">Concluído</label>
+          <input
+            type="radio"
+            name="sitaucao"
+            id="Concluído"
+            value={"Concluído"}
+            checked={data.situacao === "Concluído"}
+            onChange={(e) => updateFieldHandler("situacao", e.target.value)}
+          />
+          <label htmlFor="Concluído">Concluído</label>
         </div>
         <div className="flex gap-2">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">Cursando</label>
+          <input
+            type="radio"
+            name="sitaucao"
+            id="Cursando"
+            value={"Cursando"}
+            checked={data.situacao === "Cursando"}
+            onChange={(e) => updateFieldHandler("situacao", e.target.value)}
+          />
+          <label htmlFor="Cursando">Cursando</label>
         </div>
 
         <div className="flex gap-2">
-          <input type="radio" name="" id="" />
-          <label htmlFor="">Incompleto</label>
+          <input
+            type="radio"
+            name="sitaucao"
+            id="Incompleto"
+            value={"Incompleto"}
+            checked={data.situacao === "Incompleto"}
+            onChange={(e) => updateFieldHandler("situacao", e.target.value)}
+          />
+          <label htmlFor="Incompleto">Incompleto</label>
         </div>
       </div>
 
       <div className="w-full flex flex-col gap-2">
-        <label htmlFor="titulo" className="font-bold">
+        <label htmlFor="escolaridade" className="font-bold">
           Nível de escolaridade
         </label>
-        <select name="" id="" className="border-2 w-full p-2 rounded-lg" 
-            value={data.escolaridade || ""}
-            onChange={(e) => updateFieldHandler("escolaridade", e.target.value)}>
+        <select
+          name="escolaridade"
+          id="escolaridade"
+          className="border-2 w-full p-2 rounded-lg"
+          value={data.escolaridade || ""}
+          onChange={(e) => updateFieldHandler("escolaridade", e.target.value)}
+        >
           <option value="">Selecione...</option>
-          <option value="">Ensino fundamental</option>
-          <option value="">Ensino médio</option>
-          <option value="">Graduação</option>
-          <option value="">Pós-Graduação</option>
+          <option value="Ensino fundamental">Ensino fundamental</option>
+          <option value="Ensino médio">Ensino médio</option>
+          <option value="Graduação">Graduação</option>
+          <option value="Pós-Graduação">Pós-Graduação</option>
         </select>
       </div>
 
       <div className="w-full flex flex-col gap-2">
-        <label htmlFor="titulo" className="font-bold">
+        <label htmlFor="Curso" className="font-bold">
           Curso
         </label>
         <input
           type="text"
-          id="titulo"
+          id="Curso"
           className="border-2 w-full p-2 rounded-lg"
           placeholder="Digite o nome do curso (Sem abreviações)."
-            value={data.curso || ""}
-            onChange={(e) => updateFieldHandler("curso", e.target.value)}
+          value={data.curso || ""}
+          onChange={(e) => updateFieldHandler("curso", e.target.value)}
         />
       </div>
 
       <div className="w-full flex flex-col gap-2">
-        <label htmlFor="titulo" className="font-bold">
+        <label htmlFor="instituição" className="font-bold">
           Instituição de ensino
         </label>
         <input
           type="text"
-          id="titulo"
+          id="instituição"
           className="border-2 w-full p-2 rounded-lg"
           placeholder="Digite o nome da empresa."
-            value={data.instituição || ""}
-            onChange={(e) => updateFieldHandler("instituição", e.target.value)}
+          value={data.instituição || ""}
+          onChange={(e) => updateFieldHandler("instituição", e.target.value)}
         />
       </div>
 
       <div className="flex gap-5">
         <div className="w-full flex flex-col gap-2">
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="dataInicioEstudo" className="font-bold">
             Data de ínicio
           </label>
           <input
             type="date"
-            id="titulo"
+            id="dataInicioEstudo"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o seu melhor email."
             value={data.dataInicioEstudo || ""}
-            onChange={(e) => updateFieldHandler("dataInicioEstudo", e.target.value)}
+            onChange={(e) =>
+              updateFieldHandler("dataInicioEstudo", e.target.value)
+            }
           />
         </div>
         <div className="w-full flex flex-col gap-2">
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="dataTerminoEstudos" className="font-bold">
             Data de término
           </label>
           <input
             type="date"
-            id="titulo"
+            id="dataTerminoEstudos"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o seu melhor email."
             value={data.dataTerminoEstudos || ""}
-            onChange={(e) => updateFieldHandler("dataTerminoEstudos", e.target.value)}
+            onChange={(e) =>
+              updateFieldHandler("dataTerminoEstudos", e.target.value)
+            }
           />
         </div>
       </div>

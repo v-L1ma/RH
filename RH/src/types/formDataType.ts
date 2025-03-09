@@ -7,11 +7,11 @@ export type formDataType = {
 
     cargo: string | "";
     empresa: string | "",
-    ultima: string | "";
     dataInicioEmpresa: string | "";
     dataTerminoEmpresa: string | "";
     descricaoATVD: string | "";
 
+    situacao: string | "";
     escolaridade: string | "";
     curso: string | "";
     instituição: string | "";

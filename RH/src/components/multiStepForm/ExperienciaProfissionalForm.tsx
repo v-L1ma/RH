@@ -11,12 +11,12 @@ const ExperienciaProfissionalForm: FunctionComponent<{
 
       <div className="flex flex-col gap-5">
         <div className="w-full flex flex-col gap-2">
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="cargo" className="font-bold">
             Cargo
           </label>
           <input
             type="text"
-            id="titulo"
+            id="cargo"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o nome do cargo."
             value={data.cargo}
@@ -25,12 +25,12 @@ const ExperienciaProfissionalForm: FunctionComponent<{
         </div>
 
         <div className="w-full flex flex-col gap-2">
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="empresa" className="font-bold">
             Empresa
           </label>
           <input
             type="text"
-            id="titulo"
+            id="empresa"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o nome da empresa."
             value={data.empresa}
@@ -40,12 +40,12 @@ const ExperienciaProfissionalForm: FunctionComponent<{
 
         <div className="flex gap-5">
           <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
+            <label htmlFor="dataInicioEmpresa" className="font-bold">
               Data de ínicio
             </label>
             <input
               type="date"
-              id="titulo"
+              id="dataInicioEmpresa"
               className="border-2 w-full p-2 rounded-lg"
               placeholder="Digite a data de inicio."
               value={data.dataInicioEmpresa}
@@ -53,12 +53,12 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             />
           </div>
           <div className="w-full flex flex-col gap-2">
-            <label htmlFor="titulo" className="font-bold">
+            <label htmlFor="dataTerminoEmpresa" className="font-bold">
               Data de término
             </label>
             <input
               type="date"
-              id="titulo"
+              id="dataTerminoEmpresa"
               className="border-2 w-full p-2 rounded-lg"
               placeholder="Digite a data de termino."
               value={data.dataTerminoEmpresa}
@@ -68,12 +68,12 @@ const ExperienciaProfissionalForm: FunctionComponent<{
         </div>
 
         <div className="w-full flex flex-col gap-2">
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="descricaoATVD" className="font-bold">
             Descrição das atividades
           </label>
           <textarea
             name=""
-            id=""
+            id="descricaoATVD"
             className="border-2 rounded-lg resize-none"
             value={data.descricaoATVD || ""}
             onChange={(e) => updateFieldHandler("descricaoATVD", e.target.value)}

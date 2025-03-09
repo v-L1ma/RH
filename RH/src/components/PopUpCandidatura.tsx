@@ -17,11 +17,11 @@ const PopUpCandidatura: FunctionComponent = () => {
 
     cargo: "",
     empresa: "",
-    ultima: "",
     dataInicioEmpresa: "",
     dataTerminoEmpresa: "",
     descricaoATVD: "",
 
+    situacao: "",
     escolaridade: "",
     curso: "",
     instituição: "",

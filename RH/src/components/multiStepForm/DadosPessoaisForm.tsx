@@ -11,12 +11,12 @@ const DadosPessoaisForm: FunctionComponent<{
       <div className="flex flex-col gap-5">
         <div className="w-full flex flex-col gap-2">
 
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="nomeCompleto" className="font-bold">
             Nome completo
           </label>
           <input
             type="text"
-            id="titulo"
+            id="nomeCompleto"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite seu nome completo."
             value={data.nomeCompleto || ""}
@@ -25,12 +25,12 @@ const DadosPessoaisForm: FunctionComponent<{
         </div>
 
         <div className="w-full flex flex-col gap-2">
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="email" className="font-bold">
             E-mail
           </label>
           <input
             type="text"
-            id="titulo"
+            id="email"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o seu melhor email."
             value={data.email || ""}
@@ -38,13 +38,28 @@ const DadosPessoaisForm: FunctionComponent<{
           />
         </div>
 
+
         <div className="w-full flex flex-col gap-2">
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="telefone" className="font-bold">
+            Telefone
+          </label>
+          <input
+            type="text"
+            id="telefone"
+            className="border-2 w-full p-2 rounded-lg"
+            placeholder="Digite o seu melhor telefone."
+            value={data.telefone || ""}
+            onChange={(e) => updateFieldHandler("telefone", e.target.value)}
+          />
+        </div>
+
+        <div className="w-full flex flex-col gap-2">
+          <label htmlFor="dataNasc" className="font-bold">
             Data de nascimento
           </label>
           <input
             type="date"
-            id="titulo"
+            id="dataNasc"
             className="border-2 w-full p-2 rounded-lg text-gray-400"
             placeholder="Digite a sua data de nascimento."
             value={data.dataNasc || ""}
@@ -53,12 +68,12 @@ const DadosPessoaisForm: FunctionComponent<{
         </div>
 
         <div className="w-full flex flex-col gap-2">
-          <label htmlFor="titulo" className="font-bold">
+          <label htmlFor="cpf" className="font-bold">
             CPF
           </label>
           <input
             type="text"
-            id="titulo"
+            id="cpf"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o seu CPF."
             value={data.cpf || ""}
