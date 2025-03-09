@@ -2,11 +2,16 @@ import React, { FunctionComponent, useState } from "react";
 import DadosPessoaisForm from "./multiStepForm/DadosPessoaisForm";
 import ExperienciaProfissionalForm from "./multiStepForm/ExperienciaProfissionalForm";
 import FormacaoAcademicaForm from "./multiStepForm/FormacaoAcademicaForm";
+import { IoClose } from "react-icons/io5";
 
 import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { formDataType } from "../types/formDataType";
 
-const PopUpCandidatura: FunctionComponent = () => {
+interface PopUpCandidaturaProps{
+  onclick: () => {};
+}
+
+const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick}) => {
   
   const [data, setData] = useState<formDataType>({
     nomeCompleto: "",
@@ -58,6 +63,9 @@ const PopUpCandidatura: FunctionComponent = () => {
   return (
     <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center">
       <div className="flex flex-col bg-white rounded-lg shadow-lg md:w-4/6 lg:w-2/6 h-fit mt-10 p-10 box-content gap-10">
+      <div className="flex justify-end">
+        <button onClick={()=>onclick()} className="text-3xl"><IoClose/></button>
+      </div>
         <div className="flex justify-between items-center gap-2">
           <div className={`${currentStep>=0 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
             1

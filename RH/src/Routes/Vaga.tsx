@@ -10,6 +10,11 @@ import PopUpCandidatura from "../components/PopUpCandidatura";
 const Vaga: FunctionComponent = () => {
   const navigate = useNavigate();
   const [popUpOpen, setPopUpOpen] = useState<boolean>(false)
+
+  function close(){
+    setPopUpOpen(!popUpOpen)
+  }
+
   return (
     <>
       <NavBar />
@@ -30,7 +35,7 @@ const Vaga: FunctionComponent = () => {
                 <button>
                   <CiHeart className="text-3xl text-teal-600"/>
                 </button>
-                <button className="bg-teal-600  rounded-md text-white font-bold shadow-md text-xl py-2 px-12" onClick={()=>setPopUpOpen(true)}>Candidatar-se</button>
+                <button className="bg-teal-600  rounded-md text-white font-bold shadow-md text-xl py-2 px-12" onClick={()=>close()}>Candidatar-se</button>
               </div>
               
             </div>
@@ -68,7 +73,7 @@ const Vaga: FunctionComponent = () => {
 
       {
         popUpOpen &&          
-          <PopUpCandidatura/>
+          <PopUpCandidatura onclick={close}/>
       }
 
       </main>
