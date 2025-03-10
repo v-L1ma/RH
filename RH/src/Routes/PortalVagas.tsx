@@ -3,8 +3,24 @@ import CardVaga from "../components/CardVaga";
 import NavBar from "../components/NavBar";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
+import { useEffect, useState } from "react";
+import api from "../service/api";
+import { vagaType } from "../types/vagaType";
 
 const PortalVagas = () => {
+  const [vagas,setVagas]=useState<vagaType[]>([]);
+  
+  async function loadVagas(){
+    const data = await api.get("/vacancies");
+
+    setVagas(data.data.vacancies)
+    console.log(vagas)
+  }
+
+  useEffect(() => {
+    loadVagas();
+  }, []);
+
   return (
     <>
       <NavBar />
@@ -62,7 +78,11 @@ const PortalVagas = () => {
           </div>
 
           <div className="rounded-lg grid grid-cols-2 gap-5">
-            <CardVaga Cargo="Operador de estacionamento" Descriçao="daskjdakjasdk" DataCriacao="24/02/2025" id={1} Localizacao="Santos" Vagas={3} setor="Estacionamento" to={`vaga/${1}`} Candidato={true}/>
+            {
+              vagas.map((vaga)=>(
+                <CardVaga Cargo={vaga.titulo} Descricao={vaga.descricao} DataCriacao="24/02/2025" id={vaga.id} Localizacao={vaga.local} Vagas={vaga.qtdeVagas} setor={vaga.setor} to={`vaga/${vaga.id}`} Candidato={true}/>
+              ))
+            }
           </div>
 
           <Outlet/>

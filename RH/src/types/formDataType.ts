@@ -1,4 +1,5 @@
 export type formDataType = {
+    vacancyID: number;
     nomeCompleto: string | "";
     email: string | "";
     telefone: string | "";

@@ -10,7 +10,7 @@ import { MdDeleteForever } from "react-icons/md";
 interface CardVagaProps {
   id: number;
   Cargo: string | undefined;
-  Descriçao: string | undefined;
+  Descricao: string | undefined;
   DataCriacao: string | undefined;
   Localizacao: string | undefined;
   Vagas: number | 1;

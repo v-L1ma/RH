@@ -2,14 +2,15 @@ import { FunctionComponent, useState } from "react";
 import NavBar from "../components/NavBar";
 import { CiHeart } from "react-icons/ci";
 import { IoChevronBack } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaLocationDot, FaUsers } from "react-icons/fa6";
 import { IoMdBriefcase } from "react-icons/io";
 import PopUpCandidatura from "../components/PopUpCandidatura";
 
 const Vaga: FunctionComponent = () => {
   const navigate = useNavigate();
-  const [popUpOpen, setPopUpOpen] = useState<boolean>(false)
+  const [popUpOpen, setPopUpOpen] = useState<boolean>(false);
+  const {id} = useParams();
 
   function close(){
     setPopUpOpen(!popUpOpen)
@@ -66,14 +67,13 @@ const Vaga: FunctionComponent = () => {
         <div>
           <h2 className="text-xl font-bold">Pré-requisitos:</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto unde iure harum, obcaecati deleniti voluptates eligendi quo, rem asperiores animi delectus quam facere odit dolores veritatis optio pariatur temporibus perferendis?</p>
-
         </div>
 
       </section>
 
       {
         popUpOpen &&          
-          <PopUpCandidatura onclick={close}/>
+          <PopUpCandidatura onclick={close} idVaga={Number(id)}/>
       }
 
       </main>

@@ -8,12 +8,14 @@ import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { formDataType } from "../types/formDataType";
 
 interface PopUpCandidaturaProps{
-  onclick: () => {}
+  onclick: () => void,
+  idVaga: number,
 }
 
-const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick }) => {
+const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, idVaga }) => {
   
   const [data, setData] = useState<formDataType>({
+    vacancyID: idVaga,
     nomeCompleto: "",
     email: "",
     telefone: "",
@@ -71,7 +73,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick })
             1
           </div>
 
-          <div className={`${currentStep>=-0 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
+          <div className={`${currentStep>=0 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
 
           <div className={`${currentStep>=1 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
             2
