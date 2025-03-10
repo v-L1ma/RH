@@ -1,6 +1,13 @@
 import React, { FunctionComponent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MdFormatBold, MdOutlineFormatItalic, MdFormatUnderlined, MdUndo, MdRedo } from "react-icons/md";
+import {
+  MdFormatBold,
+  MdOutlineFormatItalic,
+  MdFormatUnderlined,
+  MdUndo,
+  MdRedo,
+} from "react-icons/md";
+import api from "../service/api";
 
 export const NovaVaga: FunctionComponent = () => {
   const navigate = useNavigate();
@@ -10,41 +17,45 @@ export const NovaVaga: FunctionComponent = () => {
   const salarioRef = useRef<HTMLInputElement>(null);
   const descricaoRef = useRef<HTMLTextAreaElement>(null);
   const localRef = useRef<HTMLSelectElement>(null);
-  const [local, setLocal] = useState<string>("");
+  const senioridadeRef = useRef<HTMLSelectElement>(null);
+  const diversidadeRef = useRef<HTMLSelectElement>(null);
+  const pcdRef = useRef<HTMLSelectElement>(null);
+  const contratoRef = useRef<HTMLSelectElement>(null);
+  const turnoRef = useRef<HTMLSelectElement>(null);
+  const enderecoRef = useRef<HTMLSelectElement>(null);
+  const token = localStorage.getItem("token");
+
+  const [local, setLocal] = useState<string>();
   const [quantidade, setQuantidade] = useState<number>(0);
 
-  type TVagas = {
-    titulo: string | undefined;
-    setor: string | undefined;
-    salario: number | undefined;
-    qtdeVagas: number | undefined;
-    descricao: string | undefined;
-  };
-
-  const [vagas, setVagas] = useState<TVagas[]>([
-    {
-      titulo: "vinicius",
-      setor: "vinicius",
-      salario: 1000,
-      qtdeVagas: 1,
-      descricao: "vinicius",
-    },
-  ]);
-
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent): Promise<void> {
     e.preventDefault();
 
-    const novaVaga: TVagas = {
-      titulo: tituloRef.current?.value,
-      setor: setorRef.current?.value,
-      salario: Number(salarioRef.current?.value),
-      qtdeVagas: Number(quantidadeRef.current?.value),
-      descricao: descricaoRef.current?.value,
-    };
+    const response = await api.post(
+      "/vacancies",
+      {
+        titulo: tituloRef.current?.value || "",
+        setor: setorRef.current?.value|| "",
+        salario: salarioRef.current?.value || "",
+        qtdeVagas: Number(quantidadeRef.current?.value) || 0,
+        descricao: descricaoRef.current?.value || "",
+        senioridade: senioridadeRef.current?.value || "",
+        diversidade: diversidadeRef.current?.value || "",
+        pcd: pcdRef.current?.value || "",
+        contrato: contratoRef.current?.value || "",
+        turno: turnoRef.current?.value || "",
+        local: localRef.current?.value || "",
+        endereco: enderecoRef.current?.value || "",
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
+    );
 
-    setVagas((prev) => [...prev, novaVaga]);
-
-    console.log(vagas);
+    console.log(response);
   }
 
   return (
@@ -57,7 +68,7 @@ export const NovaVaga: FunctionComponent = () => {
           </button>
           <button
             className="bg-teal-600 py-2 px-5  rounded-lg shadow-md text-white font-extrabold flex items-center gap-2"
-            onClick={onSubmit}
+            onClick={(e) => onSubmit(e)}
           >
             Salvar
           </button>
@@ -101,6 +112,7 @@ export const NovaVaga: FunctionComponent = () => {
                 <input
                   type="number"
                   value={quantidade}
+                  ref={quantidadeRef}
                   onChange={(e) => setQuantidade(Number(e.target.value))}
                   className="border-2 p-2 text-center w-16 rounded-lg no-spinner"
                 />
@@ -119,20 +131,44 @@ export const NovaVaga: FunctionComponent = () => {
               Descricão para essa vaga
             </label>
             <div className="flex flex-col border-2 rounded-lg h-48 overflow-hidden">
-            <div className="w-full border-b-2">
-              <button type="button" className="p-2 text-xl rounded-lg hover:bg-gray-100"><MdUndo/></button>
-              <button type="button" className="p-2 text-xl rounded-lg hover:bg-gray-100"><MdRedo /></button>
-              <button type="button" className="p-2 text-xl rounded-lg hover:bg-gray-100"><MdFormatBold/></button>
-              <button type="button" className="p-2 text-xl rounded-lg hover:bg-gray-100"><MdOutlineFormatItalic /></button>
-              <button type="button" className="p-2 text-xl rounded-lg hover:bg-gray-100"><MdFormatUnderlined /></button>
-              
-            </div>
-            <textarea
-              name="vagas"
-              id="vagas"
-              className="w-full h-full resize-none"
-              ref={descricaoRef}
-            ></textarea>
+              <div className="w-full border-b-2">
+                <button
+                  type="button"
+                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                >
+                  <MdUndo />
+                </button>
+                <button
+                  type="button"
+                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                >
+                  <MdRedo />
+                </button>
+                <button
+                  type="button"
+                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                >
+                  <MdFormatBold />
+                </button>
+                <button
+                  type="button"
+                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                >
+                  <MdOutlineFormatItalic />
+                </button>
+                <button
+                  type="button"
+                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                >
+                  <MdFormatUnderlined />
+                </button>
+              </div>
+              <textarea
+                name="vagas"
+                id="vagas"
+                className="w-full h-full resize-none"
+                ref={descricaoRef}
+              ></textarea>
             </div>
           </div>
           <div className="grid grid-cols-2 w-full gap-5">
@@ -152,46 +188,61 @@ export const NovaVaga: FunctionComponent = () => {
               <label htmlFor="senioridade" className="font-bold">
                 Senioridade
               </label>
-              <select name="" id="" className="border-2 p-2 rounded-lg">
+              <select
+                name=""
+                id=""
+                className="border-2 p-2 rounded-lg"
+                ref={senioridadeRef}
+              >
                 <option value="" disabled>
                   Selecione...
                 </option>
-                <option value="">Aprendiz</option>
-                <option value="">Estágiario</option>
-                <option value="">Assistente</option>
-                <option value="">Junior</option>
-                <option value="">Pleno</option>
-                <option value="">Sênior</option>
+                <option value="Aprendiz">Aprendiz</option>
+                <option value="Estágiario">Estágiario</option>
+                <option value="Assistente">Assistente</option>
+                <option value="Junior">Junior</option>
+                <option value="Pleno">Pleno</option>
+                <option value="Sênior">Sênior</option>
               </select>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="diversidade" className="font-bold">
                 Diversidade
               </label>
-              <select name="" id="" className="border-2 p-2 rounded-lg">
+              <select
+                name=""
+                id=""
+                className="border-2 p-2 rounded-lg"
+                ref={diversidadeRef}
+              >
                 <option value="" disabled>
                   Selecione...
                 </option>
-                <option value="">Selecionar todas</option>
-                <option value="">Mulheres</option>
-                <option value="">Pessoas com idade 40+</option>
-                <option value="">Pessoas Indigenas</option>
-                <option value="">Pessoas pretas ou pardas</option>
-                <option value="">Pessoas com Deficiência</option>
+                <option value="Todas">Selecionar todas</option>
+                <option value="Mulheres">Mulheres</option>
+                <option value="Idade 40">Pessoas com idade 40+</option>
+                <option value="Indigenas">Pessoas Indigenas</option>
+                <option value="Pretas">Pessoas pretas ou pardas</option>
+                <option value="Deficiências">Pessoas com Deficiência</option>
               </select>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="setor" className="font-bold">
                 Vaga para Pessoas com deficiência (PCD)
               </label>
-              <select name="" id="" className="border-2 p-2 rounded-lg">
+              <select
+                name=""
+                id=""
+                className="border-2 p-2 rounded-lg"
+                ref={pcdRef}
+              >
                 <option value="" disabled>
                   Selecione...
                 </option>
-                <option value="">
+                <option value="Excluisva">
                   Exclusiva para Pessoas com deficiência (PCD)
                 </option>
-                <option value="">
+                <option value="Apto">
                   Apto para Pessoas com deficiência (PCD)
                 </option>
               </select>
@@ -224,25 +275,35 @@ export const NovaVaga: FunctionComponent = () => {
               <label htmlFor="setor" className="font-bold">
                 Tipo de contrato
               </label>
-              <select name="" id="" className="border-2 p-2 rounded-lg">
+              <select
+                name=""
+                id=""
+                className="border-2 p-2 rounded-lg"
+                ref={contratoRef}
+              >
                 <option value="default">Selecione...</option>
-                <option value="">CLT</option>
-                <option value="">PJ</option>
-                <option value="">Temporário</option>
-                <option value="">Estágio</option>
-                <option value="">Aprendiz</option>
+                <option value="CLT">CLT</option>
+                <option value="PJ">PJ</option>
+                <option value="Temporário">Temporário</option>
+                <option value="Estágio">Estágio</option>
+                <option value="Aprendiz">Aprendiz</option>
               </select>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="setor" className="font-bold">
                 Turno
               </label>
-              <select name="" id="" className="border-2 p-2 rounded-lg">
+              <select
+                name=""
+                id=""
+                className="border-2 p-2 rounded-lg"
+                ref={turnoRef}
+              >
                 <option value="default">Selecione...</option>
-                <option value="">Manhã</option>
-                <option value="">Tarde</option>
-                <option value="">Noite</option>
-                <option value="">Integral</option>
+                <option value="Manha">Manhã</option>
+                <option value="Tarde">Tarde</option>
+                <option value="Noite">Noite</option>
+                <option value="Integral">Integral</option>
               </select>
             </div>
             <div className="flex flex-col gap-2">

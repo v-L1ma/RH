@@ -8,10 +8,10 @@ import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { formDataType } from "../types/formDataType";
 
 interface PopUpCandidaturaProps{
-  onclick: () => {};
+  onclick: () => {}
 }
 
-const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick}) => {
+const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick }) => {
   
   const [data, setData] = useState<formDataType>({
     nomeCompleto: "",
