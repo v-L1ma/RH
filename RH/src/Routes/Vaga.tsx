@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import { CiHeart } from "react-icons/ci";
 import { IoChevronBack } from "react-icons/io5";
@@ -6,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FaLocationDot, FaUsers } from "react-icons/fa6";
 import { IoMdBriefcase } from "react-icons/io";
 import PopUpCandidatura from "../components/PopUpCandidatura";
+import api from "../service/api";
+import { vagaType } from "../types/vagaType";
 
 const Vaga: FunctionComponent = () => {
   const navigate = useNavigate();
@@ -15,6 +17,20 @@ const Vaga: FunctionComponent = () => {
   function close(){
     setPopUpOpen(!popUpOpen)
   }
+
+  const [vaga,setVaga]=useState<vagaType>();
+
+  async function loadInfo () {
+    const data = await api.get("/vacancies");
+
+    setVaga(data.data.vacancies)
+  }
+
+  useEffect(()=>{
+
+    loadInfo();
+
+  },[]);
 
   return (
     <>
