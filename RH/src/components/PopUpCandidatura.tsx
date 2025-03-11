@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5";
 
 import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { formDataType } from "../types/formDataType";
+import api from "../service/api";
 
 interface PopUpCandidaturaProps{
   onclick: () => void,
@@ -31,7 +32,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
     situacao: "",
     escolaridade: "",
     curso: "",
-    instituição: "",
+    instituicao: "",
     dataInicioEstudo: "",
     dataTerminoEstudos: "",
   })
@@ -43,10 +44,14 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
     })
   }
 
-  const sendForm = (e:React.FormEvent) => {
+  async function sendForm (e:React.FormEvent){
     e.preventDefault();
-    ;
+    
     console.log(data)
+
+    const response = await api.post(`/apply/${idVaga}`, data)
+
+    console.log(response)
 
   }
 

@@ -15,7 +15,7 @@ export type formDataType = {
     situacao: string | "";
     escolaridade: string | "";
     curso: string | "";
-    instituição: string | "";
+    instituicao: string | "";
     dataInicioEstudo: string | "";
     dataTerminoEstudos: string | "";
     

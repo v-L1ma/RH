@@ -21,9 +21,8 @@ const Vaga: FunctionComponent = () => {
   const [vaga,setVaga]=useState<vagaType>();
 
   async function loadInfo () {
-    const data = await api.get("/vacancies");
-
-    setVaga(data.data.vacancies)
+    const data = await api.get(`/vacancies/${id}`);
+    setVaga(data.data.vacancy)
   }
 
   useEffect(()=>{
@@ -43,8 +42,8 @@ const Vaga: FunctionComponent = () => {
               <div className="flex items-center">
                 <button className="text-4xl p-2 mr-5" onClick={()=>navigate(-1)}><IoChevronBack/></button>
                 <div>
-                  <h1 className="text-xl font-semibold">Operador de estacionamento</h1>
-                  <h2 className="font-bold text-gray-400">Nome da empresa</h2>
+                  <h1 className="text-xl font-semibold">{vaga?.titulo}</h1>
+                  <h2 className="font-bold text-gray-400">EMPRESA</h2>
                 </div>
               </div>
 
@@ -64,25 +63,35 @@ const Vaga: FunctionComponent = () => {
 
        <div className="flex gap-5 flex-wrap">
                 <p className="flex gap-5 items-center">
-                  <FaLocationDot /> Local
+                  <FaLocationDot /> {vaga?.local}
                 </p>
                 <p className="flex gap-5 items-center">
-                  <FaUsers /> 1 Vaga(as)
+                  <FaUsers /> {vaga?.qtdeVagas} Vaga(as)
                 </p>
                 <p className="flex gap-5 items-center">
-                  <IoMdBriefcase /> Setor
+                  <IoMdBriefcase /> {vaga?.setor}
                 </p>
               </div>
 
         <div className="flex gap-2">
-          <p className="bg-teal-200 px-3 py-1 rounded-md">Tags</p>
-          <p className="bg-teal-200 px-3 py-1 rounded-md">Tags</p>
-          <p className="bg-teal-200 px-3 py-1 rounded-md">Tags</p>
+          {
+           vaga?.senioridade && <p className="bg-teal-200 px-3 py-1 rounded-md">{vaga.senioridade}</p> 
+          }
+          {
+            vaga?.contrato && <p className="bg-teal-200 px-3 py-1 rounded-md">{vaga.contrato}</p>
+          }
+          {
+           vaga?.diversidade && <p className="bg-teal-200 px-3 py-1 rounded-md">{vaga.diversidade}</p> 
+          }
+          {
+           vaga?.pcd && <p className="bg-teal-200 px-3 py-1 rounded-md">{vaga.pcd}</p> 
+          }
+          
         </div>
 
         <div>
           <h2 className="text-xl font-bold">Pré-requisitos:</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto unde iure harum, obcaecati deleniti voluptates eligendi quo, rem asperiores animi delectus quam facere odit dolores veritatis optio pariatur temporibus perferendis?</p>
+          <p>{vaga?.descricao}</p>
         </div>
 
       </section>
