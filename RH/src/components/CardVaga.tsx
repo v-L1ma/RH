@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa6";
@@ -6,6 +6,7 @@ import { IoMdBriefcase } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
+import DeleteModal from "./DeleteModal";
 
 interface CardVagaProps {
   id: number;
@@ -20,6 +21,12 @@ interface CardVagaProps {
 }
 
 const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
+  const [isModalOpen,setIsModalOpen] = useState<boolean>(false);
+
+  function openModal(){
+    setIsModalOpen(!isModalOpen);
+  }
+  
   return (
     <div
       className="bg-white p-5 rounded-md flex flex-col shadow-md lg:w-auto"
@@ -34,7 +41,7 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
             <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3">
               <MdEdit /> Editar
             </button>
-            <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3">
+            <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3" onClick={()=>openModal()}>
               <MdDeleteForever className="text-red-500" /> Excluir
             </button>
           </div>
@@ -61,6 +68,11 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
           </p>
         </div>
       </div>
+
+        {
+          isModalOpen &&
+          <DeleteModal close={()=>openModal()} nomeVaga={props.Cargo} idVaga={props.id}/>
+        }
     </div>
   );
 };
