@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa6";
@@ -6,6 +6,7 @@ import { IoMdBriefcase } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
+import EditarVagaPopUp from "../components/EditarVagaPopUp";
 
 interface CardVagaProps {
   id: number;
@@ -20,6 +21,13 @@ interface CardVagaProps {
 }
 
 const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
+  
+  const [isEditarVagaPopUpOpen, setIsEditarVagaPopUpOpen] = useState<boolean>(false);
+
+  function openPopUp(isEditarVagaPopUpOpen:boolean){
+     setIsEditarVagaPopUpOpen(!isEditarVagaPopUpOpen);
+  }
+
   return (
     <div
       className="bg-white p-5 rounded-md flex flex-col shadow-md lg:w-auto"
@@ -61,6 +69,11 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
           </p>
         </div>
       </div>
+
+      {
+        isEditarVagaPopUpOpen &&
+        <EditarVagaPopUp/>
+      }
     </div>
   );
 };
