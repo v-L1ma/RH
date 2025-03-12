@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import DeleteModal from "./DeleteModal";
+import EditarVagaPopUp from "../components/EditarVagaPopUp";
 
 interface CardVagaProps {
   id: number;
@@ -27,6 +28,13 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
     setIsModalOpen(!isModalOpen);
   }
   
+  
+  const [isEditarVagaPopUpOpen, setIsEditarVagaPopUpOpen] = useState<boolean>(false);
+
+  function openPopUp(isEditarVagaPopUpOpen:boolean){
+     setIsEditarVagaPopUpOpen(!isEditarVagaPopUpOpen);
+  }
+
   return (
     <div
       className="bg-white p-5 rounded-md flex flex-col shadow-md lg:w-auto"
@@ -73,6 +81,10 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
           isModalOpen &&
           <DeleteModal close={()=>openModal()} nomeVaga={props.Cargo} idVaga={props.id}/>
         }
+      {
+        isEditarVagaPopUpOpen &&
+        <EditarVagaPopUp/>
+      }
     </div>
   );
 };

@@ -1,9 +1,30 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import CardVaga from "../components/CardVaga";
 import { Link } from "react-router-dom";
+import { vagaType } from "../types/vagaType";
+import api from "../service/api";
 
 export const GestaoVagas: FunctionComponent = () => {
+
+   const [vagas, setVagas] = useState<vagaType[]>();
+
+  async function loadVancacies() {
+
+    try {
+
+      const data = await api.get("/vacancies");
+
+      setVagas(data.data.vacancies);
+    } catch (error) {
+      console.log(error)
+    }
+    
+  }
+
+  useEffect(()=>{
+    loadVancacies();
+  },[]);
 
   return (
     <div className="w-full flex flex-col gap-10">
@@ -28,12 +49,12 @@ export const GestaoVagas: FunctionComponent = () => {
       </div>
 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-between">
-        <CardVaga Cargo="Operador de estacionamento" Descriçao="daskjdakjasdk" DataCriacao="24/02/2025" id={1} Localizacao="Santos" Vagas={3} setor="Estacionamento" to={`vaga/${1}`} Candidato={false}/>
-
-        <CardVaga Cargo="Operador de estacionamento" Descriçao="daskjdakjasdk" DataCriacao="24/02/2025" id={2} Localizacao="Santos" Vagas={3} setor="Estacionamento" to={`vaga/${1}`} Candidato={false}/>
-        
-        <CardVaga Cargo="Operador de estacionamento" Descriçao="daskjdakjasdk" DataCriacao="24/02/2025" id={1} Localizacao="Santos" Vagas={3} setor="Estacionamento" to={`vaga/${2}`} Candidato={false}/>
-
+        <CardVaga Cargo="Operador de estacionamento" Descricao="daskjdakjasdk" DataCriacao="24/02/2025" id={1} Localizacao="Santos" Vagas={3} setor="Estacionamento" to={`vaga/${1}`} Candidato={false}/>
+        {
+          vagas?.map((vaga)=>(
+            <CardVaga Cargo={vaga.titulo} Descricao={vaga.descricao} DataCriacao="24/02/2025" id={vaga.id} Localizacao={vaga.local} Vagas={vaga.qtdeVagas} setor={vaga.setor} to={`vaga/${vaga.id}`} Candidato={false}/>
+          ))
+        }
       </div>
 
     </div>
