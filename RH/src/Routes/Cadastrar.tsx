@@ -12,7 +12,7 @@ const Cadastrar: FunctionComponent = () => {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
 
-    const response = await api.post("/create", {
+    const response = await api.post("/users", {
       name: nameRef.current?.value,
       email: emailRef.current?.value,
       password: passwordRef.current?.value,
