@@ -8,13 +8,13 @@ import api from "../service/api";
 import { vagaType } from "../types/vagaType";
 
 const PortalVagas = () => {
-  const [vagas,setVagas]=useState<vagaType[]>([]);
-  
-  async function loadVagas(){
+  const [vagas, setVagas] = useState<vagaType[]>([]);
+
+  async function loadVagas() {
     const data = await api.get("/vacancies");
 
-    setVagas(data.data.vacancies)
-    console.log(vagas)
+    setVagas(data.data.vacancies);
+    console.log(vagas);
   }
 
   useEffect(() => {
@@ -24,9 +24,9 @@ const PortalVagas = () => {
   return (
     <>
       <NavBar />
-      <main className="bg-slate-50 ">
+      <main className="bg-slate-50">
         <section className="h-3/6 ">
-          <div className="bg-teal-600 h-3/6 px-96 py-40 flex items-center justify-end">
+          <div className="bg-teal-600 h-3/6 py-24 px-10 md:px-40 lg:px-96 md:py-40 flex items-center justify-end">
             <h1 className="text-left text-white text-4xl">
               A vaga que você procura,
               <br />
@@ -34,58 +34,76 @@ const PortalVagas = () => {
             </h1>
           </div>
 
-          <form className="bg-white w-11/12 md:w-3/5 rounded-2xl p-5 shadow-lg flex gap-2 mr-auto ml-auto -mt-14  items-end">
-            <div className="w-8/12 flex flex-col gap-3">
-              <label htmlFor="" className="font-bold">
-                Qual vaga você procura?
-              </label>
-              <div className="flex border w-full p-1 rounded-lg h-12 items-center">
-                <label htmlFor="vaga"><FaMagnifyingGlass className="text-gray-500 text-2xl m-5"/></label>
-              <input
-                type="text"
-                id="vaga"
-                placeholder="Nome da vaga ou cargo"
-                className="w-full h-full"
-              />
+          <form className="flex bg-white flex-col md:flex-row w-11/12 md:w-8/12 rounded-2xl p-5 shadow-lg  gap-5 mr-auto ml-auto -mt-14  items-end">
+
+            <div className="w-full flex flex-col md:flex-row gap-5">
+
+              <div className="md:w-8/12 flex flex-col gap-3">
+                <label htmlFor="" className="font-bold">
+                  Qual vaga você procura?
+                </label>
+                <div className="flex border w-full p-1 rounded-lg h-12 items-center">
+                  <label htmlFor="vaga">
+                    <FaMagnifyingGlass className="text-gray-500 text-2xl m-5" />
+                  </label>
+                  <input
+                    type="text"
+                    id="vaga"
+                    placeholder="Nome da vaga ou cargo"
+                    className="w-full h-full"
+                  />
+                </div>
               </div>
-              
-            </div>
-            <div className="w-4/12 flex flex-col gap-3">
-              <label htmlFor="" className="font-bold">
-                Onde você procura?
-              </label>
-              <div className="flex border w-full p-1 rounded-lg h-12 items-center">
-                <label htmlFor="local"><IoLocationOutline className="text-gray-500 text-2xl m-5"/></label>
-                <input
-                type=""
-                id="local"
-                placeholder="Selecione um ou mais locais"
-                className="w-full h-full"
-              />
+
+              <div className="w-full md:w-4/12 flex flex-col gap-3">
+                <label htmlFor="" className="font-bold">
+                  Onde você procura?
+                </label>
+                <div className="flex border w-full p-1 rounded-lg h-12 items-center">
+                  <label htmlFor="local">
+                    <IoLocationOutline className="text-gray-500 text-2xl m-5" />
+                  </label>
+                  <input
+                    type=""
+                    id="local"
+                    placeholder="Selecione um ou mais locais"
+                    className="w-full h-full"
+                  />
+                </div>
               </div>
-              
+
             </div>
-            <button className="bg-teal-600  rounded-md w-3/12 h-12 text-white font-extrabold shadow-md">
+
+            <button className="bg-teal-600 rounded-md w-full md:w-3/12 h-12 text-white font-extrabold shadow-md">
               Buscar vagas
             </button>
+
           </form>
         </section>
 
-        <section className="h-screen  pt-5 w-11/12 md:w-3/5  mr-auto ml-auto flex flex-col gap-5">
+        <section className="h-screen  pt-5 w-11/12 md:w-8/12  mr-auto ml-auto flex flex-col gap-5">
           <div className="pb-6  border-b">
             <h1 className="font-bold text-2xl text-slate-800">Vagas</h1>
-            <h2>{231316} vaga(s) encontrada(s)</h2>
+            <h2>{vagas.length} vaga(s) encontrada(s)</h2>
           </div>
 
           <div className="rounded-lg grid grid-cols-2 gap-5">
-            {
-              vagas.map((vaga)=>(
-                <CardVaga Cargo={vaga.titulo} Descricao={vaga.descricao} DataCriacao="24/02/2025" id={vaga.id} Localizacao={vaga.local} Vagas={vaga.qtdeVagas} setor={vaga.setor} to={`vaga/${vaga.id}`} Candidato={true}/>
-              ))
-            }
+            {vagas.map((vaga) => (
+              <CardVaga
+                Cargo={vaga.titulo}
+                Descricao={vaga.descricao}
+                DataCriacao="24/02/2025"
+                id={vaga.id}
+                Localizacao={vaga.local}
+                Vagas={vaga.qtdeVagas}
+                setor={vaga.setor}
+                to={`vaga/${vaga.id}`}
+                Candidato={true}
+              />
+            ))}
           </div>
 
-          <Outlet/>
+          <Outlet />
         </section>
       </main>
     </>

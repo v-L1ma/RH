@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   MdFormatBold,
   MdOutlineFormatItalic,
@@ -8,9 +7,10 @@ import {
   MdRedo,
 } from "react-icons/md";
 import api from "../service/api";
+import { useNavigate } from "react-router-dom";
+import viaCepAPI from "../service/viaCEP";
 
 export const NovaVaga: FunctionComponent = () => {
-  const navigate = useNavigate();
   const tituloRef = useRef<HTMLInputElement>(null);
   const quantidadeRef = useRef<HTMLInputElement>(null);
   const setorRef = useRef<HTMLInputElement>(null);
@@ -22,8 +22,12 @@ export const NovaVaga: FunctionComponent = () => {
   const pcdRef = useRef<HTMLSelectElement>(null);
   const contratoRef = useRef<HTMLSelectElement>(null);
   const turnoRef = useRef<HTMLSelectElement>(null);
-  const enderecoRef = useRef<HTMLSelectElement>(null);
+  const inputCepRef = useRef<HTMLInputElement>(null);
+  const [cidade, setCidade] = useState<string>("");
+  const [estado, setEstado] = useState<string>("");
   const token = localStorage.getItem("token");
+
+  const navigate = useNavigate();
 
   const [local, setLocal] = useState<string>();
   const [quantidade, setQuantidade] = useState<number>(0);
@@ -31,6 +35,8 @@ export const NovaVaga: FunctionComponent = () => {
   async function onSubmit(e: React.FormEvent): Promise<void> {
     e.preventDefault();
 
+    try {
+    
     const response = await api.post(
       "/vacancies",
       {
@@ -45,7 +51,7 @@ export const NovaVaga: FunctionComponent = () => {
         contrato: contratoRef.current?.value || "",
         turno: turnoRef.current?.value || "",
         local: localRef.current?.value || "",
-        endereco: enderecoRef.current?.value || "",
+        endereco: `${cidade} - ${estado}`,
       },
       {
         headers: {
@@ -56,6 +62,32 @@ export const NovaVaga: FunctionComponent = () => {
     );
 
     console.log(response);
+    navigate("/painel/gestao-vagas");
+
+  } catch (error) {
+    console.log("Erro na requisição", error)
+  } 
+  }
+
+
+  async function getAddress() {
+
+    if(inputCepRef.current?.value.length === 8){
+
+    try {
+
+      const address = await viaCepAPI.get(`/${inputCepRef.current?.value}/json`)
+
+      setCidade(address.data.localidade);
+      setEstado(address.data.estado);
+
+      console.log(address)
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+    
   }
 
   return (
@@ -166,7 +198,7 @@ export const NovaVaga: FunctionComponent = () => {
               <textarea
                 name="vagas"
                 id="vagas"
-                className="w-full h-full resize-none"
+                className="w-full h-full resize-none p-5"
                 ref={descricaoRef}
               ></textarea>
             </div>
@@ -193,6 +225,7 @@ export const NovaVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={senioridadeRef}
+                defaultValue={""}
               >
                 <option value="" disabled>
                   Selecione...
@@ -214,16 +247,17 @@ export const NovaVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={diversidadeRef}
+                defaultValue={"default"}
               >
-                <option value="" disabled>
+                <option value="default" disabled>
                   Selecione...
                 </option>
-                <option value="Todas">Selecionar todas</option>
-                <option value="Mulheres">Mulheres</option>
-                <option value="Idade 40">Pessoas com idade 40+</option>
-                <option value="Indigenas">Pessoas Indigenas</option>
-                <option value="Pretas">Pessoas pretas ou pardas</option>
-                <option value="Deficiências">Pessoas com Deficiência</option>
+                <option value="">Sem preferências</option>
+                <option value="Exclusiva para mulheres">Exclusiva para mulheres</option>
+                <option value="Pessoas acima dos 40">Pessoas acima dos 40</option>
+                <option value="Pessoas Indigenas">Pessoas Indigenas</option>
+                <option value="Pessoas pretas ou pardas">Pessoas pretas ou pardas</option>
+                <option value="Exclusiva para PCD">Pessoas com Deficiência</option>
               </select>
             </div>
             <div className="flex flex-col gap-2">
@@ -235,14 +269,15 @@ export const NovaVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={pcdRef}
+                defaultValue={""}
               >
                 <option value="" disabled>
                   Selecione...
                 </option>
-                <option value="Excluisva">
+                <option value="Excluisva para PCD">
                   Exclusiva para Pessoas com deficiência (PCD)
                 </option>
-                <option value="Apto">
+                <option value="Apto para PCD">
                   Apto para Pessoas com deficiência (PCD)
                 </option>
               </select>
@@ -280,8 +315,9 @@ export const NovaVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={contratoRef}
+                defaultValue={""}
               >
-                <option value="default">Selecione...</option>
+                <option value="" disabled>Selecione...</option>
                 <option value="CLT">CLT</option>
                 <option value="PJ">PJ</option>
                 <option value="Temporário">Temporário</option>
@@ -298,8 +334,9 @@ export const NovaVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={turnoRef}
+                defaultValue={""}
               >
-                <option value="default">Selecione...</option>
+                <option value="" disabled>Selecione...</option>
                 <option value="Manha">Manhã</option>
                 <option value="Tarde">Tarde</option>
                 <option value="Noite">Noite</option>
@@ -316,8 +353,9 @@ export const NovaVaga: FunctionComponent = () => {
                 className="border-2 p-2 rounded-lg"
                 ref={localRef}
                 onChange={() => setLocal(localRef.current?.value || "")}
+                defaultValue={""}
               >
-                <option value="">Selecione...</option>
+                <option value="" disabled>Selecione...</option>
                 <option value="Presencial">Presencial</option>
                 <option value="Remoto">Remoto</option>
                 <option value="Hibrido">Hibrido</option>
@@ -325,15 +363,8 @@ export const NovaVaga: FunctionComponent = () => {
             </div>
           </div>
           {local === "Presencial" && (
-            <div className="grid grid-cols-4 gap-5 ">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="setor" className="font-bold">
-                  País
-                </label>
-                <select name="" id="" className="border-2 p-2 rounded-lg">
-                  <option value="">Selecione</option>
-                </select>
-              </div>
+            <div className="grid grid-cols-3 gap-5 ">
+              
               <div className="flex flex-col gap-2">
                 <label htmlFor="cep" className="font-bold">
                   CEP
@@ -343,19 +374,11 @@ export const NovaVaga: FunctionComponent = () => {
                   id="cep"
                   className="border-2 p-2 rounded-lg"
                   placeholder="Digite qual o CEP"
+                  onChange={()=>getAddress()}
+                  ref={inputCepRef}
                 />
               </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="estado" className="font-bold">
-                  Estado
-                </label>
-                <input
-                  type="text"
-                  id="estado"
-                  className="border-2 p-2 rounded-lg"
-                  placeholder="Digite qual o estado"
-                />
-              </div>
+              
               <div className="flex flex-col gap-2">
                 <label htmlFor="cidade" className="font-bold">
                   Cidade
@@ -364,7 +387,23 @@ export const NovaVaga: FunctionComponent = () => {
                   type="text"
                   id="cidade"
                   className="border-2 p-2 rounded-lg"
-                  placeholder="Digite qual o cidade"
+                  placeholder="Digite qual o cidade"        
+                  value={cidade}          
+                  disabled
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="estado" className="font-bold">
+                  Estado
+                </label>
+                <input
+                  type="text"
+                  id="estado"
+                  className="border-2 p-2 rounded-lg"
+                  placeholder="Digite qual o estado"    
+                  value={estado}              
+                  disabled
                 />
               </div>
             </div>

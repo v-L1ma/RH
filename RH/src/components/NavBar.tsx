@@ -64,13 +64,13 @@ const NavBar: FunctionComponent = () => {
       </SlidingPanel>
     </nav>
 
-    <nav className="hidden md:flex w-7/12 m-auto ">
+    <nav className="hidden md:flex w-8/12 m-auto ">
       <div className="w-full flex justify-between items-center gap-4 p-0">
         <div>
         <Link to="/"><img src={Logo} alt="" className="h-16 p-0"/></Link>
         </div>
 
-          <div className="p-5 flex items-center gap-3">
+          <div className="py-5 flex items-center gap-3">
             <Link to="/portal-vagas">
               <p className="text-center p-2  rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
               Portal de vagas</p>

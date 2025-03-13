@@ -1,9 +1,36 @@
-import { FunctionComponent } from "react";
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { FunctionComponent, useEffect, useState } from "react";
+import { NavigateFunction, useNavigate, useParams } from "react-router-dom";
+import api from "../service/api";
+import { TCandidate } from "../types/candidateType";
 
 export const CandidatosVaga: FunctionComponent = () => {
 
   const navigate:NavigateFunction = useNavigate();
+
+  const { id } = useParams();
+
+  const [candidates, setCandidates] = useState<TCandidate[]>();
+
+
+  async function loadCandidates(){
+
+    try {
+
+      const data = await api.get(`/applications/${id}`)
+
+      console.log(data.data.applications)
+
+      setCandidates(data.data.applications)
+
+    } catch (error) {
+      console.log("Houve um erro na requisição", error)
+    }
+
+  }
+
+  useEffect(()=>{
+    loadCandidates();
+  },[candidates])
 
   return (
     <div className="w-full flex flex-col gap-10">
@@ -29,18 +56,27 @@ export const CandidatosVaga: FunctionComponent = () => {
               </tr>
             </thead>
             <tbody>
-                <tr className="border-t mt-10 hover:bg-gray-100">
-                  <td className="px-4 py-2">Vinicius</td>
-                  <td className="px-4 py-2">1398165216</td>
-                  <td className="px-4 py-2">vinicius@email</td>
-                  <td className="px-4 py-2">Currículo</td>
+              {
+                candidates && candidates.length>0 ? (
+                candidates?.map((candidate)=>(
+                  <tr className="border-t mt-10 hover:bg-gray-100">
+                  <td className="px-4 py-2">{
+                  candidate.nomeCompleto}</td>
+                  <td className="px-4 py-2">{
+                  candidate.telefone}</td>
+                  <td className="px-4 py-2">{
+                  candidate.email}</td>
+                  <td className="px-4 py-2">Ver currículo completo</td>
                 </tr>
-              <tr className="border-t mt-10 hover:bg-gray-100">
-                <td className="px-4 py-2">Vinicius</td>
-                <td className="px-4 py-2">1398165216</td>
-                <td className="px-4 py-2">vinicius@email</td>
-                <td className="px-4 py-2">Currículo</td>
-              </tr>
+                ))
+              ) : (
+                <tr className="border-t mt-10 hover:bg-gray-100">
+                  <td colSpan={4} className="px-4 py-2">
+                    Essa vaga não possuí candidatos.
+                  </td>
+                </tr>
+              )
+              }
             </tbody>
           </table>
         </div>

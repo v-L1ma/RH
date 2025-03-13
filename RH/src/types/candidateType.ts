@@ -1,0 +1,20 @@
+export type TCandidate = {
+  id: number;
+  vacancyID: number;
+  nomeCompleto: String;
+  email: String;
+  telefone: String;
+  dataNasc: String;
+  cpf: String;
+  cargo: String;
+  empresa: String;
+  dataInicioEmpresa: String;
+  dataTerminoEmpresa: String;
+  descricaoATVD: String;
+  situacao: String;
+  escolaridade: String;
+  curso: String;
+  instituicao: String;
+  dataInicioEstudo: String;
+  dataTerminoEstudos: String;
+};

@@ -24,7 +24,7 @@ export const GestaoVagas: FunctionComponent = () => {
 
   useEffect(()=>{
     loadVancacies();
-  },[]);
+  },[vagas]);
 
   return (
     <div className="w-full flex flex-col gap-10">
@@ -49,7 +49,7 @@ export const GestaoVagas: FunctionComponent = () => {
       </div>
 
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-between">
-        <CardVaga Cargo="Operador de estacionamento" Descricao="daskjdakjasdk" DataCriacao="24/02/2025" id={1} Localizacao="Santos" Vagas={3} setor="Estacionamento" to={`vaga/${1}`} Candidato={false}/>
+        
         {
           vagas?.map((vaga)=>(
             <CardVaga Cargo={vaga.titulo} Descricao={vaga.descricao} DataCriacao="24/02/2025" id={vaga.id} Localizacao={vaga.local} Vagas={vaga.qtdeVagas} setor={vaga.setor} to={`vaga/${vaga.id}`} Candidato={false}/>

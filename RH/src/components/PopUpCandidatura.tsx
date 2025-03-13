@@ -49,7 +49,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
     
     console.log(data)
 
-    const response = await api.post(`/apply/${idVaga}`, data)
+    const response = await api.post(`/applications/${idVaga}`, data)
 
     console.log(response)
 
