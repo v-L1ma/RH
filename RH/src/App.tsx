@@ -14,6 +14,7 @@ import { BancoTalentos } from "./Routes/BancoTalentos";
 import NotFound from "./Routes/NotFound";
 import Vaga from "./Routes/Vaga";
 import PainelHome from "./Routes/PainelHome";
+import Estatisticas from "./Routes/Estatisticas";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="gestao-vagas/nova-vaga" element={<NovaVaga />} />
             <Route path="gestao-vagas/vaga/:id" element={<CandidatosVaga/>}/>
             <Route path="banco-de-talentos" element={<BancoTalentos/>}/>
+            <Route path="estatisticas" element={<Estatisticas/>}/>
           </Route>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
