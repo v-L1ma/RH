@@ -52,7 +52,7 @@ const Vaga: FunctionComponent = () => {
 
               <div className="flex items-center gap-4">
                 <button title={message} onClick={()=>copyToClipboard(window.location.href)}>
-                  <FaShareSquare className="text-3xl text-teal-600"/>
+                  <FaShareSquare className="text-xl text-teal-600"/>
                 </button>
                 <button className="bg-teal-600  rounded-md text-white font-bold shadow-md text-xl py-2 px-12" onClick={()=>close()}>Candidatar-se</button>
               </div>

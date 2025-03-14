@@ -68,7 +68,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
   
 
   return (
-    <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center">
+    <div className="bg-black/25 absolute z-10 w-full h-fit top-0 flex justify-center pb-10">
       <div className="flex flex-col bg-white rounded-lg shadow-lg md:w-4/6 lg:w-2/6 h-fit mt-10 p-10 box-content gap-10">
       <div className="flex justify-end">
         <button onClick={()=>onclick()} className="text-3xl"><IoClose/></button>
