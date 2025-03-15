@@ -3,68 +3,64 @@ import DadosPessoaisForm from "./multiStepForm/DadosPessoaisForm";
 import ExperienciaProfissionalForm from "./multiStepForm/ExperienciaProfissionalForm";
 import FormacaoAcademicaForm from "./multiStepForm/FormacaoAcademicaForm";
 import { IoClose } from "react-icons/io5";
-
 import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { formDataType } from "../types/formDataType";
 import api from "../service/api";
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { data } from "react-router-dom";
 
 interface PopUpCandidaturaProps{
   onclick: () => void,
   idVaga: number,
 }
 
+const schema = z.object({
+  nomeCompleto: z.string().min(3,"Por favor insira seu nome"),
+  email:z.string(),
+  telefone:z.string(),
+  dataNasc:z.string(),
+  cpf:z.string(),
+
+  cargo:z.string(),
+  empresa:z.string(),
+  dataInicioEmpresa:z.string(),
+  dataTerminoEmpresa:z.string(),
+  descricaoATVD:z.string(),
+
+  situacao:z.unknown(),
+  escolaridade:z.string(),
+  curso:z.string(),
+  instituicao:z.string(),
+  dataInicioEstudo:z.string(),
+  dataTerminoEstudos:z.string(),
+
+})
+
+type FormData = z.infer<typeof schema>;
+
 const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, idVaga }) => {
-  
-  const [data, setData] = useState<formDataType>({
-    vacancyID: idVaga,
-    nomeCompleto: "",
-    email: "",
-    telefone: "",
-    dataNasc: "",
-    cpf: "",
 
-    cargo: "",
-    empresa: "",
-    dataInicioEmpresa: "",
-    dataTerminoEmpresa: "",
-    descricaoATVD: "",
+  const { register, handleSubmit, formState: { errors }} = useForm<FormData>({
+    resolver: zodResolver(schema)
+});
 
-    situacao: "",
-    escolaridade: "",
-    curso: "",
-    instituicao: "",
-    dataInicioEstudo: "",
-    dataTerminoEstudos: "",
-  })
+const onSubmit = (data: FormData) => {
+  console.log(data);
+};
 
-  
-  const updateFieldHandler = (key: string,value: string) => {
-    setData((prev)=>{
-      return{...prev, [key]: value}
-    })
-  }
 
-  async function sendForm (e:React.FormEvent){
-    e.preventDefault();
-    
-    console.log(data)
+const formComponents = [
+  <DadosPessoaisForm register={register} errors={errors}/>,
+  <ExperienciaProfissionalForm register={register} errors={errors}/>,
+  <FormacaoAcademicaForm register={register} errors={errors}/>,
+];
 
-    const response = await api.post(`/applications/${idVaga}`, data)
-
-    console.log(response)
-
-  }
-
-  const formComponents = [
-    <DadosPessoaisForm data={data} updateFieldHandler={updateFieldHandler}/>,
-    <ExperienciaProfissionalForm data={data} updateFieldHandler={updateFieldHandler}/>,
-    <FormacaoAcademicaForm data={data} updateFieldHandler={updateFieldHandler}/>,
-  ];
 
   const { currentStep, currentComponent, changeStep, isLastStep, isFirstStep } =
     useMultiStepForm(formComponents);
 
-  
   
 
   return (
@@ -95,8 +91,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
 
         <form
           className="flex flex-col gap-5"
-          onSubmit={(e) => changeStep({ steps: currentStep + 1, event: e })}
-        >
+          onSubmit={handleSubmit(onSubmit)}>
           {currentComponent}
 
           <div className="flex justify-end w-full gap-2">
@@ -112,16 +107,16 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
 
             {isLastStep ? (
               <button
-                type="button"
+                type="submit"
                 className="bg-teal-500 py-3 px-7  rounded-lg"
-                onClick={(e)=>sendForm(e)}
               >
                 Enviar
               </button>
             ) : (
               <button
-                type="submit"
+                type="button"
                 className="bg-teal-500 py-3 px-7  rounded-lg"
+                onClick={(e) => changeStep({ steps: currentStep + 1, event: e })}
               >
                 Avançar
               </button>

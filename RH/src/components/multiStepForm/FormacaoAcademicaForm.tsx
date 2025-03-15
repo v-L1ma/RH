@@ -1,10 +1,9 @@
 import { FunctionComponent } from "react";
-import { formDataType } from "../../types/formDataType";
 
 const FormacaoAcademicaForm: FunctionComponent<{
-  data: formDataType;
-  updateFieldHandler: (field: keyof formDataType, value: string) => void;
-}> = ({ data, updateFieldHandler }) => {
+  register: any,
+  errors: any,
+}> = ({register, errors }) => {
   return (
     <div className="flex flex-col gap-10">
       <h1 className="text-center"> Formação Acadêmica</h1>
@@ -16,10 +15,10 @@ const FormacaoAcademicaForm: FunctionComponent<{
             name="sitaucao"
             id="Concluído"
             value={"Concluído"}
-            checked={data.situacao === "Concluído"}
-            onChange={(e) => updateFieldHandler("situacao", e.target.value)}
+            {...register('sitaucao')}
           />
           <label htmlFor="Concluído">Concluído</label>
+          {errors.sitaucao && <p>{errors.sitaucao.message}</p>}
         </div>
         <div className="flex gap-2">
           <input
@@ -27,10 +26,10 @@ const FormacaoAcademicaForm: FunctionComponent<{
             name="sitaucao"
             id="Cursando"
             value={"Cursando"}
-            checked={data.situacao === "Cursando"}
-            onChange={(e) => updateFieldHandler("situacao", e.target.value)}
+            {...register('sitaucao')}
           />
           <label htmlFor="Cursando">Cursando</label>
+          {errors.sitaucao && <p>{errors.sitaucao.message}</p>}
         </div>
 
         <div className="flex gap-2">
@@ -39,10 +38,10 @@ const FormacaoAcademicaForm: FunctionComponent<{
             name="sitaucao"
             id="Incompleto"
             value={"Incompleto"}
-            checked={data.situacao === "Incompleto"}
-            onChange={(e) => updateFieldHandler("situacao", e.target.value)}
+            {...register('sitaucao')}
           />
           <label htmlFor="Incompleto">Incompleto</label>
+          {errors.sitaucao && <p>{errors.sitaucao.message}</p>}
         </div>
       </div>
 
@@ -54,8 +53,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
           name="escolaridade"
           id="escolaridade"
           className="border-2 w-full p-2 rounded-lg"
-          value={data.escolaridade || ""}
-          onChange={(e) => updateFieldHandler("escolaridade", e.target.value)}
+          {...register('escolaridade')}
         >
           <option value="">Selecione...</option>
           <option value="Ensino fundamental">Ensino fundamental</option>
@@ -63,6 +61,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
           <option value="Graduação">Graduação</option>
           <option value="Pós-Graduação">Pós-Graduação</option>
         </select>
+        {errors.escolaridade && <p>{errors.escolaridade.message}</p>}
       </div>
 
       <div className="w-full flex flex-col gap-2">
@@ -74,9 +73,9 @@ const FormacaoAcademicaForm: FunctionComponent<{
           id="Curso"
           className="border-2 w-full p-2 rounded-lg"
           placeholder="Digite o nome do curso (Sem abreviações)."
-          value={data.curso || ""}
-          onChange={(e) => updateFieldHandler("curso", e.target.value)}
+          {...register('curso')}
         />
+        {errors.curso && <p>{errors.curso.message}</p>}
       </div>
 
       <div className="w-full flex flex-col gap-2">
@@ -88,9 +87,9 @@ const FormacaoAcademicaForm: FunctionComponent<{
           id="instituição"
           className="border-2 w-full p-2 rounded-lg"
           placeholder="Digite o nome da empresa."
-          value={data.instituição || ""}
-          onChange={(e) => updateFieldHandler("instituição", e.target.value)}
+          {...register('instituicao')}
         />
+        {errors.instituicao && <p>{errors.instituicao.message}</p>}
       </div>
 
       <div className="flex gap-5">
@@ -103,11 +102,9 @@ const FormacaoAcademicaForm: FunctionComponent<{
             id="dataInicioEstudo"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o seu melhor email."
-            value={data.dataInicioEstudo || ""}
-            onChange={(e) =>
-              updateFieldHandler("dataInicioEstudo", e.target.value)
-            }
+            {...register('dataInicioEstudo')}
           />
+          {errors.dataInicioEstudo && <p>{errors.dataInicioEstudo.message}</p>}
         </div>
         <div className="w-full flex flex-col gap-2">
           <label htmlFor="dataTerminoEstudos" className="font-bold">
@@ -118,11 +115,9 @@ const FormacaoAcademicaForm: FunctionComponent<{
             id="dataTerminoEstudos"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o seu melhor email."
-            value={data.dataTerminoEstudos || ""}
-            onChange={(e) =>
-              updateFieldHandler("dataTerminoEstudos", e.target.value)
-            }
+            {...register('dataTerminoEstudos')}
           />
+          {errors.dataTerminoEstudos && <p>{errors.dataTerminoEstudos.message}</p>}
         </div>
       </div>
     </div>

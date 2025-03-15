@@ -1,13 +1,30 @@
-import { FunctionComponent } from "react";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { formDataType } from "../../types/formDataType";
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const DadosPessoaisForm: FunctionComponent<{
-  register: any,
-  errors: any,
-}> = ({register, errors }) => {
-  return (
-    <div className="flex flex-col gap-10">
+const schema = z.object({
+    nomeCompleto: z.string().min(3, 'Nome é obrigatório'),
+    email: z.string().email('Email inválido'),
+    telefone:z.string(),
+    dataNasc:z.string(),
+    cpf:z.string(),
+});
+
+type FormData = z.infer<typeof schema>;
+
+const Teste = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+        resolver: zodResolver(schema)
+    });
+
+    const onSubmit = (data: FormData) => {
+        console.log(data);
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            
+            <div className="flex flex-col gap-10">
       <h1 className="text-center">Dados Pessoais</h1>
       <div className="flex flex-col gap-5">
         <div className="w-full flex flex-col gap-2">
@@ -20,7 +37,7 @@ const DadosPessoaisForm: FunctionComponent<{
             id="nomeCompleto"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite seu nome completo."
-            {...register("nomeCompleto")}
+            {...register('nomeCompleto')}
           />
           {errors.nomeCompleto && <p>{errors.nomeCompleto.message}</p>}
         </div>
@@ -83,7 +100,9 @@ const DadosPessoaisForm: FunctionComponent<{
         </div>
       </div>
     </div>
-  );
-}
+    <button>enviar</button>
+        </form>
+    );
+};
 
-export default DadosPessoaisForm;
+export default Teste;
