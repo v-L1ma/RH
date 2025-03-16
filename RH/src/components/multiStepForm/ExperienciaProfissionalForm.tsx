@@ -1,10 +1,9 @@
 import { FunctionComponent } from "react";
-import { formDataType } from "../../types/formDataType";
 
 const ExperienciaProfissionalForm: FunctionComponent<{
-  data: formDataType;
-  updateFieldHandler: (field: keyof formDataType, value: string) => void
-}> = ({ data, updateFieldHandler }) => {
+  register: any,
+  errors: any,
+}> = ({ register, errors }) => {
   return (
     <div className="flex flex-col gap-10">
       <h1 className="text-center">Experiência Profissional</h1>
@@ -19,9 +18,9 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             id="cargo"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o nome do cargo."
-            value={data.cargo}
-            onChange={(e) => { updateFieldHandler("cargo", e.target.value) }}
+            {...register('cargo')}
           />
+          {errors.cargo && <p className="text-red-500 font-semibold">{errors.cargo.message}</p>}
         </div>
 
         <div className="w-full flex flex-col gap-2">
@@ -33,9 +32,9 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             id="empresa"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o nome da empresa."
-            value={data.empresa}
-            onChange={(e) => { updateFieldHandler("empresa", e.target.value) }}
+            {...register('empresa')}
           />
+          {errors.empresa && <p className="text-red-500 font-semibold">{errors.empresa.message}</p>}
         </div>
 
         <div className="flex gap-5">
@@ -48,9 +47,9 @@ const ExperienciaProfissionalForm: FunctionComponent<{
               id="dataInicioEmpresa"
               className="border-2 w-full p-2 rounded-lg"
               placeholder="Digite a data de inicio."
-              value={data.dataInicioEmpresa}
-              onChange={(e) => { updateFieldHandler("dataInicioEmpresa", e.target.value) }}
+              {...register('dataInicioEmpresa')}
             />
+            {errors.dataInicioEmpresa && <p className="text-red-500 font-semibold">{errors.dataInicioEmpresa.message}</p>}
           </div>
           <div className="w-full flex flex-col gap-2">
             <label htmlFor="dataTerminoEmpresa" className="font-bold">
@@ -61,9 +60,9 @@ const ExperienciaProfissionalForm: FunctionComponent<{
               id="dataTerminoEmpresa"
               className="border-2 w-full p-2 rounded-lg"
               placeholder="Digite a data de termino."
-              value={data.dataTerminoEmpresa}
-              onChange={(e) => { updateFieldHandler("dataTerminoEmpresa", e.target.value) }}
+              {...register('dataTerminoEmpresa')}
             />
+            {errors.dataTerminoEmpresa && <p className="text-red-500 font-semibold" >{errors.dataTerminoEmpresa.message}</p>}
           </div>
         </div>
 
@@ -75,9 +74,9 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             name=""
             id="descricaoATVD"
             className="border-2 rounded-lg resize-none"
-            value={data.descricaoATVD || ""}
-            onChange={(e) => updateFieldHandler("descricaoATVD", e.target.value)}
+            {...register('descricaoATVD')}
           ></textarea>
+          {errors.descricaoATVD && <p className="text-red-500 font-semibold">{errors.descricaoATVD.message}</p>}
         </div>
       </div>
     </div>

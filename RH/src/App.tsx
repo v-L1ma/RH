@@ -15,6 +15,7 @@ import NotFound from "./Routes/NotFound";
 import Vaga from "./Routes/Vaga";
 import PainelHome from "./Routes/PainelHome";
 import Estatisticas from "./Routes/Estatisticas";
+import Teste from "./components/teste";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="ponto" element={<Ponto />} />
           <Route path="recrutamento" element={<Recrutamento />} />
           <Route path="portal-vagas" element={<PortalVagas />}/>
+          <Route path="teste" element={<Teste/>}/>
           <Route path="portal-vagas/vaga/:id" element={<Vaga/>}/>
           <Route path="painel" element={<Painel />}>
             <Route path="" element={<PainelHome/>}/>

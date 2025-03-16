@@ -1,11 +1,30 @@
-import { FunctionComponent } from "react";
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const DadosPessoaisForm: FunctionComponent<{
-  register: any,
-  errors: any,
-}> = ({register, errors }) => {
-  return (
-    <div className="flex flex-col gap-10">
+const schema = z.object({
+    nomeCompleto: z.string().min(3, 'Nome é obrigatório'),
+    email: z.string().email('Email inválido'),
+    telefone:z.string(),
+    dataNasc:z.string(),
+    cpf:z.string(),
+});
+
+type FormData = z.infer<typeof schema>;
+
+const Teste = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+        resolver: zodResolver(schema)
+    });
+
+    const onSubmit = (data: FormData) => {
+        console.log(data);
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            
+            <div className="flex flex-col gap-10">
       <h1 className="text-center">Dados Pessoais</h1>
       <div className="flex flex-col gap-5">
         <div className="w-full flex flex-col gap-2">
@@ -20,7 +39,7 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite seu nome completo."
             {...register('nomeCompleto')}
           />
-          {errors.nomeCompleto && <p className="text-red-500 font-semibold">{errors.nomeCompleto.message}</p>}
+          {errors.nomeCompleto && <p>{errors.nomeCompleto.message}</p>}
         </div>
 
         <div className="w-full flex flex-col gap-2">
@@ -34,7 +53,7 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite o seu melhor email."
             {...register('email')}
           />
-          {errors.email && <p className="text-red-500 font-semibold">{errors.email.message}</p>}
+          {errors.email && <p>{errors.email.message}</p>}
         </div>
 
 
@@ -49,7 +68,7 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite o seu melhor telefone."
             {...register('telefone')}
           />
-          {errors.telefone && <p className="text-red-500 font-semibold">{errors.telefone.message}</p>}
+          {errors.telefone && <p>{errors.telefone.message}</p>}
         </div>
 
         <div className="w-full flex flex-col gap-2">
@@ -63,7 +82,7 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite a sua data de nascimento."
             {...register('dataNasc')}
           />
-          {errors.dataNasc && <p className="text-red-500 font-semibold">{errors.dataNasc.message}</p>}
+          {errors.dataNasc && <p>{errors.dataNasc.message}</p>}
         </div>
 
         <div className="w-full flex flex-col gap-2">
@@ -77,11 +96,13 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite o seu CPF."
             {...register('cpf')}
           />
-          {errors.cpf && <p className="text-red-500 font-semibold">{errors.cpf.message}</p>}
+          {errors.cpf && <p>{errors.cpf.message}</p>}
         </div>
       </div>
     </div>
-  );
-}
+    <button>enviar</button>
+        </form>
+    );
+};
 
-export default DadosPessoaisForm;
+export default Teste;
