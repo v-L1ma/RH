@@ -20,7 +20,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             placeholder="Digite o nome do cargo."
             {...register('cargo')}
           />
-          {errors.cargo && <p>{errors.cargo.message}</p>}
+          {errors.cargo && <p className="text-red-500 font-semibold">{errors.cargo.message}</p>}
         </div>
 
         <div className="w-full flex flex-col gap-2">
@@ -34,7 +34,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             placeholder="Digite o nome da empresa."
             {...register('empresa')}
           />
-          {errors.empresa && <p>{errors.empresa.message}</p>}
+          {errors.empresa && <p className="text-red-500 font-semibold">{errors.empresa.message}</p>}
         </div>
 
         <div className="flex gap-5">
@@ -49,7 +49,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
               placeholder="Digite a data de inicio."
               {...register('dataInicioEmpresa')}
             />
-            {errors.dataInicioEmpresa && <p>{errors.dataInicioEmpresa.message}</p>}
+            {errors.dataInicioEmpresa && <p className="text-red-500 font-semibold">{errors.dataInicioEmpresa.message}</p>}
           </div>
           <div className="w-full flex flex-col gap-2">
             <label htmlFor="dataTerminoEmpresa" className="font-bold">
@@ -62,7 +62,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
               placeholder="Digite a data de termino."
               {...register('dataTerminoEmpresa')}
             />
-            {errors.dataTerminoEmpresa && <p>{errors.dataTerminoEmpresa.message}</p>}
+            {errors.dataTerminoEmpresa && <p className="text-red-500 font-semibold" >{errors.dataTerminoEmpresa.message}</p>}
           </div>
         </div>
 
@@ -76,7 +76,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             className="border-2 rounded-lg resize-none"
             {...register('descricaoATVD')}
           ></textarea>
-          {errors.descricaoATVD && <p>{errors.descricaoATVD.message}</p>}
+          {errors.descricaoATVD && <p className="text-red-500 font-semibold">{errors.descricaoATVD.message}</p>}
         </div>
       </div>
     </div>

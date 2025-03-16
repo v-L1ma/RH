@@ -18,7 +18,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
             {...register('sitaucao')}
           />
           <label htmlFor="Concluído">Concluído</label>
-          {errors.sitaucao && <p>{errors.sitaucao.message}</p>}
+          {errors.sitaucao && <p className="text-red-500 font-semibold">{errors.sitaucao.message}</p>}
         </div>
         <div className="flex gap-2">
           <input
@@ -29,7 +29,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
             {...register('sitaucao')}
           />
           <label htmlFor="Cursando">Cursando</label>
-          {errors.sitaucao && <p>{errors.sitaucao.message}</p>}
+          {errors.sitaucao && <p className="text-red-500 font-semibold">{errors.sitaucao.message}</p>}
         </div>
 
         <div className="flex gap-2">
@@ -41,7 +41,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
             {...register('sitaucao')}
           />
           <label htmlFor="Incompleto">Incompleto</label>
-          {errors.sitaucao && <p>{errors.sitaucao.message}</p>}
+          {errors.sitaucao && <p className="text-red-500 font-semibold">{errors.sitaucao.message}</p>}
         </div>
       </div>
 
@@ -61,7 +61,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
           <option value="Graduação">Graduação</option>
           <option value="Pós-Graduação">Pós-Graduação</option>
         </select>
-        {errors.escolaridade && <p>{errors.escolaridade.message}</p>}
+        {errors.escolaridade && <p className="text-red-500 font-semibold">{errors.escolaridade.message}</p>}
       </div>
 
       <div className="w-full flex flex-col gap-2">
@@ -75,7 +75,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
           placeholder="Digite o nome do curso (Sem abreviações)."
           {...register('curso')}
         />
-        {errors.curso && <p>{errors.curso.message}</p>}
+        {errors.curso && <p className="text-red-500 font-semibold">{errors.curso.message}</p>}
       </div>
 
       <div className="w-full flex flex-col gap-2">
@@ -89,7 +89,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
           placeholder="Digite o nome da empresa."
           {...register('instituicao')}
         />
-        {errors.instituicao && <p>{errors.instituicao.message}</p>}
+        {errors.instituicao && <p className="text-red-500 font-semibold">{errors.instituicao.message}</p>}
       </div>
 
       <div className="flex gap-5">
@@ -104,7 +104,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
             placeholder="Digite o seu melhor email."
             {...register('dataInicioEstudo')}
           />
-          {errors.dataInicioEstudo && <p>{errors.dataInicioEstudo.message}</p>}
+          {errors.dataInicioEstudo && <p className="text-red-500 font-semibold">{errors.dataInicioEstudo.message}</p>}
         </div>
         <div className="w-full flex flex-col gap-2">
           <label htmlFor="dataTerminoEstudos" className="font-bold">
@@ -115,9 +115,9 @@ const FormacaoAcademicaForm: FunctionComponent<{
             id="dataTerminoEstudos"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o seu melhor email."
-            {...register('dataTerminoEstudos')}
+            {...register('dataTerminoEstudo')}
           />
-          {errors.dataTerminoEstudos && <p>{errors.dataTerminoEstudos.message}</p>}
+          {errors.dataTerminoEstudo && <p className="text-red-500 font-semibold">{errors.dataTerminoEstudo.message}</p>}
         </div>
       </div>
     </div>

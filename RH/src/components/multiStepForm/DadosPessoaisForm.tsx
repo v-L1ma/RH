@@ -1,6 +1,4 @@
 import { FunctionComponent } from "react";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { formDataType } from "../../types/formDataType";
 
 const DadosPessoaisForm: FunctionComponent<{
   register: any,
@@ -20,9 +18,9 @@ const DadosPessoaisForm: FunctionComponent<{
             id="nomeCompleto"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite seu nome completo."
-            {...register("nomeCompleto")}
+            {...register('nomeCompleto')}
           />
-          {errors.nomeCompleto && <p>{errors.nomeCompleto.message}</p>}
+          {errors.nomeCompleto && <p className="text-red-500 font-semibold">{errors.nomeCompleto.message}</p>}
         </div>
 
         <div className="w-full flex flex-col gap-2">
@@ -36,7 +34,7 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite o seu melhor email."
             {...register('email')}
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <p className="text-red-500 font-semibold">{errors.email.message}</p>}
         </div>
 
 
@@ -51,7 +49,7 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite o seu melhor telefone."
             {...register('telefone')}
           />
-          {errors.telefone && <p>{errors.telefone.message}</p>}
+          {errors.telefone && <p className="text-red-500 font-semibold">{errors.telefone.message}</p>}
         </div>
 
         <div className="w-full flex flex-col gap-2">
@@ -65,7 +63,7 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite a sua data de nascimento."
             {...register('dataNasc')}
           />
-          {errors.dataNasc && <p>{errors.dataNasc.message}</p>}
+          {errors.dataNasc && <p className="text-red-500 font-semibold">{errors.dataNasc.message}</p>}
         </div>
 
         <div className="w-full flex flex-col gap-2">
@@ -79,7 +77,7 @@ const DadosPessoaisForm: FunctionComponent<{
             placeholder="Digite o seu CPF."
             {...register('cpf')}
           />
-          {errors.cpf && <p>{errors.cpf.message}</p>}
+          {errors.cpf && <p className="text-red-500 font-semibold">{errors.cpf.message}</p>}
         </div>
       </div>
     </div>
