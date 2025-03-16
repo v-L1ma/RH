@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import DadosPessoaisForm from "./multiStepForm/DadosPessoaisForm";
 import ExperienciaProfissionalForm from "./multiStepForm/ExperienciaProfissionalForm";
 import FormacaoAcademicaForm from "./multiStepForm/FormacaoAcademicaForm";
@@ -7,6 +7,8 @@ import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import api from "../service/api";
+import SuccessAnimation from "./SuccessAnimation";
 
 interface PopUpCandidaturaProps {
   onclick: () => void;
@@ -44,7 +46,7 @@ const schema = z.object({
   curso: z.string().min(3, "Por favor, insira um nome de curso válido."),
   instituicao: z.string().min(3, "Por favor, insira o nome de uma instituição válida."),
   dataInicioEstudo: z.string(),
-  dataTerminoEstudo: z.string().refine((val) => !isNaN(new Date(val).getTime()), {
+  dataTerminoEstudos: z.string().refine((val) => !isNaN(new Date(val).getTime()), {
     message: "Data de término inválida.",
   }),
 });
@@ -57,9 +59,21 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
     defaultValues: { vacancyID: idVaga, situacao: "ok", }, // Define o ID da vaga como valor padrão
   });
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     console.log("Erros:", errors);
     console.log("Dados submetidos:", getValues());
+
+    try {
+      
+    const response = await api.post(`/applications/${idVaga}`, getValues())
+
+    console.log(response);
+
+    setSuccess(true)
+
+  } catch (error) {
+      console.log(error)
+  }
   };
 
   const formComponents = [
@@ -70,57 +84,73 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
 
   const { currentStep, currentComponent, changeStep, isLastStep, isFirstStep } = useMultiStepForm(formComponents);
 
+  const [success, setSuccess ] = useState<boolean>(false)
+
   return (
-    <div className="bg-black/25 absolute z-10 w-full h-fit top-0 flex justify-center pb-10">
+    <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center pb-10">
       <div className="flex flex-col bg-white rounded-lg shadow-lg md:w-4/6 lg:w-2/6 h-fit mt-10 p-10 box-content gap-10">
-        <div className="flex justify-end">
-          <button onClick={() => onclick()} className="text-3xl">
-            <IoClose />
-          </button>
-        </div>
-        <div className="flex justify-between items-center gap-2">
-          <div className={`${currentStep >= 0 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
-            1
+      <div className="flex justify-end">
+            <button onClick={() => onclick()} className="text-3xl">
+              <IoClose />
+            </button>
           </div>
-          <div className={`${currentStep >= 0 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
-          <div className={`${currentStep >= 1 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
-            2
+      {
+        !success ?
+        ( <>
+          
+          <div className="flex justify-between items-center gap-2">
+            <div className={`${currentStep >= 0 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
+              1
+            </div>
+            <div className={`${currentStep >= 0 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
+            <div className={`${currentStep >= 1 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
+              2
+            </div>
+            <div className={`${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
+            <div className={`${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
+              3
+            </div>
           </div>
-          <div className={`${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
-          <div className={`${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
-            3
+  
+          <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+            {currentComponent}
+  
+            <div className="flex justify-end w-full gap-2">
+              {!isFirstStep && (
+                <button
+                  className="border-2 py-3 px-7 rounded-lg"
+                  onClick={() => changeStep({ steps: currentStep - 1 })}
+                  type="button"
+                >
+                  Voltar
+                </button>
+              )}
+  
+              {isLastStep ? (
+                <button type="submit" className="bg-teal-500 py-3 px-7 rounded-lg">
+                  Enviar
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="bg-teal-500 py-3 px-7 rounded-lg"
+                  onClick={(e) => changeStep({ steps: currentStep + 1, event: e })}
+                >
+                  Avançar
+                </button>
+              )}
+            </div>
+          </form>
+          </>
+        )
+        :(
+          
+          <div className="px-10 py-36 text-center flex flex-col gap-20">
+            <SuccessAnimation/>
+            <h1 className="text-3xl font-extrabold text-green-500">Parabéns, sua candidatura foi realizada com sucesso!</h1>
           </div>
-        </div>
-
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
-          {currentComponent}
-
-          <div className="flex justify-end w-full gap-2">
-            {!isFirstStep && (
-              <button
-                className="border-2 py-3 px-7 rounded-lg"
-                onClick={() => changeStep({ steps: currentStep - 1 })}
-                type="button"
-              >
-                Voltar
-              </button>
-            )}
-
-            {isLastStep ? (
-              <button type="submit" className="bg-teal-500 py-3 px-7 rounded-lg">
-                Enviar
-              </button>
-            ) : (
-              <button
-                type="button"
-                className="bg-teal-500 py-3 px-7 rounded-lg"
-                onClick={(e) => changeStep({ steps: currentStep + 1, event: e })}
-              >
-                Avançar
-              </button>
-            )}
-          </div>
-        </form>
+        )
+      }
       </div>
     </div>
   );

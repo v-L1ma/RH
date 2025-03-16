@@ -115,9 +115,9 @@ const FormacaoAcademicaForm: FunctionComponent<{
             id="dataTerminoEstudos"
             className="border-2 w-full p-2 rounded-lg"
             placeholder="Digite o seu melhor email."
-            {...register('dataTerminoEstudo')}
+            {...register('dataTerminoEstudos')}
           />
-          {errors.dataTerminoEstudo && <p className="text-red-500 font-semibold">{errors.dataTerminoEstudo.message}</p>}
+          {errors.dataTerminoEstudos && <p className="text-red-500 font-semibold">{errors.dataTerminoEstudos.message}</p>}
         </div>
       </div>
     </div>
