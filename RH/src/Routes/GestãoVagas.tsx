@@ -52,7 +52,7 @@ export const GestaoVagas: FunctionComponent = () => {
         
         {
           vagas?.map((vaga)=>(
-            <CardVaga Cargo={vaga.titulo} Descricao={vaga.descricao} DataCriacao="24/02/2025" id={vaga.id} Localizacao={vaga.local} Vagas={vaga.qtdeVagas} setor={vaga.setor} to={`vaga/${vaga.id}`} Candidato={false}/>
+            <CardVaga Cargo={vaga.titulo} Descricao={vaga.descricao} DataCriacao={vaga.dataCriacao} id={vaga.id} Localizacao={vaga.local} Vagas={vaga.qtdeVagas} setor={vaga.setor} to={`vaga/${vaga.id}`} Candidato={false}/>
           ))
         }
       </div>

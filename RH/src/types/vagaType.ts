@@ -1,5 +1,6 @@
 export type vagaType = {
     id: number;
+    dataCriacao: string;
     titulo: string | undefined;
     setor: string | undefined;
     salario: string | undefined;

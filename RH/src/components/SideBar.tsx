@@ -7,8 +7,8 @@ import { MdOutlineAnalytics } from "react-icons/md";
 export const SideBar: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true)
   return (
-    <aside className="flex flex-col items-center p-4 rounded-r-xl bg-teal-500 justify-between shadow-lg">
-      <ul className={`flex flex-col gap-3 text-white ${isOpen ? "w-56":"w-12"} transition-all`}>
+    <aside className="flex flex-col items-center p-4 rounded-r-xl bg-gray-700 justify-between shadow-lg">
+      <ul className={`flex flex-col gap-3 text-teal-500 ${isOpen ? "w-56":"w-12"} transition-all`}>
 
         <li className="flex text-2xl hover:bg-white/20 p-3 rounded-lg hover:backdrop-blur-xl justify-end gap-3" onClick={()=>setIsOpen(!isOpen)}>
           
@@ -45,7 +45,7 @@ export const SideBar: FunctionComponent = () => {
         </Link>
       </ul>
 
-      <ul className="flex flex-col gap-3 text-white w-full">
+      <ul className="flex flex-col gap-3 text-teal-500 w-full">
 
         <li className="flex text-2xl hover:bg-white/20 p-3 rounded-lg hover:backdrop-blur-xl items-center gap-3 font-bold">
           <FiLogOut />

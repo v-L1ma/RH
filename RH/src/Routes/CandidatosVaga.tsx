@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { NavigateFunction, useNavigate, useParams } from "react-router-dom";
 import api from "../service/api";
 import { TCandidate } from "../types/candidateType";
+import { vagaType } from "../types/vagaType";
 
 export const CandidatosVaga: FunctionComponent = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -9,14 +10,18 @@ export const CandidatosVaga: FunctionComponent = () => {
   const { id } = useParams();
 
   const [candidates, setCandidates] = useState<TCandidate[]>();
+  const [vagaInfo, setVagaInfo] = useState<vagaType>();
 
   async function loadCandidates() {
     try {
       const data = await api.get(`/applications/${id}`);
+      const vagaInfo = await api.get(`/vacancies/${id}`);
 
       console.log(data.data.applications);
+      console.log(vagaInfo.data.vacancy)
 
       setCandidates(data.data.applications);
+      setVagaInfo(vagaInfo.data.vacancy)
     } catch (error) {
       console.log("Houve um erro na requisição", error);
     }
@@ -24,7 +29,8 @@ export const CandidatosVaga: FunctionComponent = () => {
 
   useEffect(() => {
     loadCandidates();
-  }, [candidates]);
+  }, []);
+
 
   return (
     <div className="w-full flex flex-col gap-10">
@@ -56,7 +62,7 @@ export const CandidatosVaga: FunctionComponent = () => {
 
       <div className="bg-white w-full rounded-lg shadow-md shadow-gray-200 p-5 flex flex-col gap-5">
         <div>
-          <h1 className="text-xl font-bold">Nome da vaga</h1>
+          <h1 className="text-xl font-bold">{vagaInfo?.titulo}</h1>
           <p>Os candidatos que se inscreverem param esta vaga.</p>
         </div>
 
