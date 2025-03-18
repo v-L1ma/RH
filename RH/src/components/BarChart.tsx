@@ -1,6 +1,5 @@
 "use client"
-
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Bar, BarChart, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -40,10 +39,18 @@ export function BarChartComponent() {
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <BarChart accessibilityLayer data={chartData}>
-            <CartesianGrid vertical={false} />
-            <XAxis
+          <BarChart
+            accessibilityLayer
+            data={chartData}
+            layout="vertical"
+            margin={{
+              left: -20,
+            }}
+          >
+            <XAxis type="number" dataKey="Vagas" hide />
+            <YAxis
               dataKey="month"
+              type="category"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
@@ -53,7 +60,7 @@ export function BarChartComponent() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="Vagas" fill="var(--color-Vagas)" radius={8} />
+            <Bar dataKey="Vagas" fill="var(--color-Vagas)" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>

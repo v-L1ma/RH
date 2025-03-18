@@ -7,7 +7,7 @@ export const BancoTalentos: FunctionComponent = () => {
         <h1 className="text-3xl font-extrabold">Banco de talentos</h1>
       </div>
 
-      <div className="bg-white w-full rounded-lg shadow-md shadow-gray-200 p-5 flex flex-col gap-5">
+      <div className="bg-white w-full rounded-xl shadow-md shadow-gray-200 p-5 flex flex-col gap-5">
         <div>
           <h1 className="text-xl font-bold">Candidatos no banco de talentos</h1>
           <p>Os candidatos que se inscreverem param esta vaga.</p>

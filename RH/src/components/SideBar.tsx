@@ -10,7 +10,7 @@ export const SideBar: FunctionComponent = () => {
     <aside className="flex flex-col items-center p-4 rounded-r-xl bg-gray-700 justify-between shadow-lg">
       <ul className={`flex flex-col gap-3 text-teal-500 ${isOpen ? "w-56":"w-12"} transition-all`}>
 
-        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-lg hover:backdrop-blur-xl justify-end gap-3" onClick={()=>setIsOpen(!isOpen)}>
+        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl hover:backdrop-blur-xl justify-end gap-3" onClick={()=>setIsOpen(!isOpen)}>
           
           {
             !isOpen ? (<FaChevronRight />):(<FaChevronLeft />)
@@ -18,7 +18,7 @@ export const SideBar: FunctionComponent = () => {
         </li>
 
         <Link to="gestao-vagas">
-        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-lg hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
+        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
           <FiBriefcase />
           {
             isOpen && <p className="text-lg">Gestão de vagas</p>
@@ -27,7 +27,7 @@ export const SideBar: FunctionComponent = () => {
         </Link>
 
         <Link to="banco-de-talentos">
-        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-lg hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
+        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
           <FiDatabase />
           {
             isOpen && <p className="text-lg">Banco de talentos</p>
@@ -36,7 +36,7 @@ export const SideBar: FunctionComponent = () => {
         </Link>
 
         <Link to="estatisticas">
-        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-lg hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
+        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl  hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
           <MdOutlineAnalytics />
           {
             isOpen && <p className="text-lg">Estatisticas</p>
@@ -47,7 +47,7 @@ export const SideBar: FunctionComponent = () => {
 
       <ul className="flex flex-col gap-3 text-teal-500 w-full">
 
-        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-lg hover:backdrop-blur-xl items-center gap-3 font-bold">
+        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl  hover:backdrop-blur-xl items-center gap-3 font-bold">
           <FiLogOut />
           {
             isOpen && <p className="text-lg">Sair da conta</p>

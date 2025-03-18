@@ -40,11 +40,11 @@ export const GestaoVagas: FunctionComponent = () => {
         </Link>
       </div>
 
-      <div className="bg-white w-full rounded-lg shadow-md shadow-gray-200 p-5 flex flex-col gap-5">
+      <div className="bg-white w-full rounded-xl shadow-md shadow-gray-200 p-5 flex flex-col gap-5">
         <h1 className="text-xl font-bold">Vagas em aberto</h1>
         <div className="flex flex-col md:flex-row gap-7">
-            <input type="text" className="border-2 border-black rounded-md p-2 w-full border-opacity-10 "/>
-            <button className="bg-teal-600 px-10 rounded-md text-white font-bold">Buscar</button>
+            <input type="text" className="border-2 border-black rounded-xl p-2 w-full border-opacity-10 "/>
+            <button className="bg-teal-600 px-10 rounded-xl text-white font-bold">Buscar</button>
         </div>
       </div>
 
