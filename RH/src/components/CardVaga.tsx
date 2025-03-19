@@ -37,7 +37,7 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
 
   return (
     <div
-      className="bg-white p-5 rounded-md flex flex-col shadow-md lg:w-auto"
+      className="bg-white p-5 rounded-xl flex flex-col shadow-md lg:w-auto"
       key={props.id}
     >
       {!props.Candidato && (

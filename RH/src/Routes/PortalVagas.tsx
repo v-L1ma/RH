@@ -9,6 +9,7 @@ import { vagaType } from "../types/vagaType";
 
 const PortalVagas = () => {
   const [vagas, setVagas] = useState<vagaType[]>([]);
+  const [search,setSearch]=useState<String>("")
 
   async function loadVagas() {
     const data = await api.get("/vacancies");
@@ -42,17 +43,18 @@ const PortalVagas = () => {
                 <label htmlFor="" className="font-bold">
                   Qual vaga você procura?
                 </label>
-                <div className="flex border w-full p-1 rounded-lg h-12 items-center">
-                  <label htmlFor="vaga">
-                    <FaMagnifyingGlass className="text-gray-500 text-2xl m-5" />
-                  </label>
-                  <input
-                    type="text"
-                    id="vaga"
-                    placeholder="Nome da vaga ou cargo"
-                    className="w-full h-full"
-                  />
-                </div>
+                <div className="flex border w-full p-1 rounded-xl h-12 items-center">
+                            <label htmlFor="search">
+                              <FaMagnifyingGlass className="text-gray-500 text-2xl m-5" />
+                            </label>
+                            <input
+                              type="text"
+                              id="search"
+                              placeholder="Nome da vaga ou cargo"
+                              className="w-full h-full hover focus:border-none"
+                              onChange={(e)=>setSearch(e.target.value)}
+                            />
+                          </div>
               </div>
 
               <div className="w-full md:w-4/12 flex flex-col gap-3">
@@ -88,7 +90,9 @@ const PortalVagas = () => {
           </div>
 
           <div className="rounded-lg grid grid-cols-2 gap-5">
-            {vagas.map((vaga) => (
+            {vagas
+            .filter((vaga)=>vaga.titulo?.toLocaleLowerCase().includes(search.toLowerCase()))
+            .map((vaga) => (
               <CardVaga
                 Cargo={vaga.titulo}
                 Descricao={vaga.descricao}
