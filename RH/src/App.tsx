@@ -15,7 +15,8 @@ import NotFound from "./Routes/NotFound";
 import Vaga from "./Routes/Vaga";
 import PainelHome from "./Routes/PainelHome";
 import Estatisticas from "./Routes/Estatisticas";
-import Teste from "./components/teste";
+import TabelaCandidatos from "./components/TabelaCandidatos";
+import { EditarVaga } from "./components/EditarVaga";
 
 function App() {
   return (
@@ -27,18 +28,23 @@ function App() {
           <Route path="cadastro" element={<Cadastrar />} />
           <Route path="ponto" element={<Ponto />} />
           <Route path="recrutamento" element={<Recrutamento />} />
-          <Route path="portal-vagas" element={<PortalVagas />}/>
-          <Route path="teste" element={<Teste/>}/>
-          <Route path="portal-vagas/vaga/:id" element={<Vaga/>}/>
+          <Route path="portal-vagas" element={<PortalVagas />} />
+          <Route path="portal-vagas/vaga/:id" element={<Vaga />} />
           <Route path="painel" element={<Painel />}>
-            <Route path="" element={<PainelHome/>}/>
+            <Route path="" element={<PainelHome />} />
             <Route path="gestao-vagas" element={<GestaoVagas />} />
             <Route path="gestao-vagas/nova-vaga" element={<NovaVaga />} />
-            <Route path="gestao-vagas/vaga/:id" element={<CandidatosVaga/>}/>
-            <Route path="banco-de-talentos" element={<BancoTalentos/>}/>
-            <Route path="estatisticas" element={<Estatisticas/>}/>
+
+            <Route path="gestao-vagas/vaga/:id" element={<CandidatosVaga />}>
+              <Route path="" element={<TabelaCandidatos/>}/>
+              <Route path="editar" element={<EditarVaga/>}/>
+            </Route>
+
+
+            <Route path="banco-de-talentos" element={<BancoTalentos />} />
+            <Route path="estatisticas" element={<Estatisticas />} />
           </Route>
-          <Route path="*" element={<NotFound/>}/>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </main>

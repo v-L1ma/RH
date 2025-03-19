@@ -9,7 +9,8 @@ import { vagaType } from "../types/vagaType";
 
 const PortalVagas = () => {
   const [vagas, setVagas] = useState<vagaType[]>([]);
-  const [search,setSearch]=useState<String>("")
+  const [search, setSearch] = useState<string>("");
+  const [searchCity, setSearchCity] = useState<string>("");
 
   async function loadVagas() {
     const data = await api.get("/vacancies");
@@ -36,50 +37,43 @@ const PortalVagas = () => {
           </div>
 
           <form className="flex bg-white flex-col md:flex-row w-11/12 md:w-8/12 rounded-2xl p-5 shadow-lg  gap-5 mr-auto ml-auto -mt-14  items-end">
-
             <div className="w-full flex flex-col md:flex-row gap-5">
-
               <div className="md:w-8/12 flex flex-col gap-3">
                 <label htmlFor="" className="font-bold">
                   Qual vaga você procura?
                 </label>
                 <div className="flex border w-full p-1 rounded-xl h-12 items-center">
-                            <label htmlFor="search">
-                              <FaMagnifyingGlass className="text-gray-500 text-2xl m-5" />
-                            </label>
-                            <input
-                              type="text"
-                              id="search"
-                              placeholder="Nome da vaga ou cargo"
-                              className="w-full h-full hover focus:border-none"
-                              onChange={(e)=>setSearch(e.target.value)}
-                            />
-                          </div>
+                  <label htmlFor="search">
+                    <FaMagnifyingGlass className="text-gray-500 text-2xl m-5" />
+                  </label>
+                  <input
+                    type="text"
+                    id="search"
+                    placeholder="Nome da vaga ou cargo"
+                    className="w-full h-full hover focus:outline-none"
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </div>
               </div>
 
               <div className="w-full md:w-4/12 flex flex-col gap-3">
                 <label htmlFor="" className="font-bold">
                   Onde você procura?
                 </label>
-                <div className="flex border w-full p-1 rounded-lg h-12 items-center">
+                <div className="flex border w-full p-1 rounded-xl h-12 items-center">
                   <label htmlFor="local">
-                    <IoLocationOutline className="text-gray-500 text-2xl m-5" />
+                    <IoLocationOutline className="text-gray-500 text-2xl m-2" />
                   </label>
                   <input
                     type=""
                     id="local"
                     placeholder="Selecione um ou mais locais"
-                    className="w-full h-full"
+                    className="w-full h-full focus:outline-none"
+                    onChange={(e)=>setSearchCity(e.target.value)}
                   />
                 </div>
               </div>
-
             </div>
-
-            <button className="bg-teal-600 rounded-md w-full md:w-3/12 h-12 text-white font-extrabold shadow-md">
-              Buscar vagas
-            </button>
-
           </form>
         </section>
 
@@ -91,20 +85,23 @@ const PortalVagas = () => {
 
           <div className="rounded-lg grid grid-cols-2 gap-5">
             {vagas
-            .filter((vaga)=>vaga.titulo?.toLocaleLowerCase().includes(search.toLowerCase()))
-            .map((vaga) => (
-              <CardVaga
-                Cargo={vaga.titulo}
-                Descricao={vaga.descricao}
-                DataCriacao="24/02/2025"
-                id={vaga.id}
-                Localizacao={vaga.local}
-                Vagas={vaga.qtdeVagas}
-                setor={vaga.setor}
-                to={`vaga/${vaga.id}`}
-                Candidato={true}
-              />
-            ))}
+              .filter((vaga) =>
+                vaga.titulo?.toLocaleLowerCase().includes(search.toLowerCase())
+              )
+              .filter((vaga)=>vaga.local?.toLocaleLowerCase().includes(searchCity.toLowerCase()))
+              .map((vaga) => (
+                <CardVaga
+                  Cargo={vaga.titulo}
+                  Descricao={vaga.descricao}
+                  DataCriacao="24/02/2025"
+                  id={vaga.id}
+                  Localizacao={vaga.local}
+                  Vagas={vaga.qtdeVagas}
+                  setor={vaga.setor}
+                  to={`vaga/${vaga.id}`}
+                  Candidato={true}
+                />
+              ))}
           </div>
 
           <Outlet />

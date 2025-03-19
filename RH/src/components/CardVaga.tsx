@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import DeleteModal from "./DeleteModal";
-import EditarVagaPopUp from "../components/EditarVagaPopUp";
 
 interface CardVagaProps {
   id: number;
@@ -27,13 +26,6 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
   function openModal(){
     setIsModalOpen(!isModalOpen);
   }
-  
-  
-  const [isEditarVagaPopUpOpen, setIsEditarVagaPopUpOpen] = useState<boolean>(false);
-
-  function openPopUp(isEditarVagaPopUpOpen:boolean){
-     setIsEditarVagaPopUpOpen(!isEditarVagaPopUpOpen);
-  }
 
   return (
     <div
@@ -46,9 +38,11 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
           <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer group" />
 
           <div className="invisible bg-white shadow-md rounded-lg absolute right-0 top-2/4 group-hover:visible flex flex-col overflow-hidden">
-            <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3">
-              <MdEdit /> Editar
-            </button>
+            <Link to={`${props.to}/editar`}>
+              <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3">
+                <MdEdit /> Editar
+              </button>
+            </Link>
             <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3" onClick={()=>openModal()}>
               <MdDeleteForever className="text-red-500" /> Excluir
             </button>
@@ -81,10 +75,6 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
           isModalOpen &&
           <DeleteModal close={()=>openModal()} nomeVaga={props.Cargo} idVaga={props.id}/>
         }
-      {
-        isEditarVagaPopUpOpen &&
-        <EditarVagaPopUp/>
-      }
     </div>
   );
 };
