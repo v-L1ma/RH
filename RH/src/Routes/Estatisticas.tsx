@@ -9,8 +9,6 @@ const Estatisticas = () =>{
   const [tempoMedio,setTempoMedio]=useState<number>(0)
   const [vagas, setVagas] = useState<vagaType[]>()
 
-  
-
   async function loadStats() {
     try {
       const response = await api.get("/statistics");
@@ -49,7 +47,7 @@ const Estatisticas = () =>{
             <div className="bg-white rounded-xl border p-5 flex flex-col justify-center gap-2">
               
             <div className="flex justify-center">
-                <p className="font-bold text-5xl">{tempoMedio.toFixed(2)}</p>
+                <p className="font-bold text-5xl">{tempoMedio? tempoMedio.toFixed(2):0}</p>
               </div>
               <div className=" flex items-start justify-center gap-2">
                 <h1 className="text-xl font-bold">Tempo médio para fechamento</h1>

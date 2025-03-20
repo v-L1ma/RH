@@ -31,9 +31,14 @@ export const NovaVaga: FunctionComponent = () => {
 
   const [local, setLocal] = useState<string>();
   const [quantidade, setQuantidade] = useState<number>(0);
+    const dataHoje = new Date();
+    
+    const ano = dataHoje.getFullYear();
+    const mes = dataHoje.getUTCMonth();
+    const dia = dataHoje.getDate();
 
   async function onSubmit(e: React.FormEvent): Promise<void> {
-    e.preventDefault();
+    e.preventDefault();   
 
     try {
     
@@ -41,6 +46,7 @@ export const NovaVaga: FunctionComponent = () => {
       "/vacancies",
       {
         titulo: tituloRef.current?.value || "",
+        status: "Em andamento",
         setor: setorRef.current?.value|| "",
         salario: salarioRef.current?.value || "",
         qtdeVagas: Number(quantidadeRef.current?.value) || 0,
@@ -52,6 +58,8 @@ export const NovaVaga: FunctionComponent = () => {
         turno: turnoRef.current?.value || "",
         local: localRef.current?.value || "",
         endereco: `${cidade} - ${estado}`,
+        dataFechamento: "",
+        dataAbertura: `${ano}-${mes+1}-${dia}`
       },
       {
         headers: {
@@ -118,7 +126,7 @@ export const NovaVaga: FunctionComponent = () => {
           </div>
           <div className="flex gap-3">
             <div className="w-full flex flex-col gap-2">
-              <label htmlFor="titulo" className="font-bold">
+              <label htmlFor="titulo" className="font-bold" onClick={()=>teste()}>
                 Título para essa vaga
               </label>
               <input
