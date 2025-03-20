@@ -52,9 +52,10 @@ export function Component() {
     try {
       const response = await api.get("/statistics");
 
-      const { vagasPorSetor } = response.data;
-      setVagasPorSetor(vagasPorSetor)
-      console.log(vagasPorSetor)
+      const { VagasPorSetor } = response.data;
+      console.log(response.data)
+      setVagasPorSetor(VagasPorSetor)
+      console.log(VagasPorSetor)
     } catch (error) {
       console.log(error)
     }
