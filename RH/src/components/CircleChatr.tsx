@@ -16,13 +16,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "./ui/chart"
-const chartData = [
-  { browser: "Marketing", vagas: 275, fill: "var(--color-Marketing)" },
-  { browser: "Tecnologia da Informação", vagas: 200, fill: "var(--color-TI)" },
-  { browser: "Recursos Humanos", vagas: 287, fill: "var(--color-RecursosHumanos)" },
-  { browser: "Limpeza", vagas: 173, fill: "var(--color-Limpeza)" },
-  { browser: "Outros", vagas: 190, fill: "var(--color-Outros)" },
-]
+import { VagasPorSetorType } from "../types/vagasPorSetorType"
+import api from "../service/api"
 
 const chartConfig = {
   vagas: {
@@ -51,9 +46,27 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function Component() {
-  const totalvagas = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.vagas, 0)
+  const [vagasPorSetor, setVagasPorSetor] = React.useState<VagasPorSetorType[] | undefined>([])
+
+  async function loadStats() {
+    try {
+      const response = await api.get("/statistics");
+
+      const { vagasPorSetor } = response.data;
+      setVagasPorSetor(vagasPorSetor)
+      console.log(vagasPorSetor)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  React.useEffect(() => {
+    loadStats();
   }, [])
+
+  const totalvagas = React.useMemo(() => {
+    return vagasPorSetor?.reduce((acc, curr) => acc + curr.vagas, 0)
+  }, [vagasPorSetor])
 
   return (
     <Card className="flex flex-col">
@@ -72,9 +85,9 @@ export function Component() {
               content={<ChartTooltipContent hideLabel />}
             />
             <Pie
-              data={chartData}
+              data={vagasPorSetor || []}
               dataKey="vagas"
-              nameKey="browser"
+              nameKey="setor"  // Alterei para "setor" pois deve corresponder ao nome do campo do objeto
               innerRadius={60}
               strokeWidth={5}
             >
@@ -93,7 +106,7 @@ export function Component() {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {totalvagas.toLocaleString()}
+                          {totalvagas?.toLocaleString() || 0}
                         </tspan>
                         <tspan
                           x={viewBox.cx}

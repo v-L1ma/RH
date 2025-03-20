@@ -13,7 +13,7 @@ import viaCepAPI from "../service/viaCEP";
 export const NovaVaga: FunctionComponent = () => {
   const tituloRef = useRef<HTMLInputElement>(null);
   const quantidadeRef = useRef<HTMLInputElement>(null);
-  const setorRef = useRef<HTMLInputElement>(null);
+  const setorRef = useRef<HTMLSelectElement>(null);
   const salarioRef = useRef<HTMLInputElement>(null);
   const descricaoRef = useRef<HTMLTextAreaElement>(null);
   const localRef = useRef<HTMLSelectElement>(null);
@@ -31,71 +31,65 @@ export const NovaVaga: FunctionComponent = () => {
 
   const [local, setLocal] = useState<string>();
   const [quantidade, setQuantidade] = useState<number>(0);
-    const dataHoje = new Date();
-    
-    const ano = dataHoje.getFullYear();
-    const mes = dataHoje.getUTCMonth();
-    const dia = dataHoje.getDate();
+  const dataHoje = new Date();
+
+  const ano = dataHoje.getFullYear();
+  const mes = dataHoje.getUTCMonth();
+  const dia = dataHoje.getDate();
 
   async function onSubmit(e: React.FormEvent): Promise<void> {
-    e.preventDefault();   
+    e.preventDefault();
 
     try {
-    
-    const response = await api.post(
-      "/vacancies",
-      {
-        titulo: tituloRef.current?.value || "",
-        status: "Em andamento",
-        setor: setorRef.current?.value|| "",
-        salario: salarioRef.current?.value || "",
-        qtdeVagas: Number(quantidadeRef.current?.value) || 0,
-        descricao: descricaoRef.current?.value || "",
-        senioridade: senioridadeRef.current?.value || "",
-        diversidade: diversidadeRef.current?.value || "",
-        pcd: pcdRef.current?.value || "",
-        contrato: contratoRef.current?.value || "",
-        turno: turnoRef.current?.value || "",
-        local: localRef.current?.value || "",
-        endereco: `${cidade} - ${estado}`,
-        dataFechamento: "",
-        dataAbertura: `${ano}-${mes+1}-${dia}`
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
+      const response = await api.post(
+        "/vacancies",
+        {
+          titulo: tituloRef.current?.value || "",
+          status: "Em andamento",
+          setor: setorRef.current?.value || "",
+          salario: salarioRef.current?.value || "",
+          qtdeVagas: Number(quantidadeRef.current?.value) || 0,
+          descricao: descricaoRef.current?.value || "",
+          senioridade: senioridadeRef.current?.value || "",
+          diversidade: diversidadeRef.current?.value || "",
+          pcd: pcdRef.current?.value || "",
+          contrato: contratoRef.current?.value || "",
+          turno: turnoRef.current?.value || "",
+          local: localRef.current?.value || "",
+          endereco: `${cidade} - ${estado}`,
+          dataFechamento: "",
+          dataAbertura: `${ano}-${mes + 1}-${dia}`,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }
+      );
 
-    console.log(response);
-    navigate("/painel/gestao-vagas");
-
-  } catch (error) {
-    console.log("Erro na requisição", error)
-  } 
-  }
-
-
-  async function getAddress() {
-
-    if(inputCepRef.current?.value.length === 8){
-
-    try {
-
-      const address = await viaCepAPI.get(`/${inputCepRef.current?.value}/json`)
-
-      setCidade(address.data.localidade);
-      setEstado(address.data.estado);
-
-      console.log(address)
-      
+      console.log(response);
+      navigate("/painel/gestao-vagas");
     } catch (error) {
-      console.log(error)
+      console.log("Erro na requisição", error);
     }
   }
-    
+
+  async function getAddress() {
+    if (inputCepRef.current?.value.length === 8) {
+      try {
+        const address = await viaCepAPI.get(
+          `/${inputCepRef.current?.value}/json`
+        );
+
+        setCidade(address.data.localidade);
+        setEstado(address.data.estado);
+
+        console.log(address);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   return (
@@ -126,7 +120,11 @@ export const NovaVaga: FunctionComponent = () => {
           </div>
           <div className="flex gap-3">
             <div className="w-full flex flex-col gap-2">
-              <label htmlFor="titulo" className="font-bold" onClick={()=>teste()}>
+              <label
+                htmlFor="titulo"
+                className="font-bold"
+                onClick={() => teste()}
+              >
                 Título para essa vaga
               </label>
               <input
@@ -216,13 +214,38 @@ export const NovaVaga: FunctionComponent = () => {
               <label htmlFor="setor" className="font-bold">
                 Setor
               </label>
-              <input
-                type="text"
+              <select
+                ref={setorRef}
                 id="setor"
                 className="border-2 p-2 rounded-lg"
-                placeholder="Digite qual o setor desta vaga"
-                ref={setorRef}
-              />
+              >
+                <option value="">Selecione um setor</option>
+                <option value="Administrativo">Administrativo</option>
+                <option value="Financeiro">Financeiro</option>
+                <option value="Comercial">Comercial</option>
+                <option value="Vendas">Vendas</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Tecnologia da Informação">Tecnologia da Informação</option>
+                
+                <option value="Atendimento ao Cliente">
+                  Atendimento ao Cliente
+                </option>
+                <option value="Logística">Logística</option>
+                <option value="Jurídico">Jurídico</option>
+                <option value="Produção / Manufatura">
+                  Produção / Manufatura
+                </option>
+                <option value="Compras / Suprimentos">
+                  Compras / Suprimentos
+                </option>
+                <option value="Almoxarifado">
+                  Almoxarifado
+                </option>
+                <option value="Qualidade">Qualidade</option>
+                <option value="Segurança do Trabalho">
+                  Segurança do Trabalho
+                </option>
+              </select>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="senioridade" className="font-bold">
@@ -261,11 +284,19 @@ export const NovaVaga: FunctionComponent = () => {
                   Selecione...
                 </option>
                 <option value="">Sem preferências</option>
-                <option value="Exclusiva para mulheres">Exclusiva para mulheres</option>
-                <option value="Pessoas acima dos 40">Pessoas acima dos 40</option>
+                <option value="Exclusiva para mulheres">
+                  Exclusiva para mulheres
+                </option>
+                <option value="Pessoas acima dos 40">
+                  Pessoas acima dos 40
+                </option>
                 <option value="Pessoas Indigenas">Pessoas Indigenas</option>
-                <option value="Pessoas pretas ou pardas">Pessoas pretas ou pardas</option>
-                <option value="Exclusiva para PCD">Pessoas com Deficiência</option>
+                <option value="Pessoas pretas ou pardas">
+                  Pessoas pretas ou pardas
+                </option>
+                <option value="Exclusiva para PCD">
+                  Pessoas com Deficiência
+                </option>
               </select>
             </div>
             <div className="flex flex-col gap-2">
@@ -325,7 +356,9 @@ export const NovaVaga: FunctionComponent = () => {
                 ref={contratoRef}
                 defaultValue={""}
               >
-                <option value="" disabled>Selecione...</option>
+                <option value="" disabled>
+                  Selecione...
+                </option>
                 <option value="CLT">CLT</option>
                 <option value="PJ">PJ</option>
                 <option value="Temporário">Temporário</option>
@@ -344,7 +377,9 @@ export const NovaVaga: FunctionComponent = () => {
                 ref={turnoRef}
                 defaultValue={""}
               >
-                <option value="" disabled>Selecione...</option>
+                <option value="" disabled>
+                  Selecione...
+                </option>
                 <option value="Manha">Manhã</option>
                 <option value="Tarde">Tarde</option>
                 <option value="Noite">Noite</option>
@@ -363,7 +398,9 @@ export const NovaVaga: FunctionComponent = () => {
                 onChange={() => setLocal(localRef.current?.value || "")}
                 defaultValue={""}
               >
-                <option value="" disabled>Selecione...</option>
+                <option value="" disabled>
+                  Selecione...
+                </option>
                 <option value="Presencial">Presencial</option>
                 <option value="Remoto">Remoto</option>
                 <option value="Hibrido">Hibrido</option>
@@ -372,7 +409,6 @@ export const NovaVaga: FunctionComponent = () => {
           </div>
           {local === "Presencial" && (
             <div className="grid grid-cols-3 gap-5 ">
-              
               <div className="flex flex-col gap-2">
                 <label htmlFor="cep" className="font-bold">
                   CEP
@@ -382,11 +418,11 @@ export const NovaVaga: FunctionComponent = () => {
                   id="cep"
                   className="border-2 p-2 rounded-lg"
                   placeholder="Digite qual o CEP"
-                  onChange={()=>getAddress()}
+                  onChange={() => getAddress()}
                   ref={inputCepRef}
                 />
               </div>
-              
+
               <div className="flex flex-col gap-2">
                 <label htmlFor="cidade" className="font-bold">
                   Cidade
@@ -395,8 +431,8 @@ export const NovaVaga: FunctionComponent = () => {
                   type="text"
                   id="cidade"
                   className="border-2 p-2 rounded-lg"
-                  placeholder="Digite qual o cidade"        
-                  value={cidade}          
+                  placeholder="Digite qual o cidade"
+                  value={cidade}
                   disabled
                 />
               </div>
@@ -409,8 +445,8 @@ export const NovaVaga: FunctionComponent = () => {
                   type="text"
                   id="estado"
                   className="border-2 p-2 rounded-lg"
-                  placeholder="Digite qual o estado"    
-                  value={estado}              
+                  placeholder="Digite qual o estado"
+                  value={estado}
                   disabled
                 />
               </div>
