@@ -43,12 +43,60 @@ const chartConfig = {
     label: "Outros",
     color: "hsl(var(--chart-5))",
   },
-} satisfies ChartConfig
+  Administrativo: {
+    label: "Administrativo",
+    color: "hsl(var(--chart-6))", // Defina a cor apropriada para "Administrativo"
+  },
+  Financeiro: {
+    label: "Financeiro",
+    color: "hsl(var(--chart-7))", // Defina a cor apropriada para "Financeiro"
+  },
+  Comercial: {
+    label: "Comercial",
+    color: "hsl(var(--chart-8))", // Defina a cor apropriada para "Comercial"
+  },
+  Vendas: {
+    label: "Vendas",
+    color: "hsl(var(--chart-9))", // Defina a cor apropriada para "Vendas"
+  },
+  AtendimentoAoCliente: {
+    label: "Atendimento ao Cliente",
+    color: "hsl(var(--chart-10))", // Defina a cor apropriada para "Atendimento ao Cliente"
+  },
+  Logistica: {
+    label: "Logística",
+    color: "hsl(var(--chart-11))", // Defina a cor apropriada para "Logística"
+  },
+  Juridico: {
+    label: "Jurídico",
+    color: "hsl(var(--chart-12))", // Defina a cor apropriada para "Jurídico"
+  },
+  ProducaoManufatura: {
+    label: "Produção / Manufatura",
+    color: "hsl(var(--chart-13))", // Defina a cor apropriada para "Produção"
+  },
+  ComprasSuprimentos: {
+    label: "Compras / Suprimentos",
+    color: "hsl(var(--chart-14))", // Defina a cor apropriada para "Compras"
+  },
+  Almoxarifado: {
+    label: "Almoxarifado",
+    color: "hsl(var(--chart-15))", // Defina a cor apropriada para "Almoxarifado"
+  },
+  Qualidade: {
+    label: "Qualidade",
+    color: "hsl(var(--chart-16))", // Defina a cor apropriada para "Qualidade"
+  },
+  SegurancaDoTrabalho: {
+    label: "Segurança do Trabalho",
+    color: "hsl(var(--chart-17))", // Defina a cor apropriada para "Segurança"
+  },
+} satisfies ChartConfig;
 
 export function Component() {
   const [vagasPorSetor, setVagasPorSetor] = React.useState<VagasPorSetorType[] | undefined>([])
 
-  async function loadStats() {
+  /*async function loadStats() {
     try {
       const response = await api.get("/statistics");
 
@@ -59,10 +107,26 @@ export function Component() {
     } catch (error) {
       console.log(error)
     }
-  }
+  }*/
 
   React.useEffect(() => {
-    loadStats();
+    //loadStats();
+    setVagasPorSetor([
+      { "setor": "Administrativo", "vagas": 12, "fill": "var(--color-Administrativo)" },
+      { "setor": "Financeiro", "vagas": 8, "fill": "var(--color-Financeiro)" },
+      { "setor": "Comercial", "vagas": 15, "fill": "var(--color-Comercial)" },
+      { "setor": "Vendas", "vagas": 20, "fill": "var(--color-Vendas)" },
+      { "setor": "Marketing", "vagas": 10, "fill": "var(--color-Marketing)" },
+      { "setor": "Tecnologia da Informação", "vagas": 25, "fill": "var(--color-TI)" },
+      { "setor": "Atendimento ao Cliente", "vagas": 18, "fill": "var(--color-AtendimentoAoCliente)" },
+      { "setor": "Logística", "vagas": 7, "fill": "var(--color-Logistica)" },
+      { "setor": "Jurídico", "vagas": 5, "fill": "var(--color-Juridico)" },
+      { "setor": "Produção / Manufatura", "vagas": 22, "fill": "var(--color-ProducaoManufatura)" },
+      { "setor": "Compras / Suprimentos", "vagas": 9, "fill": "var(--color-ComprasSuprimentos)" },
+      { "setor": "Almoxarifado", "vagas": 6, "fill": "var(--color-Almoxarifado)" },
+      { "setor": "Qualidade", "vagas": 14, "fill": "var(--color-Qualidade)" },
+      { "setor": "Segurança do Trabalho", "vagas": 3, "fill": "var(--color-SegurancaDoTrabalho)" }
+    ])
   }, [])
 
   const totalvagas = React.useMemo(() => {
