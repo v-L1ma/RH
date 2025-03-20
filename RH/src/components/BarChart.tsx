@@ -14,15 +14,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "../components/ui/chart"
-const chartData = [
-  { month: "January", Vagas: 186 },
-  { month: "February", Vagas: 305 },
-  { month: "March", Vagas: 237 },
-  { month: "April", Vagas: 73 },
-  { month: "May", Vagas: 209 },
-  { month: "June", Vagas: 214 },
-]
-
+import api from "../service/api"
+import { useEffect, useState } from "react"
 const chartConfig = {
   Vagas: {
     label: "Vagas",
@@ -31,6 +24,41 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function BarChartComponent() {
+
+  const [vagasPorMes,SetVagasPorMes] = useState<any>([])
+
+  async function loadData() {
+
+    try {
+
+    //const response = await api.get("/statistics");
+
+    SetVagasPorMes([
+      { mes: "Janeiro", Vagas: 11 },
+      { mes: "Fevereiro", Vagas: 22 },
+      { mes: "Marco", Vagas: 3 },
+      { mes: "Abril", Vagas: 4 },
+      { mes: "Maio", Vagas: 5 },
+      { mes: "Junho", Vagas: 1 },
+      { mes: "Julho", Vagas: 1 },
+      { mes: "Agosto", Vagas: 1 },
+      { mes: "Setembro", Vagas: 1 },
+      { mes: "Outubro", Vagas: 1 },
+      { mes: "Novembro", Vagas: 1 },
+      { mes: "Dezembro", Vagas: 1 },
+    ])
+    
+      
+    } catch (error) {
+      console.log(error)
+    }
+  } 
+
+  useEffect(()=>{
+    loadData()
+  },[])
+
+
   return (
     <Card>
       <CardHeader>
@@ -41,7 +69,7 @@ export function BarChartComponent() {
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
-            data={chartData}
+            data={vagasPorMes}
             layout="vertical"
             margin={{
               left: -20,
@@ -49,7 +77,7 @@ export function BarChartComponent() {
           >
             <XAxis type="number" dataKey="Vagas" hide />
             <YAxis
-              dataKey="month"
+              dataKey="mes"
               type="category"
               tickLine={false}
               tickMargin={10}
