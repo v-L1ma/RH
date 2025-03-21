@@ -96,7 +96,7 @@ const chartConfig = {
 export function Component() {
   const [vagasPorSetor, setVagasPorSetor] = React.useState<VagasPorSetorType[] | undefined>([])
 
-  /*async function loadStats() {
+  async function loadStats() {
     try {
       const response = await api.get("/statistics");
 
@@ -107,26 +107,10 @@ export function Component() {
     } catch (error) {
       console.log(error)
     }
-  }*/
+  }
 
   React.useEffect(() => {
-    //loadStats();
-    setVagasPorSetor([
-      { "setor": "Administrativo", "vagas": 12, "fill": "var(--color-Administrativo)" },
-      { "setor": "Financeiro", "vagas": 8, "fill": "var(--color-Financeiro)" },
-      { "setor": "Comercial", "vagas": 15, "fill": "var(--color-Comercial)" },
-      { "setor": "Vendas", "vagas": 20, "fill": "var(--color-Vendas)" },
-      { "setor": "Marketing", "vagas": 10, "fill": "var(--color-Marketing)" },
-      { "setor": "Tecnologia da Informação", "vagas": 25, "fill": "var(--color-TI)" },
-      { "setor": "Atendimento ao Cliente", "vagas": 18, "fill": "var(--color-AtendimentoAoCliente)" },
-      { "setor": "Logística", "vagas": 7, "fill": "var(--color-Logistica)" },
-      { "setor": "Jurídico", "vagas": 5, "fill": "var(--color-Juridico)" },
-      { "setor": "Produção / Manufatura", "vagas": 22, "fill": "var(--color-ProducaoManufatura)" },
-      { "setor": "Compras / Suprimentos", "vagas": 9, "fill": "var(--color-ComprasSuprimentos)" },
-      { "setor": "Almoxarifado", "vagas": 6, "fill": "var(--color-Almoxarifado)" },
-      { "setor": "Qualidade", "vagas": 14, "fill": "var(--color-Qualidade)" },
-      { "setor": "Segurança do Trabalho", "vagas": 3, "fill": "var(--color-SegurancaDoTrabalho)" }
-    ])
+    loadStats();
   }, [])
 
   const totalvagas = React.useMemo(() => {
