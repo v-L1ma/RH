@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import {
   MdFormatBold,
   MdOutlineFormatItalic,
@@ -7,8 +7,9 @@ import {
   MdRedo,
 } from "react-icons/md";
 import api from "../service/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import viaCepAPI from "../service/viaCEP";
+import { vagaType } from "../types/vagaType";
 
 export const EditarVaga: FunctionComponent = () => {
   const tituloRef = useRef<HTMLInputElement>(null);
@@ -31,6 +32,19 @@ export const EditarVaga: FunctionComponent = () => {
 
   const [local, setLocal] = useState<string>();
   const [quantidade, setQuantidade] = useState<number>(0);
+  const [vaga,setVaga] = useState<vagaType>();
+
+  const {id} = useParams();
+
+  async function loadVagaInfo() {
+    const data = await api.get(`/vacancies/${id}`)
+
+    setVaga(data.data.vacancy)
+  }
+
+  useEffect(()=>{
+    loadVagaInfo();
+  }, [])
 
   async function onSubmit(e: React.FormEvent): Promise<void> {
     e.preventDefault();
@@ -112,6 +126,7 @@ export const EditarVaga: FunctionComponent = () => {
                 id="titulo"
                 className="border-2 w-full p-2 rounded-lg"
                 placeholder="Digite um título para essa vaga."
+                defaultValue={vaga?.titulo}
                 ref={tituloRef}
               />
             </div>
@@ -131,6 +146,7 @@ export const EditarVaga: FunctionComponent = () => {
                   type="number"
                   value={quantidade}
                   ref={quantidadeRef}
+                  defaultValue={vaga?.qtdeVagas}
                   onChange={(e) => setQuantidade(Number(e.target.value))}
                   className="border-2 p-2 text-center w-16 rounded-lg no-spinner"
                 />
@@ -185,6 +201,7 @@ export const EditarVaga: FunctionComponent = () => {
                 name="vagas"
                 id="vagas"
                 className="w-full h-full resize-none p-5"
+                defaultValue={vaga?.descricao}
                 ref={descricaoRef}
               ></textarea>
             </div>
@@ -199,6 +216,7 @@ export const EditarVaga: FunctionComponent = () => {
                 id="setor"
                 className="border-2 p-2 rounded-lg"
                 placeholder="Digite qual o setor desta vaga"
+                defaultValue={vaga?.setor}
                 ref={setorRef}
               />
             </div>
@@ -211,7 +229,7 @@ export const EditarVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={senioridadeRef}
-                defaultValue={""}
+                defaultValue={vaga?.senioridade}
               >
                 <option value="" disabled>
                   Selecione...
@@ -233,7 +251,7 @@ export const EditarVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={diversidadeRef}
-                defaultValue={"default"}
+                defaultValue={vaga?.diversidade}
               >
                 <option value="default" disabled>
                   Selecione...
@@ -255,7 +273,7 @@ export const EditarVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={pcdRef}
-                defaultValue={""}
+                defaultValue={vaga?.pcd}
               >
                 <option value="" disabled>
                   Selecione...
@@ -289,6 +307,7 @@ export const EditarVaga: FunctionComponent = () => {
                 id="salario"
                 className="border-2 p-2 rounded-lg no-spinner"
                 placeholder="Ex.: R$ 100.00"
+                defaultValue={vaga?.salario}
                 ref={salarioRef}
               />
             </div>
@@ -301,7 +320,7 @@ export const EditarVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={contratoRef}
-                defaultValue={""}
+                defaultValue={vaga?.contrato}
               >
                 <option value="" disabled>Selecione...</option>
                 <option value="CLT">CLT</option>
@@ -320,7 +339,7 @@ export const EditarVaga: FunctionComponent = () => {
                 id=""
                 className="border-2 p-2 rounded-lg"
                 ref={turnoRef}
-                defaultValue={""}
+                defaultValue={vaga?.turno}
               >
                 <option value="" disabled>Selecione...</option>
                 <option value="Manha">Manhã</option>
@@ -339,7 +358,7 @@ export const EditarVaga: FunctionComponent = () => {
                 className="border-2 p-2 rounded-lg"
                 ref={localRef}
                 onChange={() => setLocal(localRef.current?.value || "")}
-                defaultValue={""}
+                defaultValue={vaga?.local}
               >
                 <option value="" disabled>Selecione...</option>
                 <option value="Presencial">Presencial</option>
