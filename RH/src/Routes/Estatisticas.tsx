@@ -90,8 +90,15 @@ const Estatisticas = () => {
     </div>
   </div>
 
+  <div className="col-span-2 flex h-full">
+    <div className="w-full h-full">
+    <BarChartComponent />
+      
+    </div>
+  </div>
+
   {/* Outro componente */}
-  <div className="col-span-3 flex h-full">
+  <div className="col-span-1 flex h-full">
     <div className="flex w-full  gap-10">
     <Component />
     </div>
