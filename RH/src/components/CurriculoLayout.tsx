@@ -7,29 +7,50 @@ type props = {
 
 const CurriculoLayout: FunctionComponent<props> = ({ candidate }) => {
     return (
-        <div key={candidate.id}>
-            <h1><strong>Nome:</strong> {candidate.nomeCompleto}</h1>
-            <p><strong>Email:</strong> {candidate.email}</p>
-            <p><strong>Telefone:</strong> {candidate.telefone}</p>
-            <p><strong>Data Nascimento:</strong> {candidate.dataNasc}</p>
+        <div key={candidate.id} className="flex flex-col gap-5">
+            
+            <div className="flex justify-between">
+                <div>
+                    <h1 className="text-3xl font-extrabold">{candidate.nomeCompleto}</h1>
+                </div>
+                <div className="flex flex-col">
+                    <p><strong>Email:</strong> {candidate.email}</p>
+                    <p><strong>Telefone:</strong> {candidate.telefone}</p>
+                    <p><strong>Data Nascimento:</strong> {candidate.dataNasc}</p>
+                </div>
+            </div>
+
+            <div>
+                <h2 className="text-xl font-bold">Resumo profissional</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis reiciendis suscipit sequi est fugiat officiis natus, eaque minima reprehenderit totam dolores modi possimus consequuntur magnam enim ad necessitatibus sed delectus.</p>
+            </div>
 
 
-            <h2>Expêriencia profissional</h2>
-            <p><strong>Cargo:</strong> {candidate.cargo}</p>
-            <p><strong>Empresa:</strong> {candidate.empresa}</p>
-            
-            <p>{candidate.dataInicioEmpresa} á {candidate.dataTerminoEmpresa}</p>
-            <p><strong>Descrição da Atividade:</strong> {candidate.descricaoATVD}</p>
+            <div>
+                <h2 className="text-xl font-bold">Expêriencia profissional</h2>
+                <p className="text-lg">{candidate.cargo} -<span className="text-sm"> {candidate.dataInicioEmpresa} á {candidate.dataTerminoEmpresa}</span></p>
+                <p>{candidate.empresa}</p>
+                
+                
+                <p>{candidate.descricaoATVD}</p>
+            </div>
 
-            <h2>Formação academica</h2>            
-            <p>{candidate.escolaridade}</p>
-            <p>{candidate.curso}</p>
-            <p>{candidate.instituicao}</p>
+            <div>
+                <h2 className="text-xl font-bold">Formação academica</h2>
+                <p></p>
+                <p className="text-lg">{candidate.curso} -<span className="text-sm"> {candidate.dataInicioEstudo} á {candidate.dataTerminoEstudos}</span></p>
+                <p>{candidate.instituicao}</p>
+            </div>
             
-            <p>{candidate.dataInicioEstudo}</p>
-            
-            <p>{candidate.dataTerminoEstudos}</p>
-            
+            <div>
+                <h2 className="text-xl font-bold">Idiomas</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis reiciendis suscipit sequi est fugiat officiis natus, eaque minima reprehenderit totam dolores modi possimus consequuntur magnam enim ad necessitatibus sed delectus.</p>
+            </div>
+
+            <div>
+                <h2 className="text-xl font-bold">Habilidades</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis reiciendis suscipit sequi est fugiat officiis natus, eaque minima reprehenderit totam dolores modi possimus consequuntur magnam enim ad necessitatibus sed delectus.</p>
+            </div>
 
         </div>
     )
