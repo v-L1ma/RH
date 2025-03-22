@@ -108,7 +108,7 @@ export const EditarVaga: FunctionComponent = () => {
     <div className="w-full flex flex-col gap-10">
 
       <form className="flex flex-col gap-10">
-        <div className="bg-white w-full rounded-lg p-5 flex flex-col gap-4 shadow-lg">
+        <div className="bg-white w-full rounded-xl p-5 flex flex-col gap-4 shadow-lg">
           <div>
             <h2 className="font-bold text-xl">Alterar as informações sobre a vaga</h2>
             <p>
@@ -124,7 +124,7 @@ export const EditarVaga: FunctionComponent = () => {
               <input
                 type="text"
                 id="titulo"
-                className="border-2 w-full p-2 rounded-lg"
+                className="border-2 w-full p-2 rounded-xl"
                 placeholder="Digite um título para essa vaga."
                 defaultValue={vaga?.titulo}
                 ref={tituloRef}
@@ -137,7 +137,7 @@ export const EditarVaga: FunctionComponent = () => {
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="bg-gray-300 px-3 py-2 rounded-md"
+                  className="bg-gray-300 px-3 py-2 rounded-xl"
                   onClick={() => setQuantidade((prev) => Math.max(prev - 1, 0))}
                 >
                   -
@@ -148,11 +148,11 @@ export const EditarVaga: FunctionComponent = () => {
                   ref={quantidadeRef}
                   defaultValue={vaga?.qtdeVagas}
                   onChange={(e) => setQuantidade(Number(e.target.value))}
-                  className="border-2 p-2 text-center w-16 rounded-lg no-spinner"
+                  className="border-2 p-2 text-center w-16 rounded-xl no-spinner"
                 />
                 <button
                   type="button"
-                  className="bg-gray-300 px-3 py-2 rounded-md"
+                  className="bg-gray-300 px-3 py-2 rounded-xl"
                   onClick={() => setQuantidade((prev) => prev + 1)}
                 >
                   +
@@ -164,35 +164,35 @@ export const EditarVaga: FunctionComponent = () => {
             <label htmlFor="descricao" className="font-bold">
               Descricão para essa vaga
             </label>
-            <div className="flex flex-col border-2 rounded-lg h-48 overflow-hidden">
+            <div className="flex flex-col border-2 rounded-xl h-48 overflow-hidden">
               <div className="w-full border-b-2">
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdUndo />
                 </button>
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdRedo />
                 </button>
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdFormatBold />
                 </button>
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdOutlineFormatItalic />
                 </button>
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdFormatUnderlined />
                 </button>
@@ -214,7 +214,7 @@ export const EditarVaga: FunctionComponent = () => {
               <input
                 type="text"
                 id="setor"
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 placeholder="Digite qual o setor desta vaga"
                 defaultValue={vaga?.setor}
                 ref={setorRef}
@@ -227,7 +227,7 @@ export const EditarVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={senioridadeRef}
                 defaultValue={vaga?.senioridade}
               >
@@ -249,7 +249,7 @@ export const EditarVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={diversidadeRef}
                 defaultValue={vaga?.diversidade}
               >
@@ -271,7 +271,7 @@ export const EditarVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={pcdRef}
                 defaultValue={vaga?.pcd}
               >
@@ -289,7 +289,7 @@ export const EditarVaga: FunctionComponent = () => {
           </div>
         </div>
 
-        <div className="bg-white w-full rounded-lg p-5 flex flex-col gap-4 shadow-lg">
+        <div className="bg-white w-full rounded-xl p-5 flex flex-col gap-4 shadow-lg">
           <div>
             <h2 className="font-bold text-xl">Contrato</h2>
             <p>
@@ -305,7 +305,7 @@ export const EditarVaga: FunctionComponent = () => {
               <input
                 type="number"
                 id="salario"
-                className="border-2 p-2 rounded-lg no-spinner"
+                className="border-2 p-2 rounded-xl no-spinner"
                 placeholder="Ex.: R$ 100.00"
                 defaultValue={vaga?.salario}
                 ref={salarioRef}
@@ -318,7 +318,7 @@ export const EditarVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={contratoRef}
                 defaultValue={vaga?.contrato}
               >
@@ -337,7 +337,7 @@ export const EditarVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={turnoRef}
                 defaultValue={vaga?.turno}
               >
@@ -355,7 +355,7 @@ export const EditarVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={localRef}
                 onChange={() => setLocal(localRef.current?.value || "")}
                 defaultValue={vaga?.local}
@@ -377,7 +377,7 @@ export const EditarVaga: FunctionComponent = () => {
                 <input
                   type="text"
                   id="cep"
-                  className="border-2 p-2 rounded-lg"
+                  className="border-2 p-2 rounded-xl"
                   placeholder="Digite qual o CEP"
                   onChange={()=>getAddress()}
                   ref={inputCepRef}
@@ -391,7 +391,7 @@ export const EditarVaga: FunctionComponent = () => {
                 <input
                   type="text"
                   id="cidade"
-                  className="border-2 p-2 rounded-lg"
+                  className="border-2 p-2 rounded-xl"
                   placeholder="Digite qual o cidade"        
                   value={cidade}          
                   disabled
@@ -405,7 +405,7 @@ export const EditarVaga: FunctionComponent = () => {
                 <input
                   type="text"
                   id="estado"
-                  className="border-2 p-2 rounded-lg"
+                  className="border-2 p-2 rounded-xl"
                   placeholder="Digite qual o estado"    
                   value={estado}              
                   disabled
@@ -416,7 +416,7 @@ export const EditarVaga: FunctionComponent = () => {
         </div>
 
         <button
-            className="bg-teal-600 py-2 px-5  rounded-lg shadow-md text-white font-extrabold flex items-center gap-2"
+            className="bg-teal-600 py-2 px-5  rounded-xl shadow-md text-white font-extrabold flex items-center gap-2"
             onClick={(e) => onSubmit(e)}
           >
             Salvar

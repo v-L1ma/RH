@@ -26,7 +26,7 @@ const Estatisticas = () => {
 
   return (
     <div className="w-full flex flex-col gap-10">
-      <div className="w-full grid grid-cols-5 gap-10">
+      <div className="w-full grid grid-cols-4 gap-10">
 
         <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
           <div className=" flex flex-col items-start justify-start gap-2">
@@ -58,16 +58,6 @@ const Estatisticas = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
-          <div className=" flex flex-col items-start justify-start gap-2">
-            <h1 className="text-xl font-bold">Preciso de ideias</h1>            
-            <p className="text-sm">Quantidade de vagas </p>
-          </div>
-          <div className="flex justify-start px-2">
-            <p className="font-bold text-3xl">2</p>
-          </div>
-        </div>
-
 
         <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
           <div className=" flex flex-col items-start justify-start gap-2">
@@ -81,25 +71,17 @@ const Estatisticas = () => {
 
       </div>
 
-      <div className="grid grid-cols-5 gap-10">
+      <div className="grid grid-cols-4 gap-10">
   {/* Gráfico de barras */}
-  <div className="col-span-2 flex h-full">
+  <div className="col-span-2 h-full">
     <div className="w-full h-full">
     <BarChartComponent />
       
     </div>
   </div>
 
-  <div className="col-span-2 flex h-full">
+  <div className="col-span-2 w-full h-full ">
     <div className="w-full h-full">
-    <BarChartComponent />
-      
-    </div>
-  </div>
-
-  {/* Outro componente */}
-  <div className="col-span-1 flex h-full">
-    <div className="flex w-full  gap-10">
     <Component />
     </div>
   </div>

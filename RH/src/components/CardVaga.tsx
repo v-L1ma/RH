@@ -34,16 +34,16 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
     >
       {!props.Candidato && (
         <div className="flex items-center justify-between group relative">
-          <p className="bg-teal-100  px-3 py-1 rounded-md">Em andamento</p>
+          <p className="bg-teal-100  px-3 py-1 rounded-xl">Em andamento</p>
           <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer group" />
 
-          <div className="invisible bg-white shadow-md rounded-lg absolute right-0 top-2/4 group-hover:visible flex flex-col overflow-hidden">
+          <div className="invisible bg-white shadow-md rounded-xl absolute right-0 top-2/4 group-hover:visible flex flex-col overflow-hidden">
             <Link to={`${props.to}/editar`}>
-              <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3">
+              <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3 w-full">
                 <MdEdit /> Editar
               </button>
             </Link>
-            <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3" onClick={()=>openModal()}>
+            <button className="flex gap-2 items-center hover:bg-slate-200 hover:font-semibold p-3 w-full" onClick={()=>openModal()}>
               <MdDeleteForever className="text-red-500" /> Excluir
             </button>
           </div>
