@@ -10,7 +10,7 @@ import { Painel } from "./Routes/Painel";
 import { GestaoVagas } from "./Routes/GestãoVagas";
 import { NovaVaga } from "./Routes/NovaVaga";
 import { CandidatosVaga } from "./Routes/CandidatosVaga";
-import { BancoTalentos } from "./Routes/BancoTalentos";
+import  BancoTalentos  from "./Routes/BancoTalentos";
 import NotFound from "./Routes/NotFound";
 import Vaga from "./Routes/Vaga";
 import PainelHome from "./Routes/PainelHome";

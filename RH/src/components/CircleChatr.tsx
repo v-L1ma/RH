@@ -16,13 +16,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "./ui/chart"
-const chartData = [
-  { browser: "Marketing", vagas: 275, fill: "var(--color-Marketing)" },
-  { browser: "Tecnologia da Informação", vagas: 200, fill: "var(--color-TI)" },
-  { browser: "Recursos Humanos", vagas: 287, fill: "var(--color-RecursosHumanos)" },
-  { browser: "Limpeza", vagas: 173, fill: "var(--color-Limpeza)" },
-  { browser: "Outros", vagas: 190, fill: "var(--color-Outros)" },
-]
+import { VagasPorSetorType } from "../types/vagasPorSetorType"
+import api from "../service/api"
 
 const chartConfig = {
   vagas: {
@@ -48,12 +43,79 @@ const chartConfig = {
     label: "Outros",
     color: "hsl(var(--chart-5))",
   },
-} satisfies ChartConfig
+  Administrativo: {
+    label: "Administrativo",
+    color: "hsl(var(--chart-6))", // Defina a cor apropriada para "Administrativo"
+  },
+  Financeiro: {
+    label: "Financeiro",
+    color: "hsl(var(--chart-7))", // Defina a cor apropriada para "Financeiro"
+  },
+  Comercial: {
+    label: "Comercial",
+    color: "hsl(var(--chart-8))", // Defina a cor apropriada para "Comercial"
+  },
+  Vendas: {
+    label: "Vendas",
+    color: "hsl(var(--chart-9))", // Defina a cor apropriada para "Vendas"
+  },
+  AtendimentoAoCliente: {
+    label: "Atendimento ao Cliente",
+    color: "hsl(var(--chart-10))", // Defina a cor apropriada para "Atendimento ao Cliente"
+  },
+  Logistica: {
+    label: "Logística",
+    color: "hsl(var(--chart-11))", // Defina a cor apropriada para "Logística"
+  },
+  Juridico: {
+    label: "Jurídico",
+    color: "hsl(var(--chart-12))", // Defina a cor apropriada para "Jurídico"
+  },
+  ProducaoManufatura: {
+    label: "Produção / Manufatura",
+    color: "hsl(var(--chart-13))", // Defina a cor apropriada para "Produção"
+  },
+  ComprasSuprimentos: {
+    label: "Compras / Suprimentos",
+    color: "hsl(var(--chart-14))", // Defina a cor apropriada para "Compras"
+  },
+  Almoxarifado: {
+    label: "Almoxarifado",
+    color: "hsl(var(--chart-15))", // Defina a cor apropriada para "Almoxarifado"
+  },
+  Qualidade: {
+    label: "Qualidade",
+    color: "hsl(var(--chart-16))", // Defina a cor apropriada para "Qualidade"
+  },
+  SegurancaDoTrabalho: {
+    label: "Segurança do Trabalho",
+    color: "hsl(var(--chart-17))", // Defina a cor apropriada para "Segurança"
+  },
+} satisfies ChartConfig;
 
 export function Component() {
-  const totalvagas = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.vagas, 0)
+  const [vagasPorSetor, setVagasPorSetor] = React.useState<VagasPorSetorType[] | undefined>([])
+
+  async function loadStats() {
+    try {
+      const response = await api.get("/statistics");
+
+      const { VagasPorSetor } = response.data;
+      console.log(response.data)
+      setVagasPorSetor(VagasPorSetor)
+      console.log(VagasPorSetor)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  React.useEffect(() => {
+    loadStats();
   }, [])
+
+  const totalvagas = React.useMemo(() => {
+    return vagasPorSetor?.reduce((acc, curr) => acc + curr.vagas, 0)
+  }, [vagasPorSetor])
 
   return (
     <Card className="flex flex-col">
@@ -64,7 +126,7 @@ export function Component() {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[270px]"
+          className="mx-auto  max-h-[250px]"
         >
           <PieChart>
             <ChartTooltip
@@ -72,9 +134,9 @@ export function Component() {
               content={<ChartTooltipContent hideLabel />}
             />
             <Pie
-              data={chartData}
+              data={vagasPorSetor || []}
               dataKey="vagas"
-              nameKey="browser"
+              nameKey="setor"  // Alterei para "setor" pois deve corresponder ao nome do campo do objeto
               innerRadius={60}
               strokeWidth={5}
             >
@@ -93,7 +155,7 @@ export function Component() {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {totalvagas.toLocaleString()}
+                          {totalvagas?.toLocaleString() || 0}
                         </tspan>
                         <tspan
                           x={viewBox.cx}

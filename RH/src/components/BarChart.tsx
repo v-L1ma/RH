@@ -1,10 +1,12 @@
 "use client"
-import { Bar, BarChart, XAxis, YAxis } from "recharts"
+
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
 
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "../components/ui/card"
@@ -14,14 +16,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "../components/ui/chart"
-const chartData = [
-  { month: "January", Vagas: 186 },
-  { month: "February", Vagas: 305 },
-  { month: "March", Vagas: 237 },
-  { month: "April", Vagas: 73 },
-  { month: "May", Vagas: 209 },
-  { month: "June", Vagas: 214 },
-]
+import { useEffect, useState } from "react"
+import api from "../service/api"
 
 const chartConfig = {
   Vagas: {
@@ -31,26 +27,48 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function BarChartComponent() {
+
+  const [vagasPorMes,SetVagasPorMes] = useState<any>([])
+
+  async function loadData() {
+
+    try {
+
+    const response = await api.get("/statistics");
+    console.log(response);
+
+    const {vagasPorMes} = response.data;
+
+    SetVagasPorMes(vagasPorMes)
+    
+      
+    } catch (error) {
+      console.log(error)
+    }
+  } 
+
+  useEffect(()=>{
+    loadData()
+  },[])
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Vagas por mês</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Vagas abertas por mês</CardTitle>
+        <CardDescription>Janeiro - Dezembro 2025</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
-            data={chartData}
-            layout="vertical"
+            data={vagasPorMes}
             margin={{
-              left: -20,
+              top: 20,
             }}
           >
-            <XAxis type="number" dataKey="Vagas" hide />
-            <YAxis
-              dataKey="month"
-              type="category"
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="mes"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
@@ -60,10 +78,24 @@ export function BarChartComponent() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="Vagas" fill="var(--color-Vagas)" radius={5} />
+            <Bar dataKey="Vagas" fill="var(--color-Vagas)" radius={8}>
+              <LabelList
+                position="top"
+                offset={12}
+                className="fill-foreground"
+                fontSize={12}
+              />
+            </Bar>
           </BarChart>
         </ChartContainer>
       </CardContent>
     </Card>
   )
 }
+
+
+
+
+
+
+

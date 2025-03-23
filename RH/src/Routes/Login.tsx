@@ -40,7 +40,7 @@ const Login: FunctionComponent = () => {
 
   return (
     <main className="flex flex-col md:flex-row items-center md:items-start w-full h-full  bg-gradient-to-tr from-teal-300 to-teal-700 py-10 md:p-0">
-      <form className="w-11/12 md:w-5/12 md:h-screen bg-white flex flex-col items-left shadow-lg p-10 rounded-lg gap-10 md:justify-center" onSubmit={onSubmit}>
+      <form className="w-11/12 md:w-3/12 md:h-screen bg-white flex flex-col items-left shadow-lg p-10 rounded-xl gap-10 md:justify-between" onSubmit={onSubmit}>
       
         <div>
           <Link
@@ -54,9 +54,10 @@ const Login: FunctionComponent = () => {
           </Link>
         </div>
 
+
+        <div className="w-full flex flex-col gap-3">
         <h1 className="text-2xl font-bold text-center">Login</h1>
 
-        <div className="w-full flex flex-col gap-2">
           <label htmlFor="email" className="font-extrabold">
             Email
           </label>
@@ -65,7 +66,7 @@ const Login: FunctionComponent = () => {
             id="email"
             placeholder="Digite seu email"
             ref={emailRef}
-            className="border-2 border-black border-opacity-15 p-1 rounded-lg"
+            className="border-2 border-black border-opacity-15 p-2 rounded-xl"
           />
 
           <label htmlFor="password" className="font-extrabold">
@@ -76,12 +77,11 @@ const Login: FunctionComponent = () => {
             id="password"
             placeholder="Digite sua senha"
             ref={passwordRef}
-            className="border-2 border-black border-opacity-15 p-1 rounded-lg"
+            className="border-2 border-black border-opacity-15 p-2 rounded-xl"
           />
           <p className="mb-2 text-right">Esqueceu sua senha?</p>
-        </div>
 
-          <button type="submit" className="flex bg-gradient-to-r from-teal-300 to-teal-600 w-full p-2 rounded-lg text-center justify-center text-white font-bold">
+          <button type="submit" className="flex bg-gradient-to-r from-teal-400 to-teal-600 w-full p-2 rounded-xl text-center justify-center text-white font-extrabold">
           {
             isLoading 
             ?<Loading/>
@@ -89,6 +89,9 @@ const Login: FunctionComponent = () => {
           }
 
           </button>
+        </div>
+
+         
 
         <div className="flex flex-col items-center gap-2">
           <p>Ou cadastre aqui</p>

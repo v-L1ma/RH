@@ -33,6 +33,8 @@ export const CandidatosVaga: FunctionComponent = () => {
     console.log(vagaInfo)
   }, []);
 
+  
+
   return (
     <div className="w-full flex flex-col gap-10">
       <div className="flex justify-between">
@@ -43,19 +45,34 @@ export const CandidatosVaga: FunctionComponent = () => {
       </div>
 
       <div className="grid grid-cols-3 gap-10">
-        <div className="bg-white rounded-lg shadow-md py-5 text-center shadow-gray-200">
-          <h1 className="text-3xl font-extrabold">{candidates?.length || 0}</h1>
-          <h2 className="font-semibold text-xl">Candidatos</h2>
+      <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
+          <div className=" flex flex-col items-start justify-start gap-2">
+            <h1 className="text-xl font-bold">Candidatos</h1>            
+            <p className="text-sm">Quantidade de candidatos </p>
+          </div>
+          <div className="flex justify-start px-2">
+            <p className="font-bold text-3xl">{candidates?.length || 0}</p>
+          </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md py-5 text-center shadow-gray-200">
-          <h1 className="text-3xl font-extrabold">58</h1>
-          <h2 className="font-semibold text-xl">Aberta à</h2>
+        <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
+          <div className=" flex flex-col items-start justify-start gap-2">
+            <h1 className="text-xl font-bold">Tempo em aberto</h1>            
+            <p className="text-sm">Tempo que a vaga está aberta </p>
+          </div>
+          <div className="flex justify-start px-2">
+            <p className="font-bold text-3xl"></p>
+          </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md py-5 text-center shadow-gray-200">
-          <h1 className="text-3xl font-extrabold">58</h1>
-          <h2 className="font-semibold text-xl">Entrevistas agendadas</h2>
+        <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
+          <div className=" flex flex-col items-start justify-start gap-2">
+            <h1 className="text-xl font-bold">Vagas em atraso</h1>            
+            <p className="text-sm">Quantidade de vagas </p>
+          </div>
+          <div className="flex justify-start px-2">
+            <p className="font-bold text-3xl">2</p>
+          </div>
         </div>
       </div>
 

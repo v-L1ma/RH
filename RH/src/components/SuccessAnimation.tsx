@@ -10,7 +10,7 @@ const SuccessAnimation = () => {
           cy="200"
           r="190"
           fill="none"
-          stroke="#68E534"
+          stroke="#14B8A6"
           strokeWidth="20"
           strokeLinecap="round"
           initial={{ strokeDasharray: 1194, strokeDashoffset: 1194 }}
@@ -21,7 +21,7 @@ const SuccessAnimation = () => {
         <motion.polyline
           points="88,214 173,284 304,138"
           fill="none"
-          stroke="#68E534"
+          stroke="#14B8A6"
           strokeWidth="24"
           strokeLinecap="round"
           strokeLinejoin="round"

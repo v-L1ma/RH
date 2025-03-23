@@ -69,7 +69,7 @@ const Recrutamento: FunctionComponent = () => {
 
         {isOpen && (
           <div className="bg-white z-10 absolute
-           w-11/12 md:w-6/12 p-5 shadow-lg rounded-lg">
+           w-11/12 md:w-6/12 p-5 shadow-lg rounded-xl">
             <div className="flex justify-end">
               <p
                 className="text-3xl cursor-pointer"
@@ -114,7 +114,7 @@ const Recrutamento: FunctionComponent = () => {
 
               <button
                 type="button"
-                className="w-full text-center bg-green-700 rounded-md p-1"
+                className="w-full text-center bg-green-700 rounded-xl p-1"
                 onClick={handleSave}
               >
                 Salvar

@@ -54,13 +54,13 @@ const Vaga: FunctionComponent = () => {
                 <button title={message} onClick={()=>copyToClipboard(window.location.href)}>
                   <FaShareSquare className="text-xl text-teal-600"/>
                 </button>
-                <button className="bg-teal-600  rounded-md text-white font-bold shadow-md text-xl py-2 px-12" onClick={()=>close()}>Candidatar-se</button>
+                <button className="bg-teal-600  rounded-xl text-white font-bold shadow-md text-xl py-2 px-12" onClick={()=>close()}>Candidatar-se</button>
               </div>
               
             </div>
       </section>
 
-      <section className="bg-white flex flex-col w-8/12 p-5 m-auto mt-10 rounded-lg shadow-lg gap-5">
+      <section className="bg-white flex flex-col w-8/12 p-5 m-auto mt-10 rounded-xl shadow-lg gap-5">
 
       <h1 className="text-xl font-bold">Descrição</h1>
 
@@ -78,16 +78,16 @@ const Vaga: FunctionComponent = () => {
 
         <div className="flex gap-2">
           {
-           vaga?.senioridade && <p className="bg-teal-200 px-3 py-1 rounded-md">{vaga.senioridade}</p> 
+           vaga?.senioridade && <p className="bg-teal-200 px-3 py-1 rounded-xl">{vaga.senioridade}</p> 
           }
           {
-            vaga?.contrato && <p className="bg-teal-200 px-3 py-1 rounded-md">{vaga.contrato}</p>
+            vaga?.contrato && <p className="bg-teal-200 px-3 py-1 rounded-xl">{vaga.contrato}</p>
           }
           {
-           vaga?.diversidade && <p className="bg-teal-200 px-3 py-1 rounded-md">{vaga.diversidade}</p> 
+           vaga?.diversidade && <p className="bg-teal-200 px-3 py-1 rounded-xl">{vaga.diversidade}</p> 
           }
           {
-           vaga?.pcd && <p className="bg-teal-200 px-3 py-1 rounded-md">{vaga.pcd}</p> 
+           vaga?.pcd && <p className="bg-teal-200 px-3 py-1 rounded-xl">{vaga.pcd}</p> 
           }
           
         </div>
