@@ -52,7 +52,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
         <select
           name="escolaridade"
           id="escolaridade"
-          className="border-2 w-full p-2 rounded-lg"
+          className="border-2 w-full p-2 rounded-xl"
           {...register('escolaridade')}
         >
           <option value="">Selecione...</option>
@@ -71,7 +71,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
         <input
           type="text"
           id="Curso"
-          className="border-2 w-full p-2 rounded-lg"
+          className="border-2 w-full p-2 rounded-xl"
           placeholder="Digite o nome do curso (Sem abreviações)."
           {...register('curso')}
         />
@@ -85,7 +85,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
         <input
           type="text"
           id="instituição"
-          className="border-2 w-full p-2 rounded-lg"
+          className="border-2 w-full p-2 rounded-xl"
           placeholder="Digite o nome da empresa."
           {...register('instituicao')}
         />
@@ -100,7 +100,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
           <input
             type="date"
             id="dataInicioEstudo"
-            className="border-2 w-full p-2 rounded-lg"
+            className="border-2 w-full p-2 rounded-xl"
             placeholder="Digite o seu melhor email."
             {...register('dataInicioEstudo')}
           />
@@ -113,7 +113,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
           <input
             type="date"
             id="dataTerminoEstudos"
-            className="border-2 w-full p-2 rounded-lg"
+            className="border-2 w-full p-2 rounded-xl"
             placeholder="Digite o seu melhor email."
             {...register('dataTerminoEstudos')}
           />

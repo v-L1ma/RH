@@ -4,7 +4,7 @@ import ExperienciaProfissionalForm from "./multiStepForm/ExperienciaProfissional
 import FormacaoAcademicaForm from "./multiStepForm/FormacaoAcademicaForm";
 import { IoClose } from "react-icons/io5";
 import { useMultiStepForm } from "../hooks/useMultiStepForm";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import api from "../service/api";
@@ -56,7 +56,7 @@ type FormData = z.infer<typeof schema>;
 const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, idVaga }) => {
   const { register, handleSubmit, formState: { errors }, getValues} = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { vacancyID: idVaga, situacao: "ok", }, // Define o ID da vaga como valor padrão
+    defaultValues: { vacancyID: idVaga, situacao: "ok", }, 
   });
 
   const onSubmit = async () => {
@@ -69,10 +69,11 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
 
     console.log(response);
 
-    setSuccess(true)
+    setEstado("sucesso")
 
   } catch (error) {
       console.log(error)
+      setEstado("erro")
   }
   };
 
@@ -84,30 +85,30 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
 
   const { currentStep, currentComponent, changeStep, isLastStep, isFirstStep } = useMultiStepForm(formComponents);
 
-  const [success, setSuccess ] = useState<boolean>(false)
+  const [estado, setEstado ] = useState<string>("formulario")
 
   return (
     <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center pb-10">
-      <div className="flex flex-col bg-white rounded-lg shadow-lg md:w-4/6 lg:w-2/6 h-fit mt-10 p-10 box-content gap-10">
+      <div className="flex flex-col bg-white rounded-xl shadow-lg md:w-4/6 lg:w-2/6 h-fit mt-10 p-10 box-content gap-10">
       <div className="flex justify-end">
             <button onClick={() => onclick()} className="text-3xl">
               <IoClose />
             </button>
           </div>
       {
-        !success ?
+        estado==="formulario" ?
         ( <>
           
           <div className="flex justify-between items-center gap-2">
-            <div className={`${currentStep >= 0 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
+            <div className={`${currentStep >= 0 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}>
               1
             </div>
-            <div className={`${currentStep >= 0 ? "border-teal-500" : "border-gray-500"} border border-teal-500 w-full h-0`}></div>
-            <div className={`${currentStep >= 1 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
+            <div className={`${currentStep >= 1 ? "border-teal-500" : "border-gray-500"} border w-full h-0 transition-all`}></div>
+            <div className={`${currentStep >= 1 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}>
               2
             </div>
-            <div className={`${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
-            <div className={`${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center`}>
+            <div className={`transition-all ${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
+            <div className={`${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}>
               3
             </div>
           </div>
@@ -118,7 +119,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
             <div className="flex justify-end w-full gap-2">
               {!isFirstStep && (
                 <button
-                  className="border-2 py-3 px-7 rounded-lg"
+                  className="border-2 py-3 px-7 rounded-xl"
                   onClick={() => changeStep({ steps: currentStep - 1 })}
                   type="button"
                 >
@@ -127,13 +128,13 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
               )}
   
               {isLastStep ? (
-                <button type="submit" className="bg-teal-500 py-3 px-7 rounded-lg">
+                <button type="submit" className="bg-teal-500 py-3 px-7 rounded-xl">
                   Enviar
                 </button>
               ) : (
                 <button
                   type="button"
-                  className="bg-teal-500 py-3 px-7 rounded-lg"
+                  className="bg-teal-500 py-3 px-7 rounded-xl"
                   onClick={(e) => changeStep({ steps: currentStep + 1, event: e })}
                 >
                   Avançar
@@ -143,12 +144,26 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
           </form>
           </>
         )
-        :(
+        : estado === "sucesso" ? (
           
           <div className="px-10 py-36 text-center flex flex-col gap-20">
             <SuccessAnimation/>
-            <h1 className="text-3xl font-extrabold text-green-500">Parabéns, sua candidatura foi realizada com sucesso!</h1>
+            <h1 className="text-3xl font-extrabold text-teal-500">Parabéns, sua candidatura foi realizada com sucesso!</h1>
           </div>
+        ) : estado === "erro" &&
+        (
+    <div className="flex flex-col justify-center items-center">
+      <div className="relative  w-[290px] h-[240px] flex justify-center items-center rounded-md">
+        <div className="absolute w-[99px] h-[99px] rounded-full bg-red-500 scale-[1.1] animate-ping"></div>
+        <div className="relative z-10 w-[140px] h-[140px] rounded-full bg-white flex justify-center items-center animate-scaleIn">
+          <div className="relative w-[90px] h-[10px] rounded-xl bg-red-500 rotate-45"></div>
+          <div className="absolute w-[90px] h-[10px] rounded-xl bg-red-500 -rotate-45"></div>
+        </div>
+      </div>
+      
+      <h1 className="text-center text-3xl font-bold text-red-500">Ops... <br /> Parece que houve um erro</h1>
+    </div>
+
         )
       }
       </div>

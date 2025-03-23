@@ -19,28 +19,28 @@ const Home: FunctionComponent = () => {
       <section>
         <div className="flex w-4/5 justify-center gap-5 md:gap-10 ml-auto mr-auto mt-10 flex-wrap">
 
-          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-md">
+          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-xl">
             <span className="text-6xl">
               <ImAlarm />
             </span>
             <h1 className="font-extrabold">Controle de ponto</h1>
           </div>
 
-          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-md">
+          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-xl">
             <span className="text-6xl">
               <ImAlarm />
             </span>
             <h1 className="font-extrabold">Controle de ponto</h1>
           </div>
 
-          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-md">
+          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-xl">
             <span className="text-6xl">
               <ImAlarm />
             </span>
             <h1 className="font-extrabold">Controle de ponto</h1>
           </div>
           
-          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-md">
+          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-xl">
             <span className="text-6xl">
               <ImAlarm />
             </span>
@@ -53,7 +53,7 @@ const Home: FunctionComponent = () => {
       <section className="flex h-screen w-4/5 ml-auto mr-auto mt-24">
 
         <div className="flex flex-col md:flex-row justify-center gap-14 mt-auto md:mt-0">
-          <img className="w-96 h-96 rounded-lg" src={Foto} alt="" />
+          <img className="w-96 h-96 rounded-xl" src={Foto} alt="" />
           <div className="flex flex-col gap-5 md:w-2/5">
             <h1 className="text-3xl font-bold text-center md:text-left">
               Escolha <span className="text-green-900">o melhor</span> sistema <br />

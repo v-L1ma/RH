@@ -180,7 +180,7 @@ const BancoTalentos: FunctionComponent = () => {
           </table>
           {isPopUpOpen && (
             <div className="bg-black/20 w-full h-screen absolute top-0 left-0 flex flex-col items-center justify-center py-24 overflow-y-scroll">
-              <div className="w-4/6 bg-white p-10 shadow-xl rounded-xl mt-72">
+              <div className="w-4/6 bg-white p-10 shadow-xl rounded-xl ">
                 <div
                   className="flex justify-end text-3xl cursor-pointer"
                   onClick={() => setIsPopUpOpen(!isPopUpOpen)}

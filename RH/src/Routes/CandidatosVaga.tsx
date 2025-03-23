@@ -33,6 +33,8 @@ export const CandidatosVaga: FunctionComponent = () => {
     console.log(vagaInfo)
   }, []);
 
+  
+
   return (
     <div className="w-full flex flex-col gap-10">
       <div className="flex justify-between">
@@ -59,7 +61,7 @@ export const CandidatosVaga: FunctionComponent = () => {
             <p className="text-sm">Tempo que a vaga está aberta </p>
           </div>
           <div className="flex justify-start px-2">
-            <p className="font-bold text-3xl">23</p>
+            <p className="font-bold text-3xl"></p>
           </div>
         </div>
 

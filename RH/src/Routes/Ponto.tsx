@@ -46,7 +46,7 @@ const Ponto: FunctionComponent = () => {
       <main className=" flex flex-col items-center w-full gap-5 md:ml-10">
         <h1 className="text-2xl mt-5 font-bold">Ponto eletrônico</h1>
 
-        <div className="w-11/12 md:w-4/12 flex items-center justify-center gap-5 bg-gradient-to-tl from-neutral-800 to-teal-600 p-4 pt-0 rounded-lg shadow-md text-white">
+        <div className="w-11/12 md:w-4/12 flex items-center justify-center gap-5 bg-gradient-to-tl from-neutral-800 to-teal-600 p-4 pt-0 rounded-xl shadow-md text-white">
           <Timer label="Horas" time={time?.hours} />
           <p className="text-3xl font-extrabold mb-7">:</p>
           <Timer label="Minutos" time={time?.minutes} />
@@ -54,7 +54,7 @@ const Ponto: FunctionComponent = () => {
           <Timer label="Segundos" time={time?.seconds} />
         </div>
 
-        <form className="w-11/12 md:w-4/12  flex flex-col items-center gap-4 bg-white p-4 rounded-lg shadow-md text-zinc-800">
+        <form className="w-11/12 md:w-4/12  flex flex-col items-center gap-4 bg-white p-4 rounded-xl shadow-md text-zinc-800">
           <Input
             id="email"
             label="Email"
@@ -64,7 +64,7 @@ const Ponto: FunctionComponent = () => {
 
           <button
             onClick={() => baterPonto()}
-            className="bg-zinc-800 p-2 rounded-md w-full text-white font-extrabold shadow-md"
+            className="bg-zinc-800 p-2 rounded-xl w-full text-white font-extrabold shadow-md"
           >
             Bater o ponto
           </button>

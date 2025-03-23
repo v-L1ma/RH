@@ -16,7 +16,7 @@ const DadosPessoaisForm: FunctionComponent<{
           <input
             type="text"
             id="nomeCompleto"
-            className="border-2 w-full p-2 rounded-lg"
+            className="border-2 w-full p-2 rounded-xl"
             placeholder="Digite seu nome completo."
             {...register('nomeCompleto')}
           />
@@ -30,7 +30,7 @@ const DadosPessoaisForm: FunctionComponent<{
           <input
             type="text"
             id="email"
-            className="border-2 w-full p-2 rounded-lg"
+            className="border-2 w-full p-2 rounded-xl"
             placeholder="Digite o seu melhor email."
             {...register('email')}
           />
@@ -45,7 +45,7 @@ const DadosPessoaisForm: FunctionComponent<{
           <input
             type="text"
             id="telefone"
-            className="border-2 w-full p-2 rounded-lg"
+            className="border-2 w-full p-2 rounded-xl"
             placeholder="Digite o seu melhor telefone."
             {...register('telefone')}
           />
@@ -59,7 +59,7 @@ const DadosPessoaisForm: FunctionComponent<{
           <input
             type="date"
             id="dataNasc"
-            className="border-2 w-full p-2 rounded-lg text-gray-400"
+            className="border-2 w-full p-2 rounded-xl text-gray-400"
             placeholder="Digite a sua data de nascimento."
             {...register('dataNasc')}
           />
@@ -73,7 +73,7 @@ const DadosPessoaisForm: FunctionComponent<{
           <input
             type="text"
             id="cpf"
-            className="border-2 w-full p-2 rounded-lg"
+            className="border-2 w-full p-2 rounded-xl"
             placeholder="Digite o seu CPF."
             {...register('cpf')}
           />

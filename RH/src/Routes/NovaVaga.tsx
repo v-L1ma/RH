@@ -101,7 +101,7 @@ export const NovaVaga: FunctionComponent = () => {
             Cancelar
           </button>
           <button
-            className="bg-teal-600 py-2 px-5  rounded-lg shadow-md text-white font-extrabold flex items-center gap-2"
+            className="bg-teal-600 py-2 px-5  rounded-xl shadow-md text-white font-extrabold flex items-center gap-2"
             onClick={(e) => onSubmit(e)}
           >
             Salvar
@@ -110,7 +110,7 @@ export const NovaVaga: FunctionComponent = () => {
       </div>
 
       <form className="flex flex-col gap-10">
-        <div className="bg-white w-full rounded-lg p-5 flex flex-col gap-4 shadow-lg">
+        <div className="bg-white w-full rounded-xl p-5 flex flex-col gap-4 shadow-lg">
           <div>
             <h2 className="font-bold text-xl">Informações sobre a vaga</h2>
             <p>
@@ -123,14 +123,13 @@ export const NovaVaga: FunctionComponent = () => {
               <label
                 htmlFor="titulo"
                 className="font-bold"
-                onClick={() => teste()}
               >
                 Título para essa vaga
               </label>
               <input
                 type="text"
                 id="titulo"
-                className="border-2 w-full p-2 rounded-lg"
+                className="border-2 w-full p-2 rounded-xl"
                 placeholder="Digite um título para essa vaga."
                 ref={tituloRef}
               />
@@ -142,7 +141,7 @@ export const NovaVaga: FunctionComponent = () => {
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="bg-gray-300 px-3 py-2 rounded-md"
+                  className="bg-gray-300 px-3 py-2 rounded-xl"
                   onClick={() => setQuantidade((prev) => Math.max(prev - 1, 0))}
                 >
                   -
@@ -152,11 +151,11 @@ export const NovaVaga: FunctionComponent = () => {
                   value={quantidade}
                   ref={quantidadeRef}
                   onChange={(e) => setQuantidade(Number(e.target.value))}
-                  className="border-2 p-2 text-center w-16 rounded-lg no-spinner"
+                  className="border-2 p-2 text-center w-16 rounded-xl no-spinner"
                 />
                 <button
                   type="button"
-                  className="bg-gray-300 px-3 py-2 rounded-md"
+                  className="bg-gray-300 px-3 py-2 rounded-xl"
                   onClick={() => setQuantidade((prev) => prev + 1)}
                 >
                   +
@@ -168,35 +167,35 @@ export const NovaVaga: FunctionComponent = () => {
             <label htmlFor="descricao" className="font-bold">
               Descricão para essa vaga
             </label>
-            <div className="flex flex-col border-2 rounded-lg h-48 overflow-hidden">
+            <div className="flex flex-col border-2 rounded-xl h-48 overflow-hidden">
               <div className="w-full border-b-2">
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdUndo />
                 </button>
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdRedo />
                 </button>
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdFormatBold />
                 </button>
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdOutlineFormatItalic />
                 </button>
                 <button
                   type="button"
-                  className="p-2 text-xl rounded-lg hover:bg-gray-100"
+                  className="p-2 text-xl rounded-xl hover:bg-gray-100"
                 >
                   <MdFormatUnderlined />
                 </button>
@@ -217,7 +216,7 @@ export const NovaVaga: FunctionComponent = () => {
               <select
                 ref={setorRef}
                 id="setor"
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
               >
                 <option value="">Selecione um setor</option>
                 <option value="Administrativo">Administrativo</option>
@@ -254,7 +253,7 @@ export const NovaVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={senioridadeRef}
                 defaultValue={""}
               >
@@ -276,7 +275,7 @@ export const NovaVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={diversidadeRef}
                 defaultValue={"default"}
               >
@@ -306,7 +305,7 @@ export const NovaVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={pcdRef}
                 defaultValue={""}
               >
@@ -324,7 +323,7 @@ export const NovaVaga: FunctionComponent = () => {
           </div>
         </div>
 
-        <div className="bg-white w-full rounded-lg p-5 flex flex-col gap-4 shadow-lg">
+        <div className="bg-white w-full rounded-xl p-5 flex flex-col gap-4 shadow-lg">
           <div>
             <h2 className="font-bold text-xl">Contrato</h2>
             <p>
@@ -340,7 +339,7 @@ export const NovaVaga: FunctionComponent = () => {
               <input
                 type="number"
                 id="salario"
-                className="border-2 p-2 rounded-lg no-spinner"
+                className="border-2 p-2 rounded-xl no-spinner"
                 placeholder="Ex.: R$ 100.00"
                 ref={salarioRef}
               />
@@ -352,7 +351,7 @@ export const NovaVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={contratoRef}
                 defaultValue={""}
               >
@@ -373,7 +372,7 @@ export const NovaVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={turnoRef}
                 defaultValue={""}
               >
@@ -393,7 +392,7 @@ export const NovaVaga: FunctionComponent = () => {
               <select
                 name=""
                 id=""
-                className="border-2 p-2 rounded-lg"
+                className="border-2 p-2 rounded-xl"
                 ref={localRef}
                 onChange={() => setLocal(localRef.current?.value || "")}
                 defaultValue={""}
@@ -416,7 +415,7 @@ export const NovaVaga: FunctionComponent = () => {
                 <input
                   type="text"
                   id="cep"
-                  className="border-2 p-2 rounded-lg"
+                  className="border-2 p-2 rounded-xl"
                   placeholder="Digite qual o CEP"
                   onChange={() => getAddress()}
                   ref={inputCepRef}
@@ -430,7 +429,7 @@ export const NovaVaga: FunctionComponent = () => {
                 <input
                   type="text"
                   id="cidade"
-                  className="border-2 p-2 rounded-lg"
+                  className="border-2 p-2 rounded-xl"
                   placeholder="Digite qual o cidade"
                   value={cidade}
                   disabled
@@ -444,7 +443,7 @@ export const NovaVaga: FunctionComponent = () => {
                 <input
                   type="text"
                   id="estado"
-                  className="border-2 p-2 rounded-lg"
+                  className="border-2 p-2 rounded-xl"
                   placeholder="Digite qual o estado"
                   value={estado}
                   disabled

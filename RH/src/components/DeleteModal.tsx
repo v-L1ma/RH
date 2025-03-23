@@ -28,7 +28,7 @@ const DeleteModal: FunctionComponent<TModalProps> = ({close, nomeVaga, idVaga}) 
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-            <div className="flex flex-col bg-white shadow-lg p-5 rounded-lg gap-5 w-96">
+            <div className="flex flex-col bg-white shadow-lg p-5 rounded-xl gap-5 w-96">
                 <div>
                     <h1 className="text-xl font-bold">Você tem certeza?</h1>
                 </div>
@@ -39,8 +39,8 @@ const DeleteModal: FunctionComponent<TModalProps> = ({close, nomeVaga, idVaga}) 
                 </div>
 
                 <div className="flex justify-end gap-5 text-white font-bold">
-                    <button className="bg-red-500 p-2 rounded-md" onClick={()=>close()}>Cancelar</button>
-                    <button className="bg-green-500 p-2 rounded-md" onClick={()=>deleteVacancy()}>Confirmar</button>
+                    <button className="bg-red-500 p-2 rounded-xl" onClick={()=>close()}>Cancelar</button>
+                    <button className="bg-green-500 p-2 rounded-xl" onClick={()=>deleteVacancy()}>Confirmar</button>
                 </div>
             </div>
         </div>

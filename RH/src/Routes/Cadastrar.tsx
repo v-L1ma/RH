@@ -24,7 +24,7 @@ const Cadastrar: FunctionComponent = () => {
   return (
     <main className="flex flex-col md:flex-row items-center md:items-start w-full h-full bg-gradient-to-tr from-teal-300 to-teal-700 py-10 md:p-0">
       <form
-        className="w-11/12 md:w-5/12 md:h-screen bg-white flex flex-col items-left shadow-lg p-10 rounded-lg gap-10 md:justify-center"
+        className="w-11/12 md:w-5/12 md:h-screen bg-white flex flex-col items-left shadow-lg p-10 rounded-xl gap-10 md:justify-center"
         onSubmit={onSubmit} // Vinculando a função de envio ao formulário
       >
         <div>
@@ -48,7 +48,7 @@ const Cadastrar: FunctionComponent = () => {
             id="nome"
             placeholder="Digite seu nome completo"
             ref={nameRef}
-            className="border-2 border-black border-opacity-15 p-1 rounded-lg"
+            className="border-2 border-black border-opacity-15 p-2 rounded-xl"
           />
 
           <label htmlFor="email" className="font-extrabold">Email</label>
@@ -57,7 +57,7 @@ const Cadastrar: FunctionComponent = () => {
             id="email"
             placeholder="Digite seu email"
             ref={emailRef}
-            className="border-2 border-black border-opacity-15 p-1 rounded-lg"
+            className="border-2 border-black border-opacity-15 p-2 rounded-xl"
           />
 
           <label htmlFor="password" className="font-extrabold">Senha</label>
@@ -66,11 +66,11 @@ const Cadastrar: FunctionComponent = () => {
             id="password"
             placeholder="Digite sua senha"
             ref={passwordRef}
-            className="border-2 border-black border-opacity-15 p-1 rounded-lg"
+            className="border-2 border-black border-opacity-15 p-2 rounded-xl"
           />
         </div>
 
-        <button type="submit" className="bg-gradient-to-r from-teal-300 to-teal-600 w-full p-2 rounded-lg text-center text-white font-bold">Cadastrar</button>
+        <button type="submit" className="bg-gradient-to-r from-teal-300 to-teal-600 w-full p-2 rounded-xl text-center text-white font-bold">Cadastrar</button>
 
       </form>
 

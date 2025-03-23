@@ -14,7 +14,7 @@ import { vagaType } from "../types/vagaType";
 export const EditarVaga: FunctionComponent = () => {
   const tituloRef = useRef<HTMLInputElement>(null);
   const quantidadeRef = useRef<HTMLInputElement>(null);
-  const setorRef = useRef<HTMLInputElement>(null);
+  const setorRef = useRef<HTMLSelectElement>(null);
   const salarioRef = useRef<HTMLInputElement>(null);
   const descricaoRef = useRef<HTMLTextAreaElement>(null);
   const localRef = useRef<HTMLSelectElement>(null);
@@ -52,7 +52,7 @@ export const EditarVaga: FunctionComponent = () => {
     try {
     
     const response = await api.put(
-      "/vacancies",
+      `/vacancies/${id}`,
       {
         titulo: tituloRef.current?.value || "",
         setor: setorRef.current?.value|| "",
@@ -211,14 +211,38 @@ export const EditarVaga: FunctionComponent = () => {
               <label htmlFor="setor" className="font-bold">
                 Setor
               </label>
-              <input
-                type="text"
+              <select
+                ref={setorRef}
                 id="setor"
                 className="border-2 p-2 rounded-xl"
-                placeholder="Digite qual o setor desta vaga"
-                defaultValue={vaga?.setor}
-                ref={setorRef}
-              />
+              >
+                <option value="">Selecione um setor</option>
+                <option value="Administrativo">Administrativo</option>
+                <option value="Financeiro">Financeiro</option>
+                <option value="Comercial">Comercial</option>
+                <option value="Vendas">Vendas</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Tecnologia da Informação">Tecnologia da Informação</option>
+                
+                <option value="Atendimento ao Cliente">
+                  Atendimento ao Cliente
+                </option>
+                <option value="Logística">Logística</option>
+                <option value="Jurídico">Jurídico</option>
+                <option value="Produção / Manufatura">
+                  Produção / Manufatura
+                </option>
+                <option value="Compras / Suprimentos">
+                  Compras / Suprimentos
+                </option>
+                <option value="Almoxarifado">
+                  Almoxarifado
+                </option>
+                <option value="Qualidade">Qualidade</option>
+                <option value="Segurança do Trabalho">
+                  Segurança do Trabalho
+                </option>
+              </select>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="senioridade" className="font-bold">

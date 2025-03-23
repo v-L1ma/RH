@@ -16,7 +16,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
           <input
             type="text"
             id="cargo"
-            className="border-2 w-full p-2 rounded-lg"
+            className="border-2 w-full p-2 rounded-xl"
             placeholder="Digite o nome do cargo."
             {...register('cargo')}
           />
@@ -30,7 +30,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
           <input
             type="text"
             id="empresa"
-            className="border-2 w-full p-2 rounded-lg"
+            className="border-2 w-full p-2 rounded-xl"
             placeholder="Digite o nome da empresa."
             {...register('empresa')}
           />
@@ -45,7 +45,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             <input
               type="date"
               id="dataInicioEmpresa"
-              className="border-2 w-full p-2 rounded-lg"
+              className="border-2 w-full p-2 rounded-xl"
               placeholder="Digite a data de inicio."
               {...register('dataInicioEmpresa')}
             />
@@ -58,7 +58,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
             <input
               type="date"
               id="dataTerminoEmpresa"
-              className="border-2 w-full p-2 rounded-lg"
+              className="border-2 w-full p-2 rounded-xl"
               placeholder="Digite a data de termino."
               {...register('dataTerminoEmpresa')}
             />
@@ -73,7 +73,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
           <textarea
             name=""
             id="descricaoATVD"
-            className="border-2 rounded-lg resize-none"
+            className="border-2 rounded-xl resize-none"
             {...register('descricaoATVD')}
           ></textarea>
           {errors.descricaoATVD && <p className="text-red-500 font-semibold">{errors.descricaoATVD.message}</p>}
