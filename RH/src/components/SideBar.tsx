@@ -17,6 +17,15 @@ export const SideBar: FunctionComponent = () => {
           }
         </li>
 
+        <Link to="">
+        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl  hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
+          <MdOutlineAnalytics />
+          {
+            isOpen && <p className="text-lg">Dashboard</p>
+          }
+        </li>
+        </Link>
+
         <Link to="gestao-vagas">
         <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
           <FiBriefcase />
@@ -35,14 +44,7 @@ export const SideBar: FunctionComponent = () => {
         </li>
         </Link>
 
-        <Link to="estatisticas">
-        <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl  hover:backdrop-blur-xl items-center gap-3 font-bold text-nowrap">
-          <MdOutlineAnalytics />
-          {
-            isOpen && <p className="text-lg">Estatisticas</p>
-          }
-        </li>
-        </Link>
+        
       </ul>
 
       <ul className="flex flex-col gap-3 text-teal-300 w-full">

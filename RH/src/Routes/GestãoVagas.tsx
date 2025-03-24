@@ -67,7 +67,7 @@ export const GestaoVagas: FunctionComponent = () => {
             <CardVaga
               Cargo={vaga.titulo}
               Descricao={vaga.descricao}
-              DataCriacao={vaga.dataCriacao}
+              DataCriacao={vaga.dataAbertura}
               id={vaga.id}
               Localizacao={vaga.local}
               Vagas={vaga.qtdeVagas}

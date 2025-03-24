@@ -126,7 +126,7 @@ export function Component() {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto  max-h-[250px]"
+          className="mx-auto"
         >
           <PieChart>
             <ChartTooltip

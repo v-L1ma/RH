@@ -26,6 +26,11 @@ const Estatisticas = () => {
 
   return (
     <div className="w-full flex flex-col gap-10">
+      <div className="flex flex-col gap-1">
+      <h1 className="text-5xl font-semibold">Olá, Recrutador(a)!</h1>
+      <p className="mt-6">Gerencie suas vagas, visualize candidatos e acompanhe estatísticas.</p>
+      </div>
+
       <div className="w-full grid grid-cols-4 gap-10">
 
         <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">

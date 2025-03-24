@@ -29,6 +29,8 @@ export const EditarVaga: FunctionComponent = () => {
   const [estado, setEstado] = useState<string>("");
   const token = localStorage.getItem("token");
 
+  const dataHoje = new Date();
+
   const navigate = useNavigate();
 
   const [local, setLocal] = useState<string>();
@@ -122,7 +124,7 @@ export const EditarVaga: FunctionComponent = () => {
           </div>
           <div className="flex justify-end gap-4 items-center">
             <label htmlFor="status" className="text-lg font-bold">Status da vaga:</label>
-            <select name="status" id="status" defaultValue={vaga?.status} 
+            <select name="status" id="status" defaultValue={vaga?.status} onChange={()=>{if(statusRef.current?.value=="Encerrada"){console.log(dataHoje.getFullYear() + "-" + (dataHoje.getMonth()+1) + "-" +dataHoje.getDate() )}}}
                 className="border-2 p-2 rounded-xl" ref={statusRef}>
               <option value="Em andamento">Em andamento</option>
               <option value="Encerrada">Encerrada</option>
