@@ -9,6 +9,21 @@ const ExperienciaProfissionalForm: FunctionComponent<{
       <h1 className="text-center">Experiência Profissional</h1>
 
       <div className="flex flex-col gap-5">
+
+      
+      <div className="w-full flex flex-col gap-2">
+          <label htmlFor="cargo" className="font-bold">
+          Resumo profissional
+          </label>
+          <textarea
+            name=""
+            id="resumoProfissional"
+            className="border-2 rounded-xl resize-none h-24"
+            {...register('resumoProfissional')}
+          ></textarea>
+          {errors.resumoProfissional && <p className="text-red-500 font-semibold">{errors.resumoProfissional.message}</p>}
+        </div>
+
         <div className="w-full flex flex-col gap-2">
           <label htmlFor="cargo" className="font-bold">
             Cargo
@@ -73,7 +88,7 @@ const ExperienciaProfissionalForm: FunctionComponent<{
           <textarea
             name=""
             id="descricaoATVD"
-            className="border-2 rounded-xl resize-none"
+            className="border-2 rounded-xl resize-none h-24"
             {...register('descricaoATVD')}
           ></textarea>
           {errors.descricaoATVD && <p className="text-red-500 font-semibold">{errors.descricaoATVD.message}</p>}

@@ -9,6 +9,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import api from "../service/api";
 import SuccessAnimation from "./SuccessAnimation";
+import Conhecimentos from "./multiStepForm/Conhecimentos";
 
 interface PopUpCandidaturaProps {
   onclick: () => void;
@@ -32,6 +33,7 @@ const schema = z.object({
   cpf: z
     .string()
     .regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$/, "CPF inválido. Use XXX.XXX.XXX-XX ou XXXXXXXXXXX"),
+  resumoProfissional: z.string().min(10, "Por favor, insira uma descrição detalhada das atividades."),
   cargo: z.string().min(3, "Por favor, insira um nome válido para o cargo."),
   empresa: z.string().min(3, "Por favor, insira um nome válido para a empresa."),
   dataInicioEmpresa: z.string().refine((val) => !isNaN(new Date(val).getTime()), {
@@ -81,6 +83,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
     <DadosPessoaisForm register={register} errors={errors} />,
     <ExperienciaProfissionalForm register={register} errors={errors} />,
     <FormacaoAcademicaForm register={register} errors={errors} />,
+    <Conhecimentos register={register} errors={errors} />,
   ];
 
   const { currentStep, currentComponent, changeStep, isLastStep, isFirstStep } = useMultiStepForm(formComponents);
@@ -88,7 +91,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
   const [estado, setEstado ] = useState<string>("formulario")
 
   return (
-    <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center pb-10">
+    <div className="bg-black/25 absolute z-10 w-full h-fit top-0 flex justify-center pb-10">
       <div className="flex flex-col bg-white rounded-xl shadow-lg md:w-4/6 lg:w-2/6 h-fit mt-10 p-10 box-content gap-10">
       <div className="flex justify-end">
             <button onClick={() => onclick()} className="text-3xl">
@@ -110,6 +113,10 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
             <div className={`transition-all ${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
             <div className={`${currentStep >= 2 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}>
               3
+            </div>
+            <div className={`transition-all ${currentStep >= 3 ? "border-teal-500" : "border-gray-500"} border w-full h-0`}></div>
+            <div className={`${currentStep >= 3 ? "border-teal-500" : "border-gray-500"} border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}>
+              4
             </div>
           </div>
   
