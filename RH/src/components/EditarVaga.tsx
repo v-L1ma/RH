@@ -13,6 +13,7 @@ import { vagaType } from "../types/vagaType";
 
 export const EditarVaga: FunctionComponent = () => {
   const tituloRef = useRef<HTMLInputElement>(null);
+  const statusRef = useRef<HTMLSelectElement>(null);
   const quantidadeRef = useRef<HTMLInputElement>(null);
   const setorRef = useRef<HTMLSelectElement>(null);
   const salarioRef = useRef<HTMLInputElement>(null);
@@ -44,7 +45,7 @@ export const EditarVaga: FunctionComponent = () => {
 
   useEffect(()=>{
     loadVagaInfo();
-  }, [])
+  },[vaga])
 
   async function onSubmit(e: React.FormEvent): Promise<void> {
     e.preventDefault();
@@ -55,6 +56,7 @@ export const EditarVaga: FunctionComponent = () => {
       `/vacancies/${id}`,
       {
         titulo: tituloRef.current?.value || "",
+        status: statusRef.current?.value || "",
         setor: setorRef.current?.value|| "",
         salario: salarioRef.current?.value || "",
         qtdeVagas: Number(quantidadeRef.current?.value) || 0,
@@ -108,7 +110,9 @@ export const EditarVaga: FunctionComponent = () => {
     <div className="w-full flex flex-col gap-10">
 
       <form className="flex flex-col gap-10">
+        
         <div className="bg-white w-full rounded-xl p-5 flex flex-col gap-4 shadow-lg">
+        
           <div>
             <h2 className="font-bold text-xl">Alterar as informações sobre a vaga</h2>
             <p>
@@ -116,6 +120,20 @@ export const EditarVaga: FunctionComponent = () => {
               mais sobre a vaga.
             </p>
           </div>
+          <div className="flex justify-end gap-4 items-center">
+            <label htmlFor="status" className="text-lg font-bold">Status da vaga:</label>
+            <select name="status" id="status" defaultValue={vaga?.status} 
+                className="border-2 p-2 rounded-xl" ref={statusRef}>
+              <option value="Em andamento">Em andamento</option>
+              <option value="Encerrada">Encerrada</option>
+            </select>
+        <button
+            className="bg-teal-600 py-2 px-12  rounded-xl shadow-md text-white font-extrabold flex items-center gap-2"
+            onClick={(e) => onSubmit(e)}
+          >
+            Salvar
+          </button>
+        </div>
           <div className="flex gap-3">
             <div className="w-full flex flex-col gap-2">
               <label htmlFor="titulo" className="font-bold">
@@ -215,6 +233,7 @@ export const EditarVaga: FunctionComponent = () => {
                 ref={setorRef}
                 id="setor"
                 className="border-2 p-2 rounded-xl"
+                defaultValue={vaga?.setor}
               >
                 <option value="">Selecione um setor</option>
                 <option value="Administrativo">Administrativo</option>
@@ -438,13 +457,6 @@ export const EditarVaga: FunctionComponent = () => {
             </div>
           )}
         </div>
-
-        <button
-            className="bg-teal-600 py-2 px-5  rounded-xl shadow-md text-white font-extrabold flex items-center gap-2"
-            onClick={(e) => onSubmit(e)}
-          >
-            Salvar
-          </button>
       </form>
     </div>
   );
