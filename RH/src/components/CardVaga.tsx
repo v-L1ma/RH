@@ -18,6 +18,7 @@ interface CardVagaProps {
   setor: string | undefined;
   to: string | "";
   Candidato: true | false;
+  status: string|undefined;
 }
 
 const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
@@ -34,8 +35,20 @@ const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
     >
       {!props.Candidato && (
         <div className="flex items-center justify-between group relative">
-          <p className="bg-teal-100  px-3 py-1 rounded-xl">Em andamento</p>
-          <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer group" />
+          {
+            props.status==="Em andamento" ?
+            ( <>
+              <p className="bg-teal-100  px-3 py-1 rounded-xl">{props.status}</p>
+              <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer group" />
+            </>)
+            :
+            ( <>
+              <p className="bg-red-200  px-3 py-1 rounded-xl">{props.status}</p>
+              <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer group" />
+            </>)
+
+          }
+        
 
           <div className="invisible bg-white shadow-md rounded-xl absolute right-0 top-2/4 group-hover:visible flex flex-col overflow-hidden">
             <Link to={`${props.to}/editar`}>

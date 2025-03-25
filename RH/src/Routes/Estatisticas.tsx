@@ -7,14 +7,16 @@ import { vagaType } from "../types/vagaType";
 const Estatisticas = () => {
   const [tempoMedio, setTempoMedio] = useState<number>(0);
   const [vagas, setVagas] = useState<vagaType[]>();
+  const [candidates, setCandidates] = useState<number>();
 
   async function loadStats() {
     try {
       const response = await api.get("/statistics");
 
-      const { tempoMedio, vacancies } = response.data;
+      const { tempoMedio, vacancies, candidates } = response.data;
       setTempoMedio(tempoMedio);
       setVagas(vacancies);
+      setCandidates(candidates.length());
     } catch (error) {
       console.log(error);
     }
@@ -26,8 +28,8 @@ const Estatisticas = () => {
 
   return (
     <div className="w-full flex flex-col gap-10">
-      <div className="flex flex-col gap-1">
-      <h1 className="text-5xl font-semibold">Olá, Recrutador(a)!</h1>
+      <div className="flex flex-col">
+      <h1 className="text-5xl font-extrabold">Olá, Recrutador(a)!</h1>
       <p className="mt-6">Gerencie suas vagas, visualize candidatos e acompanhe estatísticas.</p>
       </div>
 
@@ -39,7 +41,7 @@ const Estatisticas = () => {
             <p className="text-sm">Quantidade de vagas</p>
           </div>
           <div className="flex justify-start px-2">
-            <p className="font-bold text-3xl">{vagas?.length}</p>
+            <p className="font-bold text-3xl">{vagas?.filter((vaga)=>vaga.status?.includes("Em andamento"))?.length}</p>
           </div>
         </div>
 
@@ -55,22 +57,22 @@ const Estatisticas = () => {
 
         <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
           <div className=" flex flex-col items-start justify-start gap-2">
-            <h1 className="text-xl font-bold">Vagas em atraso</h1>            
+            <h1 className="text-xl font-bold">Vagas fechadas</h1>            
             <p className="text-sm">Quantidade de vagas </p>
           </div>
           <div className="flex justify-start px-2">
-            <p className="font-bold text-3xl">2</p>
+            <p className="font-bold text-3xl">{vagas?.filter((vaga)=>vaga.status?.includes("Encerrada"))?.length}</p>
           </div>
         </div>
 
 
         <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
           <div className=" flex flex-col items-start justify-start gap-2">
-            <h1 className="text-xl font-bold">Preciso de ideias</h1>            
-            <p className="text-sm">Quantidade de vagas </p>
+            <h1 className="text-xl font-bold">Candidatos por Vaga</h1>            
+            <p className="text-sm">Média cadidatos por vaga</p>
           </div>
           <div className="flex justify-start px-2">
-            <p className="font-bold text-3xl">2</p>
+            <p className="font-bold text-3xl">{(candidates! / (vagas?.length || 0)) || 0}</p>
           </div>
         </div>
 

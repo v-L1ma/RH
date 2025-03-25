@@ -83,7 +83,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({ onclick, i
     <DadosPessoaisForm register={register} errors={errors} />,
     <ExperienciaProfissionalForm register={register} errors={errors} />,
     <FormacaoAcademicaForm register={register} errors={errors} />,
-    <Conhecimentos register={register} errors={errors} />,
+    <Conhecimentos/>,
   ];
 
   const { currentStep, currentComponent, changeStep, isLastStep, isFirstStep } = useMultiStepForm(formComponents);

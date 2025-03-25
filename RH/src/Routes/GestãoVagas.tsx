@@ -74,6 +74,7 @@ export const GestaoVagas: FunctionComponent = () => {
               setor={vaga.setor}
               to={`vaga/${vaga.id}`}
               Candidato={false}
+              status={vaga.status}
             />
           ))}
       </div>

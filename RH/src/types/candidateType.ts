@@ -6,6 +6,7 @@ export type TCandidate = {
   telefone: string;
   dataNasc: string;
   cpf: string;
+  resumoProfissional: string;
   cargo: string;
   empresa: string;
   dataInicioEmpresa: string;

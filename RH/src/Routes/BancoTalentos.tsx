@@ -6,111 +6,7 @@ import CurriculoLayout from "../components/CurriculoLayout";
 const BancoTalentos: FunctionComponent = () => {
   const [isPopUpOpen, setIsPopUpOpen] = useState<boolean>(false);
   const [currentID, setCurrentID] = useState<number>();
-  const [candidates, setCandidates] = useState<TCandidate[]>([
-    {
-      id: 1,
-      vacancyID: 101,
-      nomeCompleto: "João da Silva",
-      email: "joao.silva@email.com",
-      telefone: "(11) 98765-4321",
-      dataNasc: "1985-05-15",
-      cpf: "123.456.789-00",
-      cargo: "Analista de TI",
-      empresa: "Tech Solutions",
-      dataInicioEmpresa: "2010-06-01",
-      dataTerminoEmpresa: "2020-12-31",
-      descricaoATVD:
-        "Desenvolvimento de sistemas e manutenção de infraestrutura de TI.",
-      situacao: "Desempregado",
-      escolaridade: "Ensino Superior Completo",
-      curso: "Ciência da Computação",
-      instituicao: "Universidade ABC",
-      dataInicioEstudo: "2003-02-01",
-      dataTerminoEstudos: "2007-12-15",
-    },
-    {
-      id: 2,
-      vacancyID: 102,
-      nomeCompleto: "Maria Oliveira",
-      email: "maria.oliveira@email.com",
-      telefone: "(21) 91234-5678",
-      dataNasc: "1990-08-25",
-      cpf: "987.654.321-00",
-      cargo: "Gerente de Marketing",
-      empresa: "Marketing Pro",
-      dataInicioEmpresa: "2015-09-01",
-      dataTerminoEmpresa: "2023-03-15",
-      descricaoATVD:
-        "Gestão de campanhas publicitárias e estratégias de marketing digital.",
-      situacao: "Empregada",
-      escolaridade: "Pós-Graduação",
-      curso: "Marketing Digital",
-      instituicao: "Instituto XYZ",
-      dataInicioEstudo: "2012-03-01",
-      dataTerminoEstudos: "2013-11-30",
-    },
-    {
-      id: 3,
-      vacancyID: 103,
-      nomeCompleto: "Carlos Souza",
-      email: "carlos.souza@email.com",
-      telefone: "(31) 98765-1234",
-      dataNasc: "1980-01-10",
-      cpf: "321.654.987-00",
-      cargo: "Engenheiro Civil",
-      empresa: "Construtora ABC",
-      dataInicioEmpresa: "2012-03-15",
-      dataTerminoEmpresa: "2021-11-10",
-      descricaoATVD: "Execução de obras e projetos de construção civil.",
-      situacao: "Desempregado",
-      escolaridade: "Ensino Superior Completo",
-      curso: "Engenharia Civil",
-      instituicao: "Universidade XYZ",
-      dataInicioEstudo: "2002-01-01",
-      dataTerminoEstudos: "2006-12-20",
-    },
-    {
-      id: 4,
-      vacancyID: 104,
-      nomeCompleto: "Ana Pereira",
-      email: "ana.pereira@email.com",
-      telefone: "(41) 99876-5432",
-      dataNasc: "1992-02-20",
-      cpf: "654.987.123-00",
-      cargo: "Designer Gráfico",
-      empresa: "Design Creativo",
-      dataInicioEmpresa: "2017-05-01",
-      dataTerminoEmpresa: "2024-03-22",
-      descricaoATVD: "Criação de peças gráficas para campanhas publicitárias.",
-      situacao: "Empregada",
-      escolaridade: "Ensino Superior Completo",
-      curso: "Design Gráfico",
-      instituicao: "Faculdade AB",
-      dataInicioEstudo: "2010-03-01",
-      dataTerminoEstudos: "2014-12-15",
-    },
-    {
-      id: 5,
-      vacancyID: 105,
-      nomeCompleto: "Lucas Almeida",
-      email: "lucas.almeida@email.com",
-      telefone: "(51) 94567-8901",
-      dataNasc: "1988-11-30",
-      cpf: "456.123.789-00",
-      cargo: "Consultor de Vendas",
-      empresa: "Vendas Pro",
-      dataInicioEmpresa: "2018-06-20",
-      dataTerminoEmpresa: "2025-01-10",
-      descricaoATVD:
-        "Consultoria para aumento de vendas e expansão de mercado.",
-      situacao: "Empregada",
-      escolaridade: "Ensino Superior Completo",
-      curso: "Administração",
-      instituicao: "Universidade Federal",
-      dataInicioEstudo: "2007-08-01",
-      dataTerminoEstudos: "2011-07-30",
-    },
-  ]);
+  const [candidates, setCandidates] = useState<TCandidate[]>([]);
 
   async function loadCandidates() {
     try {
@@ -180,7 +76,7 @@ const BancoTalentos: FunctionComponent = () => {
           </table>
           {isPopUpOpen && (
             <div className="bg-black/20 w-full h-screen absolute top-0 left-0 flex flex-col items-center justify-center py-24 overflow-y-scroll">
-              <div className="w-4/6 bg-white p-10 shadow-xl rounded-xl ">
+              <div className="w-3/6 bg-white p-10 shadow-xl rounded-xl ">
                 <div
                   className="flex justify-end text-3xl cursor-pointer"
                   onClick={() => setIsPopUpOpen(!isPopUpOpen)}

@@ -22,7 +22,7 @@ const CurriculoLayout: FunctionComponent<props> = ({ candidate }) => {
 
             <div>
                 <h2 className="text-xl font-bold">Resumo profissional</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis reiciendis suscipit sequi est fugiat officiis natus, eaque minima reprehenderit totam dolores modi possimus consequuntur magnam enim ad necessitatibus sed delectus.</p>
+                <p>{candidate.resumoProfissional}</p>
             </div>
 
 

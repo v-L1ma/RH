@@ -89,6 +89,7 @@ const PortalVagas = () => {
                 vaga.titulo?.toLocaleLowerCase().includes(search.toLowerCase())
               )
               .filter((vaga)=>vaga.local?.toLocaleLowerCase().includes(searchCity.toLowerCase()))
+              .filter((vaga)=>vaga.status?.includes("Em andamento"))
               .map((vaga) => (
                 <CardVaga
                   Cargo={vaga.titulo}
@@ -100,6 +101,7 @@ const PortalVagas = () => {
                   setor={vaga.setor}
                   to={`vaga/${vaga.id}`}
                   Candidato={true}
+                  status={vaga.status}
                 />
               ))}
           </div>

@@ -27,6 +27,7 @@ export const EditarVaga: FunctionComponent = () => {
   const inputCepRef = useRef<HTMLInputElement>(null);
   const [cidade, setCidade] = useState<string>("");
   const [estado, setEstado] = useState<string>("");
+  const [dataFechamento, setDataFechamento] = useState<string>("")
   const token = localStorage.getItem("token");
 
   const dataHoje = new Date();
@@ -69,7 +70,8 @@ export const EditarVaga: FunctionComponent = () => {
         contrato: contratoRef.current?.value || "",
         turno: turnoRef.current?.value || "",
         local: localRef.current?.value || "",
-        endereco: `${cidade} - ${estado}`,
+        endereco:  vaga?.endereco || `${cidade} - ${estado}`,
+        dataFechamento: dataFechamento || "",
       },
       {
         headers: {
@@ -124,7 +126,7 @@ export const EditarVaga: FunctionComponent = () => {
           </div>
           <div className="flex justify-end gap-4 items-center">
             <label htmlFor="status" className="text-lg font-bold">Status da vaga:</label>
-            <select name="status" id="status" defaultValue={vaga?.status} onChange={()=>{if(statusRef.current?.value=="Encerrada"){console.log(dataHoje.getFullYear() + "-" + (dataHoje.getMonth()+1) + "-" +dataHoje.getDate() )}}}
+            <select name="status" id="status" defaultValue={vaga?.status} onChange={()=>{if(statusRef.current?.value=="Encerrada"){setDataFechamento(dataHoje.getFullYear() + "-" + (dataHoje.getMonth()+1) + "-" +dataHoje.getDate() )}}}
                 className="border-2 p-2 rounded-xl" ref={statusRef}>
               <option value="Em andamento">Em andamento</option>
               <option value="Encerrada">Encerrada</option>
@@ -412,7 +414,7 @@ export const EditarVaga: FunctionComponent = () => {
               </select>
             </div>
           </div>
-          {local === "Presencial" && (
+          {(local === "Presencial"||vaga?.local) && (
             <div className="grid grid-cols-3 gap-5 ">
               
               <div className="flex flex-col gap-2">

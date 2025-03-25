@@ -47,7 +47,7 @@ export const SideBar: FunctionComponent = () => {
         
       </ul>
 
-      <ul className="flex flex-col gap-3 text-teal-300 w-full">
+      <ul className={`flex flex-col gap-3 text-teal-300 ${isOpen ? "w-56":"w-12"} transition-all`}>
 
         <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl  hover:backdrop-blur-xl items-center gap-3 font-bold">
           <FiLogOut />
