@@ -4,7 +4,7 @@ import ExperienciaProfissionalForm from "./multiStepForm/ExperienciaProfissional
 import FormacaoAcademicaForm from "./multiStepForm/FormacaoAcademicaForm";
 import { IoClose } from "react-icons/io5";
 import { useMultiStepForm } from "../hooks/useMultiStepForm";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import api from "../service/api";

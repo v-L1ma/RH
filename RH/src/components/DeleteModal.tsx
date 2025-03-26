@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react";
 import api from "../service/api";
-import { useNavigate } from "react-router-dom";
 
 type TModalProps = {
     close: ()=>void;
@@ -9,8 +8,6 @@ type TModalProps = {
 }
 
 const DeleteModal: FunctionComponent<TModalProps> = ({close, nomeVaga, idVaga}) => {
-
-    const navigate = useNavigate();
 
 
     async function deleteVacancy() {
