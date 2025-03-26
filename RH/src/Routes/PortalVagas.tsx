@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import CardVaga from "../components/CardVaga";
 import NavBar from "../components/NavBar";
 import { FaMagnifyingGlass } from "react-icons/fa6";
@@ -6,6 +5,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import api from "../service/api";
 import { vagaType } from "../types/vagaType";
+import Footer from "../components/Footer";
 
 const PortalVagas = () => {
   const [vagas, setVagas] = useState<vagaType[]>([]);
@@ -106,8 +106,10 @@ const PortalVagas = () => {
               ))}
           </div>
 
-          <Outlet />
         </section>
+
+        <Footer/>
+        
       </main>
     </>
   );
