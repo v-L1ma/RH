@@ -10,6 +10,7 @@ const Login: FunctionComponent = () => {
   const [isLoading, setIsloading] = useState<boolean>(false);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const [error, setError] = useState<boolean>(false);
 
   const navigate = useNavigate()
 
@@ -33,6 +34,7 @@ const Login: FunctionComponent = () => {
     
     } catch(error){
       console.log(error);
+      setError(true)
     }
 
     setIsloading(false)
@@ -89,6 +91,10 @@ const Login: FunctionComponent = () => {
           }
 
           </button>
+
+          {
+            error && <p className="font-bold text-red-500 text-center transition-all">Parece que houve um erro...</p>
+          }
         </div>
 
          

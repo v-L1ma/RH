@@ -14,6 +14,7 @@ import Vaga from "./Routes/Vaga";
 import Estatisticas from "./Routes/Estatisticas";
 import TabelaCandidatos from "./components/TabelaCandidatos";
 import { EditarVaga } from "./components/EditarVaga";
+import AuthRoute from "./hooks/useAuthRoute";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path="cadastro" element={<Cadastrar />} />
           <Route path="portal-vagas" element={<PortalVagas />} />
           <Route path="portal-vagas/vaga/:id" element={<Vaga />} />
-          <Route path="painel" element={<Painel />}>
+          <Route path="painel" element={<AuthRoute><Painel /></AuthRoute>} >
             <Route path="" element={<Estatisticas />} />
             <Route path="gestao-vagas" element={<GestaoVagas />} />
             <Route path="gestao-vagas/nova-vaga" element={<NovaVaga />} />

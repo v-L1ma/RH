@@ -1,11 +1,12 @@
 import { FunctionComponent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiDatabase, FiBriefcase, FiLogOut } from "react-icons/fi";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MdOutlineAnalytics } from "react-icons/md";
 
 export const SideBar: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true)
+  const navigate = useNavigate()
   return (
     <aside className="flex flex-col items-center p-4 rounded-r-xl bg-gray-700 justify-between shadow-lg">
       <ul className={`flex flex-col gap-3 text-teal-300 ${isOpen ? "w-56":"w-12"} transition-all`}>
@@ -52,7 +53,7 @@ export const SideBar: FunctionComponent = () => {
         <li className="flex text-2xl hover:bg-white/20 p-3 rounded-xl  hover:backdrop-blur-xl items-center gap-3 font-bold">
           <FiLogOut />
           {
-            isOpen && <p className="text-lg">Sair da conta</p>
+            isOpen && <p className="text-lg" onClick={()=>{localStorage.clear(); navigate("/")}}>Sair da conta</p>
           }
         </li>
       </ul>
