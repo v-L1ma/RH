@@ -48,7 +48,7 @@ export const EditarVaga: FunctionComponent = () => {
 
   useEffect(()=>{
     loadVagaInfo();
-  },[vaga])
+  })
 
   async function onSubmit(e: React.FormEvent): Promise<void> {
     e.preventDefault();

@@ -1,10 +1,12 @@
 import { FunctionComponent } from "react";
 import Foto from "../assets/44053.jpg";
-import { ImAlarm } from "react-icons/im";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { MdMoreTime } from "react-icons/md";
 import Banner from "../components/Banner";
 import NavBar from "../components/NavBar";
+import { FiDatabase, FiBriefcase} from "react-icons/fi";
+import { MdOutlineAnalytics } from "react-icons/md";
+import { FaRegBuilding } from "react-icons/fa";
 
 const Home: FunctionComponent = () => {
   return (
@@ -13,44 +15,44 @@ const Home: FunctionComponent = () => {
       <NavBar/>
     </header>
     <main className="h-full">
-      <section className="h-3/5">
+      <section className="h-[21em]">
         <Banner/>
       </section>
       <section>
-        <div className="flex w-4/5 justify-center gap-5 md:gap-10 ml-auto mr-auto mt-10 flex-wrap">
+        <div className="flex w-4/5 justify-center gap-5 md:gap-10 ml-auto mr-auto flex-wrap">
 
-          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-xl">
-            <span className="text-6xl">
-              <ImAlarm />
+          <div className="h-48 w-36 md:h-48 md:w-48 flex justify-center items-center flex-col gap-2 rounded-xl">
+            <span className="text-5xl">
+              <MdOutlineAnalytics />
             </span>
-            <h1 className="font-extrabold">Controle de ponto</h1>
+            <h1 className="font-extrabold text-center text-xl ">Controle de ponto</h1>
           </div>
 
-          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-xl">
-            <span className="text-6xl">
-              <ImAlarm />
+          <div className="h-48 w-36 md:h-48 md:w-48  flex justify-center items-center flex-col gap-2 rounded-xl">
+            <span className="text-5xl">
+              <FiBriefcase />
             </span>
-            <h1 className="font-extrabold">Controle de ponto</h1>
+            <h1 className="font-extrabold text-xl text-center">Controle de ponto</h1>
           </div>
 
-          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-xl">
-            <span className="text-6xl">
-              <ImAlarm />
+          <div className="h-48 w-36 md:h-48 md:w-48  flex justify-center items-center flex-col gap-2 rounded-xl">
+            <span className="text-5xl">
+              <FiDatabase />
             </span>
-            <h1 className="font-extrabold">Controle de ponto</h1>
+            <h1 className="font-extrabold text-center">Controle de ponto</h1>
           </div>
           
-          <div className="h-48 w-36 md:h-48 md:w-48 p-4 bg-white flex justify-center items-center flex-col shadow-lg gap-4 rounded-xl">
-            <span className="text-6xl">
-              <ImAlarm />
+          <div className="h-48 w-36 md:h-48 md:w-48  flex justify-center items-center flex-col gap-2 rounded-xl">
+            <span className="text-5xl">
+              <FaRegBuilding />
             </span>
-            <h1 className="font-extrabold">Controle de ponto</h1>
+            <h1 className="font-extrabold text-center">Controle de ponto</h1>
           </div>
 
         </div>
       </section>
 
-      <section className="flex h-screen w-4/5 ml-auto mr-auto mt-24">
+      <section className="flex h-screen w-11/12 md:w-4/5 ml-auto mr-auto mt-24">
 
         <div className="flex flex-col md:flex-row justify-center gap-14 mt-auto md:mt-0">
           <img className="w-96 h-96 rounded-xl" src={Foto} alt="" />
