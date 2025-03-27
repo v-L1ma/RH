@@ -9,6 +9,7 @@ import PopUpCandidatura from "../components/PopUpCandidatura";
 import api from "../service/api";
 import { vagaType } from "../types/vagaType";
 import useClipboard from "../hooks/useClipboard";
+import Footer from "../components/Footer";
 
 const Vaga: FunctionComponent = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const Vaga: FunctionComponent = () => {
     <>
       <NavBar />
 
-      <main className="h-screen bg-slate-50 relative">
+      <main className="h-fit bg-slate-50 relative">
 
       <section className="bg-white flex justify-center shadow-md">
             <div className="flex w-8/12 py-5 justify-between">
@@ -103,6 +104,8 @@ const Vaga: FunctionComponent = () => {
         popUpOpen &&          
           <PopUpCandidatura onclick={close} idVaga={Number(id)}/>
       }
+
+      <Footer/>
 
       </main>
     </>

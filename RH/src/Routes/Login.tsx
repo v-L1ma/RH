@@ -86,7 +86,7 @@ const Login: FunctionComponent = () => {
           <button type="submit" className="flex bg-gradient-to-r from-teal-400 to-teal-600 w-full p-2 rounded-xl text-center justify-center text-white font-extrabold">
           {
             isLoading 
-            ?<Loading/>
+            ?<div className="w-6 h-6"><Loading/></div>
             :"Entrar"
           }
 

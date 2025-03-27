@@ -6,17 +6,30 @@ import { useEffect, useState } from "react";
 import api from "../service/api";
 import { vagaType } from "../types/vagaType";
 import Footer from "../components/Footer";
+import Loading from "../components/Loading";
 
 const PortalVagas = () => {
   const [vagas, setVagas] = useState<vagaType[]>([]);
   const [search, setSearch] = useState<string>("");
   const [searchCity, setSearchCity] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   async function loadVagas() {
-    const data = await api.get("/vacancies");
+    try {
+      const data = await api.get("/vacancies");
 
-    setVagas(data.data.vacancies);
-    console.log(vagas);
+      setVagas(data.data.vacancies);
+      console.log(vagas);
+      
+      
+    } catch (error) {
+      
+      console.log(error)
+
+    }
+    
+    setIsLoading(false)
+
   }
 
   useEffect(() => {
@@ -77,14 +90,24 @@ const PortalVagas = () => {
           </form>
         </section>
 
-        <section className="h-screen  pt-5 w-11/12 md:w-8/12  mr-auto ml-auto flex flex-col gap-5">
+        <section className=" pt-5 w-11/12 md:w-8/12  mr-auto ml-auto flex flex-col gap-5">
           <div className="pb-6  border-b">
             <h1 className="font-bold text-2xl text-slate-800">Vagas</h1>
             <h2>{vagas.length} vaga(s) encontrada(s)</h2>
           </div>
 
           <div className="rounded-xl grid grid-cols-2 gap-5">
-            {vagas
+            {
+              isLoading
+              ? 
+              (
+                <div className="flex flex-col items-center gap-5 col-span-2">
+                <div className="h-16 w-16"><Loading/></div>
+                <p className="font-bold text-teal-600">Carregando...</p>
+                </div>
+              )
+              : (
+                vagas
               .filter((vaga) =>
                 vaga.titulo?.toLocaleLowerCase().includes(search.toLowerCase())
               )
@@ -103,7 +126,9 @@ const PortalVagas = () => {
                   Candidato={true}
                   status={vaga.status}
                 />
-              ))}
+              ))
+              )
+            }
           </div>
 
         </section>
