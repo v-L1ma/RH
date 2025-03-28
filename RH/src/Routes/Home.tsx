@@ -19,8 +19,9 @@ const Home: FunctionComponent = () => {
         <section className="h-[21em]">
           <Banner />
         </section>
+
         <section className="w-full flex justify-center -mt-5 bg-gray-50 items-start">
-          <div className="flex w-8/12 py-10 justify-between flex-wrap text-teal-900">
+          <div className="flex xl:w-8/12 py-10 justify-around flex-wrap text-teal-900">
             <div className="h-48 w-36 lg:h-48 lg:w-48 flex justify-center items-center flex-col gap-4 rounded-xl">
               <span className="text-4xl text-white bg-teal-900 p-2 rounded-xl ">
                 <MdOutlineAnalytics />

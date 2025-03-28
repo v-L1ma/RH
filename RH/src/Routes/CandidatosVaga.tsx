@@ -44,7 +44,7 @@ export const CandidatosVaga: FunctionComponent = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-10">
+      <div className="grid xl:grid-cols-3 gap-3 xl:gap-10">
       <div className="bg-white rounded-xl border p-5 flex flex-col justify-start gap-2">
           <div className=" flex flex-col items-start justify-start gap-2">
             <h1 className="text-xl font-bold">Candidatos</h1>            

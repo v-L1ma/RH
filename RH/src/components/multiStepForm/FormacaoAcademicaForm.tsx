@@ -92,7 +92,7 @@ const FormacaoAcademicaForm: FunctionComponent<{
         {errors.instituicao && <p className="text-red-500 font-semibold">{errors.instituicao.message}</p>}
       </div>
 
-      <div className="flex gap-5">
+      <div className="flex flex-wrap gap-5">
         <div className="w-full flex flex-col gap-2">
           <label htmlFor="dataInicioEstudo" className="font-bold">
             Data de ínicio

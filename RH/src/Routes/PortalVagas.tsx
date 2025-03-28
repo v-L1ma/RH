@@ -96,7 +96,7 @@ const PortalVagas = () => {
             <h2>{vagas.length} vaga(s) encontrada(s)</h2>
           </div>
 
-          <div className="rounded-xl grid grid-cols-2 gap-5">
+          <div className="rounded-xl grid xl:grid-cols-2 gap-5">
             {
               isLoading
               ? 

@@ -41,8 +41,8 @@ const Vaga: FunctionComponent = () => {
 
       <main className="h-fit bg-slate-50 relative">
 
-      <section className="bg-white flex justify-center shadow-md">
-            <div className="flex w-8/12 py-5 justify-between">
+      <section className="bg-white flex flex-col justify-center shadow-md">
+            <div className="flex flex-col xl:flex-row xl:w-8/12 py-5 justify-between xl:m-auto gap-5">
               <div className="flex items-center">
                 <button className="text-4xl p-2 mr-5" onClick={()=>navigate(-1)}><IoChevronBack/></button>
                 <div>
@@ -51,7 +51,7 @@ const Vaga: FunctionComponent = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center gap-4">
                 <button title={message} onClick={()=>copyToClipboard(window.location.href)}>
                   <FaShareSquare className="text-xl text-teal-600"/>
                 </button>
@@ -61,7 +61,7 @@ const Vaga: FunctionComponent = () => {
             </div>
       </section>
 
-      <section className="bg-white flex flex-col w-8/12 p-5 m-auto mt-10 rounded-xl shadow-lg gap-5">
+      <section className="bg-white flex flex-col w-11/12 xl:w-8/12 p-5 m-auto mt-10 rounded-xl shadow-lg gap-5">
 
       <h1 className="text-xl font-bold">Descrição</h1>
 
@@ -77,7 +77,7 @@ const Vaga: FunctionComponent = () => {
                 </p>
               </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           {
            vaga?.senioridade && <p className="bg-teal-200 px-3 py-1 rounded-xl">{vaga.senioridade}</p> 
           }

@@ -122,7 +122,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({
 
   return (
     <div className="bg-black/25 absolute z-10 w-full h-full top-0 flex justify-center pb-10">
-      <div className="flex flex-col bg-white rounded-xl shadow-lg md:w-4/6 lg:w-2/6 h-fit mt-10 p-10 box-content gap-10">
+      <div className="flex flex-col w-8/12 bg-white rounded-xl shadow-lg md:w-4/6 lg:w-2/6 h-fit mt-10 p-10 box-content gap-10">
         <div className="flex justify-end">
           <button onClick={() => onclick()} className="text-3xl">
             <IoClose />
@@ -134,7 +134,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({
               <div
                 className={`${
                   currentStep >= 0 ? "border-teal-500" : "border-gray-500"
-                } border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}
+                } border-2 p-5 xl:p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}
               >
                 1
               </div>
@@ -146,7 +146,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({
               <div
                 className={`${
                   currentStep >= 1 ? "border-teal-500" : "border-gray-500"
-                } border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}
+                } border-2 p-5 xl:p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}
               >
                 2
               </div>
@@ -158,7 +158,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({
               <div
                 className={`${
                   currentStep >= 2 ? "border-teal-500" : "border-gray-500"
-                } border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}
+                } border-2 p-5 xl:p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}
               >
                 3
               </div>
@@ -170,7 +170,7 @@ const PopUpCandidatura: FunctionComponent<PopUpCandidaturaProps> = ({
               <div
                 className={`${
                   currentStep >= 3 ? "border-teal-500" : "border-gray-500"
-                } border-2 p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}
+                } border-2 p-5 xl:p-7 h-1 w-1 rounded-full flex items-center justify-center transition-all`}
               >
                 4
               </div>
