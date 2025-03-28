@@ -98,7 +98,7 @@ const Login: FunctionComponent = () => {
         </div>
       </form>
 
-      <div>
+      <div className="hidden xl:flex">
         <img src={BannerFoto} alt="" className="h-screen" />
       </div>
     </main>
