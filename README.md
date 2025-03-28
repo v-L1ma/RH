@@ -17,7 +17,7 @@
 
 O facilita RH, é um sistema voltado para solucionar problemas no processo de recrutamento e seleção, integrando um portal de vagas para quem busca uma oportunidade com um painel para os recrutadores poderem criar vagas, gerenciar as vagas criadas, ver informações dos candidatos, analisar métricas relacionadas ao recrutamento.
 
-<a href="https://facilita-rh.netlify.app"></a> =[Link para o projeto]
+<a href="https://facilita-rh.netlify.app">[Link para o projeto]</a> 
 
 <h2 id="funcionalidades">🚀 Funcionalidades</h2>
 
