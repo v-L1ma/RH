@@ -1,30 +1,49 @@
-import { FunctionComponent, useRef } from "react";
+import { FunctionComponent, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import BannerFoto from "../assets/9524851_4184677.jpg";
 import { IoIosArrowBack } from "react-icons/io";
 import api from "../service/api";
+import Loading from "../components/Loading";
 
 const Cadastrar: FunctionComponent = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean>(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
 
-    const response = await api.post("/users", {
-      name: nameRef.current?.value,
-      email: emailRef.current?.value,
-      password: passwordRef.current?.value,
-    });
+    try {
 
-    console.log(response)
+      setIsLoading(true)
+
+      const response = await api.post("/users", {
+        name: nameRef.current?.value,
+        email: emailRef.current?.value,
+        password: passwordRef.current?.value,
+      });
+
+        
+      console.log(response)
+      
+    } catch (error) {
+      setError(true)
+      
+    }
+
+    setIsLoading(false)
+    setSuccess(true)
+
+    
   }
 
   return (
-    <main className="flex flex-col md:flex-row items-center md:items-start w-full h-full bg-gradient-to-tr from-teal-300 to-teal-700 py-10 md:p-0">
+    <main className="flex flex-col md:flex-row items-center md:items-start w-full h-full  bg-gradient-to-tr from-teal-300 to-teal-700 py-10 md:p-0">
       <form
-        className="w-11/12 md:w-5/12 md:h-screen bg-white flex flex-col items-left shadow-lg p-10 rounded-xl gap-10 md:justify-center"
+        className="w-11/12 md:w-3/12 md:h-screen bg-white flex flex-col items-left shadow-lg p-10 rounded-xl gap-10 md:justify-between"
         onSubmit={onSubmit} // Vinculando a função de envio ao formulário
       >
         <div>
@@ -39,38 +58,59 @@ const Cadastrar: FunctionComponent = () => {
           </Link>
         </div>
         
-        <h1 className="text-2xl font-bold text-center">Crie sua conta</h1>
+        <div className="w-full flex flex-col gap-10">
 
-        <div className="w-full flex flex-col gap-2">
-          <label htmlFor="nome" className="font-extrabold">Nome Completo</label>
-          <input
-            type="text"
-            id="nome"
-            placeholder="Digite seu nome completo"
-            ref={nameRef}
-            className="border-2 border-black border-opacity-15 p-2 rounded-xl"
-          />
-
-          <label htmlFor="email" className="font-extrabold">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Digite seu email"
-            ref={emailRef}
-            className="border-2 border-black border-opacity-15 p-2 rounded-xl"
-          />
-
-          <label htmlFor="password" className="font-extrabold">Senha</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Digite sua senha"
-            ref={passwordRef}
-            className="border-2 border-black border-opacity-15 p-2 rounded-xl"
-          />
+          <h1 className="text-2xl font-bold text-center">Crie sua conta</h1>
+          
+          <div className="w-full flex flex-col gap-2">
+            <label htmlFor="nome" className="font-extrabold">Nome Completo</label>
+            <input
+              type="text"
+              id="nome"
+              placeholder="Digite seu nome completo"
+              ref={nameRef}
+              className="border-2 border-black border-opacity-15 p-2 rounded-xl"
+            />
+            <label htmlFor="email" className="font-extrabold">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Digite seu email"
+              ref={emailRef}
+              className="border-2 border-black border-opacity-15 p-2 rounded-xl"
+            />
+            <label htmlFor="password" className="font-extrabold">Senha</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Digite sua senha"
+              ref={passwordRef}
+              className="border-2 border-black border-opacity-15 p-2 rounded-xl"
+            />
+          </div>
+          {
+              isLoading ? (
+          
+          <button type="submit" className="flex bg-gradient-to-r from-teal-300 to-teal-600 w-full p-2 rounded-xl text-center text-white font-bold justify-center" disabled>
+            <Loading/>
+          </button>
+          ) : (
+          <button type="submit" className="flex bg-gradient-to-r from-teal-300 to-teal-600 w-full p-2 rounded-xl text-center text-white font-bold justify-center">
+            Cadastrar
+          </button>
+            )
+                }
+          
+                {
+          error && <div className="bg-red-100 border border-red-400 rounded-xl p-2 text-red-950 text-center">Ocorreu um erro...</div>
+                }
+          
+                {
+          success && <div className="bg-green-100 border border-green-400 rounded-xl p-2 text-green-950 text-center">Conta criada com sucesso!</div>
+                }
         </div>
 
-        <button type="submit" className="bg-gradient-to-r from-teal-300 to-teal-600 w-full p-2 rounded-xl text-center text-white font-bold">Cadastrar</button>
+        <div></div>
 
       </form>
 
