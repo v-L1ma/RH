@@ -3,7 +3,7 @@ import { FaLinkedin, FaGithub, FaGlobe, FaCaretDown, FaRegCopyright  } from "rea
 
 const Footer:FunctionComponent = () =>{
     return(
-        <footer className="w-full bg-teal-700 p-10 text-white text-xl mt-10">
+        <footer className="w-full bg-teal-950 p-10 text-white text-xl mt-10">
           <div className="flex flex-col w-full xl:w-9/12 h-full m-auto items-center justify-center gap-20">
             
             <div className="flex">
