@@ -7,10 +7,10 @@
 
 
 <p align="center">
-    <img src="./Readme Images/captura.jpg" alt="Image Example" width="400px">
-    <img src="./Readme Images/captura2.jpg" alt="Image Example" width="400px">
-    <img src="./Readme Images/captura3.jpg" alt="Image Example" width="400px">
-    <img src="./Readme Images/captura4.jpg" alt="Image Example" width="400px">
+    <img src="https://github.com/user-attachments/assets/a8b7cf17-5ad2-4e0e-8c01-e47c509354de" alt="Image" width="400px">
+    <img src="https://github.com/user-attachments/assets/9d634761-221c-4bf0-bc78-825ff83fe6b7" alt="Image Example" width="400px">
+    <img src="https://github.com/user-attachments/assets/270720a9-4d65-4397-8f96-0fa88c2995c4" alt="Image Example" width="400px">
+    <img src="https://github.com/user-attachments/assets/9d21ab49-e03d-403f-a3cb-b335d6a7437b" alt="Image Example" width="400px">
 </p>
 
 <h2 id="sobre">📌 Sobre</h2>
