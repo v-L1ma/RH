@@ -36,11 +36,11 @@ const Cadastrar: FunctionComponent = () => {
           <div className="size-10 bg-primary rounded-xl flex items-center justify-center text-white transition-all group-hover:rotate-6 shadow-lg shadow-primary/20">
             <span className="material-symbols-outlined text-2xl">dataset</span>
           </div>
-          <h2 className="text-slate-900 dark:text-slate-100 text-xl font-black leading-tight tracking-tighter">Facilita RH</h2>
+          <h2 className="text-slate-900 dark:text-slate-100 h3 leading-tight tracking-tighter">Facilita RH</h2>
         </Link>
         <div className="flex items-center gap-4">
-          <span className="hidden sm:inline text-sm font-bold text-slate-500 uppercase tracking-widest">Já tem conta?</span>
-          <Link to="/login" className="flex min-w-[100px] items-center justify-center rounded-xl h-11 px-5 bg-primary/10 text-primary text-sm font-black hover:bg-primary hover:text-white transition-all shadow-sm border border-primary/5">
+          <span className="hidden sm:inline label-xs text-slate-500">Já tem conta?</span>
+          <Link to="/login" className="flex min-w-[100px] items-center justify-center rounded-xl h-10 px-5 bg-primary/10 text-primary btn-text hover:bg-primary hover:text-white transition-all shadow-sm border border-primary/5">
             Fazer Login
           </Link>
         </div>
@@ -52,15 +52,15 @@ const Cadastrar: FunctionComponent = () => {
         <div className="absolute bottom-1/4 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -z-10"></div>
 
         <div className="w-full max-w-[540px] bg-white dark:bg-slate-900 p-8 md:p-14 rounded-[2.5rem] shadow-2xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800">
-          <div className="flex flex-col gap-3 mb-12 text-center md:text-left">
-            <h1 className="text-slate-900 dark:text-slate-100 text-4xl font-black leading-none tracking-tighter">Criar Conta</h1>
-            <p className="text-slate-500 dark:text-slate-400 text-lg font-medium leading-relaxed">Junte-se à nossa plataforma de recrutamento e acelere suas contratações.</p>
+          <div className="flex flex-col gap-3 mb-6 text-center md:text-left">
+            <h1 className="h2 text-slate-900 dark:text-slate-100">Criar Conta</h1>
+            <p className="body-base text-slate-500 dark:text-slate-400">Junte-se à nossa plataforma de recrutamento e acelere suas contratações.</p>
           </div>
 
           <form className="flex flex-col gap-6" onSubmit={onSubmit}>
             {/* Nome Field */}
             <div className="flex flex-col gap-2.5">
-              <label className="text-slate-700 dark:text-slate-300 text-sm font-bold ml-1.5 uppercase tracking-widest opacity-80" htmlFor="nome">Nome Completo</label>
+              <label className="label-xs text-slate-700 dark:text-slate-300 ml-1.5 opacity-80" htmlFor="nome">Nome Completo</label>
               <div className="relative group">
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[22px] group-focus-within:text-primary transition-colors">person</span>
                 <input 
@@ -76,7 +76,7 @@ const Cadastrar: FunctionComponent = () => {
 
             {/* Email Field */}
             <div className="flex flex-col gap-2.5">
-              <label className="text-slate-700 dark:text-slate-300 text-sm font-bold ml-1.5 uppercase tracking-widest opacity-80" htmlFor="email">E-mail Corporativo</label>
+              <label className="label-xs text-slate-700 dark:text-slate-300 ml-1.5 opacity-80" htmlFor="email">E-mail Corporativo</label>
               <div className="relative group">
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[22px] group-focus-within:text-primary transition-colors">mail</span>
                 <input 
@@ -92,7 +92,7 @@ const Cadastrar: FunctionComponent = () => {
 
             {/* Password Field */}
             <div className="flex flex-col gap-2.5">
-              <label className="text-slate-700 dark:text-slate-300 text-sm font-bold ml-1.5 uppercase tracking-widest opacity-80" htmlFor="password">Senha</label>
+              <label className="label-xs text-slate-700 dark:text-slate-300 ml-1.5 opacity-80" htmlFor="password">Senha</label>
               <div className="relative flex items-center group">
                 <span className="material-symbols-outlined absolute left-4 text-slate-400 text-[22px] group-focus-within:text-primary transition-colors">lock</span>
                 <input 
@@ -107,7 +107,7 @@ const Cadastrar: FunctionComponent = () => {
                   <span className="material-symbols-outlined text-[22px]">visibility</span>
                 </button>
               </div>
-              <p className="text-[10px] uppercase font-black tracking-widest text-slate-400 mt-1 ml-1">Mínimo 8 caracteres • letras e números</p>
+              <p className="label-xs text-slate-400 mt-1 ml-1 !tracking-normal opacity-70">Mínimo 8 caracteres • letras e números</p>
             </div>
 
             {/* Terms */}
@@ -118,7 +118,7 @@ const Cadastrar: FunctionComponent = () => {
                 id="terms" 
                 type="checkbox" 
               />
-              <label className="text-xs font-bold text-slate-500 leading-relaxed cursor-pointer" htmlFor="terms">
+              <label className="text-xs font-semibold text-slate-500 leading-relaxed cursor-pointer" htmlFor="terms">
                 Concordo com os <a className="text-primary hover:underline underline-offset-4" href="#">Termos de Uso</a> e <a className="text-primary hover:underline underline-offset-4" href="#">Política de Privacidade</a> da Facilita RH.
               </label>
             </div>
@@ -140,16 +140,16 @@ const Cadastrar: FunctionComponent = () => {
           <div className="mt-12 flex flex-col gap-6">
             <div className="relative flex items-center">
               <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
-              <span className="flex-shrink mx-6 text-[10px] text-slate-400 font-black uppercase tracking-[0.2em]">Redes Sociais</span>
+              <span className="flex-shrink mx-6 label-xs text-slate-400">Redes Sociais</span>
               <div className="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
             </div>
 
             <div className="flex gap-4">
-              <button className="flex flex-1 items-center justify-center gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 h-13 px-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-bold text-slate-700 dark:text-slate-200 text-sm shadow-sm">
+              <button className="flex flex-1 items-center justify-center gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 h-12 px-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-bold text-slate-700 dark:text-slate-200 text-xs shadow-sm shadow-slate-100/50 uppercase tracking-wider">
                 <img alt="Google" className="size-5" src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" />
                 Google
               </button>
-              <button className="flex flex-1 items-center justify-center gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 h-13 px-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-bold text-slate-700 dark:text-slate-200 text-sm shadow-sm">
+              <button className="flex flex-1 items-center justify-center gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 h-12 px-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-bold text-slate-700 dark:text-slate-200 text-xs shadow-sm shadow-slate-100/50 uppercase tracking-wider">
                 <img alt="LinkedIn" className="size-5" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" />
                 LinkedIn
               </button>
@@ -159,7 +159,7 @@ const Cadastrar: FunctionComponent = () => {
       </main>
 
       <footer className="px-6 py-10 text-center mt-auto">
-        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">© 2024 Facilita RH - O Futuro do Recrutamento Inteligente.</p>
+        <p className="label-xs text-slate-400 opacity-60">© 2024 Facilita RH - O Futuro do Recrutamento Inteligente.</p>
       </footer>
     </div>
   );

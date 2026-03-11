@@ -29,18 +29,18 @@ const Home: FunctionComponent = () => {
                   <span className="inline-flex w-fit items-center rounded-full bg-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary ring-1 ring-inset ring-primary/30">
                     Inteligência Artificial & RH
                   </span>
-                  <h1 className="text-4xl font-black leading-tight text-white md:text-6xl tracking-tight">
+                  <h1 className="h1 text-white">
                     Software de Recrutamento e Seleção
                   </h1>
-                  <p className="text-lg font-medium leading-relaxed text-slate-300 md:text-xl">
+                  <p className="body-lg text-slate-300">
                     Encontre os melhores talentos rápido, com Inteligência Comportamental, e faça contratações bem-sucedidas.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-4">
-                  <button className="flex h-14 min-w-[180px] items-center justify-center rounded-xl bg-primary px-8 text-base font-bold text-white shadow-lg shadow-primary/25 transition-transform hover:scale-105">
+                  <button className="flex h-12 min-w-[160px] items-center justify-center rounded-xl bg-primary px-8 btn-text text-white shadow-lg shadow-primary/25 transition-transform hover:scale-105">
                     Área do RH
                   </button>
-                  <button className="flex h-14 min-w-[180px] items-center justify-center rounded-xl bg-white/10 px-8 text-base font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20 border border-white/30">
+                  <button className="flex h-12 min-w-[160px] items-center justify-center rounded-xl bg-white/10 px-8 btn-text text-white backdrop-blur-sm transition-all hover:bg-white/20 border border-white/30">
                     Portal de Vagas
                   </button>
                 </div>
@@ -53,11 +53,11 @@ const Home: FunctionComponent = () => {
         <section className="w-full px-4 py-20 md:px-20 lg:px-40 bg-white dark:bg-slate-900/50">
           <div className="mx-auto max-w-[1200px]">
             <div className="mb-16 flex flex-col items-center text-center gap-4">
-              <h2 className="max-w-2xl text-3xl font-black text-slate-900 dark:text-white md:text-4xl">
+              <h2 className="max-w-2xl h2 text-slate-900 dark:text-white">
                 Recursos Modernos para o seu RH
               </h2>
               <div className="h-1.5 w-20 rounded-full bg-primary"></div>
-              <p className="max-w-xl text-lg text-slate-600 dark:text-slate-400">
+              <p className="max-w-xl body-lg text-slate-600 dark:text-slate-400">
                 Tudo o que você precisa para otimizar seu processo seletivo em uma única plataforma automatizada.
               </p>
             </div>
@@ -91,7 +91,7 @@ const Home: FunctionComponent = () => {
           <div className="mx-auto max-w-[1200px]">
             <div className="flex flex-col lg:flex-row items-center gap-16">
               <div className="flex-1 space-y-8">
-                <h2 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
+                <h2 className="h2 text-slate-900 dark:text-white">
                   Por que escolher nossa plataforma?
                 </h2>
                 <div className="space-y-6">
@@ -136,13 +136,13 @@ const Home: FunctionComponent = () => {
             <div className="mb-10 inline-flex items-center justify-center rounded-full bg-primary/10 p-4 text-primary">
               <span className="material-symbols-outlined text-4xl">rocket_launch</span>
             </div>
-            <h2 className="mb-6 text-4xl font-black text-slate-900 dark:text-white">Pronto para transformar seu RH?</h2>
-            <p className="mx-auto mb-10 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+            <h2 className="mb-6 h2 text-slate-900 dark:text-white">Pronto para transformar seu RH?</h2>
+            <p className="mx-auto mb-10 max-w-2xl body-lg text-slate-600 dark:text-slate-400">
               Junte-se a centenas de empresas que já otimizaram seus processos e contrataram os melhores talentos do mercado.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="h-14 rounded-xl bg-primary px-10 text-lg font-bold text-white shadow-xl shadow-primary/20 hover:bg-primary/90">Começar agora gratuitamente</button>
-              <button className="h-14 rounded-xl border-2 border-primary px-10 text-lg font-bold text-primary hover:bg-primary/5">Agendar demonstração</button>
+              <button className="h-12 rounded-xl bg-primary px-10 btn-text text-white shadow-xl shadow-primary/20 hover:bg-primary/90 transition-all">Começar agora gratuitamente</button>
+              <button className="h-12 rounded-xl border-2 border-primary px-10 btn-text text-primary hover:bg-primary/5 transition-all">Agendar demonstração</button>
             </div>
           </div>
         </section>
@@ -165,8 +165,8 @@ const FeatureCard: FunctionComponent<FeatureCardProps> = ({ icon, title, descrip
       <span className="material-symbols-outlined text-2xl">{icon}</span>
     </div>
     <div className="flex flex-col gap-2">
-      <h3 className="text-lg font-bold text-slate-900 dark:text-white">{title}</h3>
-      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">{description}</p>
+      <h3 className="h3 text-slate-900 dark:text-white">{title}</h3>
+      <p className="body-base text-slate-600 dark:text-slate-400">{description}</p>
     </div>
   </div>
 );

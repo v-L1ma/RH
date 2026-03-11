@@ -35,12 +35,14 @@ const EsqueciSenha: FunctionComponent = () => {
         <div className="flex flex-col w-full max-w-[440px] bg-white dark:bg-slate-900/40 p-8 md:p-10 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-primary/5 backdrop-blur-sm">
           {!isSent ? (
             <>
-              <div className="mb-8">
-                <div className="size-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+              <div className="mb-8 flex justify-between gap-4">
+                <div className="w-20 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
                   <span className="material-symbols-outlined text-primary text-3xl">lock_reset</span>
                 </div>
-                <h1 className="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-tight mb-2">Recuperar Senha</h1>
-                <p className="text-slate-500 dark:text-slate-400 text-base font-normal">Digite seu email cadastrado para receber as instruções de recuperação.</p>
+                <div>
+                  <h1 className="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-tight mb-2">Recuperar Senha</h1>
+                  <p className="text-slate-500 dark:text-slate-400 text-base font-normal">Digite seu email cadastrado para receber as instruções de recuperação.</p>
+                </div>
               </div>
 
               <form className="space-y-6" onSubmit={handleSubmit}>
@@ -56,14 +58,14 @@ const EsqueciSenha: FunctionComponent = () => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="flex w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 h-13 pl-12 pr-4 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 placeholder:text-slate-400 transition-all outline-none" 
+                      className="flex w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 h-10 pl-12 pr-4 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-4 focus:ring-primary/10 placeholder:text-slate-400 transition-all outline-none" 
                       placeholder="exemplo@empresa.com.br" 
                     />
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <button type="submit" className="w-full flex cursor-pointer items-center justify-center rounded-xl h-13 px-6 bg-primary hover:bg-primary/90 text-white text-base font-bold tracking-wide transition-all shadow-lg shadow-primary/25 transform active:scale-[0.98]">
+                  <button type="submit" className="w-full flex cursor-pointer items-center justify-center rounded-xl h-10 px-6 bg-primary hover:bg-primary/90 text-white text-base font-bold tracking-wide transition-all shadow-lg shadow-primary/25 transform active:scale-[0.98]">
                     <span>Enviar instruções</span>
                     <span className="material-symbols-outlined ml-2 text-xl">send</span>
                   </button>
