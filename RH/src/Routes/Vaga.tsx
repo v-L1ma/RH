@@ -5,6 +5,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { FaLocationDot, FaUsers } from "react-icons/fa6";
 import { IoMdBriefcase } from "react-icons/io";
+import Footer from "../components/Footer";
 
 const Vaga: FunctionComponent = () => {
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ const Vaga: FunctionComponent = () => {
       </section>
 
       </main>
+      <Footer />
     </>
   );
 };

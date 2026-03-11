@@ -1,108 +1,38 @@
-import { FunctionComponent, useState } from "react";
-import SlidingPanel from "react-sliding-side-panel";
-import "react-sliding-side-panel/lib/index.css";
-import { IoMdMenu } from "react-icons/io";
-import { IoIosCloseCircle } from "react-icons/io";
-import { FaUserCheck } from "react-icons/fa";
-import { FaStopwatch } from "react-icons/fa6";
+import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
-import Logo from "../assets/LogoRH.png"
 
 const NavBar: FunctionComponent = () => {
-  const [openMenu, setOpenMenu] = useState<boolean>(false);
-
   return (
-    <div className="bg-white border-b">
-    <nav className="bg-white h-16 flex items-center md:hidden">
-      <div className="w-full flex justify-between items-center px-2">
-        <Link to="/"><img src={Logo} alt="" className="h-16 mt-1"/></Link>
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 md:px-20 lg:px-40 py-4">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between">
+        <Link to="/" className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+            <span className="material-symbols-outlined">handshake</span>
+          </div>
+          <h2 className="text-xl font-black tracking-tight text-slate-900 dark:text-white">Facilita RH</h2>
+        </Link>
+
+        <nav className="hidden md:flex items-center gap-8 text-slate-600 dark:text-slate-300">
+          <a className="text-sm font-semibold hover:text-primary transition-colors" href="#">Funcionalidades</a>
+          <a className="text-sm font-semibold hover:text-primary transition-colors" href="#">Soluções</a>
+          <a className="text-sm font-semibold hover:text-primary transition-colors" href="#">Preços</a>
+          <a className="text-sm font-semibold hover:text-primary transition-colors" href="#">Sobre</a>
+        </nav>
 
         <div className="flex items-center gap-3">
-          <Link to="/portal-vagas" className="border-teal-500 border-2 px-3 rounded-full">
-            Portal de vagas
-          </Link>
-          <button className=" text-teal-500 p-2 text-3xl" onClick={() => setOpenMenu(true)}>
-          <IoMdMenu />
-          </button>
-        </div>
-      </div>
-
-      <SlidingPanel isOpen={openMenu} type={"top"} size={45}>
-        <div className="overflow-hidden bg-teal-600 p-5 h-full">
-          <div className="flex justify-end">
-            <button onClick={() => setOpenMenu(false)} className="text-4xl text-white">
-              <IoIosCloseCircle />
-            </button>
-          </div>
-          <ul className="text-white flex flex-col items-start gap-3">
-            <Link to="/">
-            <li className="text-xl flex overflow-hidden cursor-pointer items-center gap-4">
-                <FaHome /> <span>Início</span>
-              </li>
-            </Link>
-            <Link to="/ponto">
-              <li className="text-xl flex overflow-hidden cursor-pointer items-center gap-4">
-                <FaStopwatch /> <span>Controle de ponto</span>
-              </li>
-            </Link>
-            <Link to="/recrutamento">
-              <li className="text-xl flex overflow-hidden pl-1 cursor-pointer items-center gap-4">
-                <FaUserCheck /><span>Recrutamento</span>
-              </li>
-            </Link>
-          </ul>
-          <hr className="mt-10"/>
-          <div className="p-5">
-            <Link to="/login">
-              <p className="text-center bg-white p-2 w-3/5 rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
-              Área do cliente</p>
-            </Link>
-          </div>
-        </div>
-      </SlidingPanel>
-    </nav>
-
-    <nav className="hidden md:flex w-9/12 m-auto ">
-      <div className="w-full flex justify-around items-center gap-4 p-0">
-        <div>
-        <Link to="/"><img src={Logo} alt="" className="h-16 p-0"/></Link>
-        </div>
-        
-        <ul className="text-white flex items-center gap-5">
-            <Link to="/">
-            <li className="text-teal-600 text-xl flex overflow-hidden cursor-pointer items-center gap-4">
-                <span>Início</span>
-              </li>
-            </Link>
-            <Link to="/ponto">
-              <li className="text-teal-600 text-xl flex overflow-hidden cursor-pointer items-center gap-4">
-                <span>Controle de ponto</span>
-              </li>
-            </Link>
-            <Link to="/recrutamento">
-              <li className="text-teal-600 text-xl flex overflow-hidden pl-1 cursor-pointer items-center gap-4">
-                <span>Recrutamento</span>
-              </li>
-            </Link>
-          </ul>
-          <div className="p-5 flex items-center gap-3">
-            <Link to="/portal-vagas">
-              <p className="text-center p-2  rounded-full m-auto text-teal-600 font-extrabold cursor-pointer">
-              Portal de vagas</p>
-            </Link>
-
           <Link to="/login">
-            <button className="bg-teal-600  p-3 rounded-3xl text-white flex items-center font-bold gap-2">Área do RH<span className="text-xl">
-              <FaArrowRight />
-            </span></button>
+            <button className="hidden sm:flex h-11 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold text-white transition-all hover:bg-primary/90">
+              Área do RH
+            </button>
+          </Link>
+          <Link to="/portal-vagas">
+            <button className="flex h-11 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 px-5 text-sm font-bold text-slate-900 dark:text-white transition-all hover:bg-slate-200">
+              Portal de Vagas
+            </button>
           </Link>
         </div>
       </div>
-
-    </nav>
-    </div>
+    </header>
   );
 };
 

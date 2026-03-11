@@ -13,29 +13,36 @@ import { CandidatosVaga } from "./Routes/CandidatosVaga";
 import { BancoTalentos } from "./Routes/BancoTalentos";
 import NotFound from "./Routes/NotFound";
 import Vaga from "./Routes/Vaga";
+import Dashboard from "./Routes/Dashboard";
+import EsqueciSenha from "./Routes/EsqueciSenha";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <main className="bg-slate-50 h-screen">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="cadastro" element={<Cadastrar />} />
-          <Route path="ponto" element={<Ponto />} />
-          <Route path="recrutamento" element={<Recrutamento />} />
-          <Route path="portal-vagas" element={<PortalVagas />}/>
-          <Route path="portal-vagas/vaga/:id" element={<Vaga/>}/>
-          <Route path="painel" element={<Painel />}>
-            <Route path="gestao-vagas" element={<GestaoVagas />} />
-            <Route path="gestao-vagas/nova-vaga" element={<NovaVaga />} />
-            <Route path="gestao-vagas/vaga/:id" element={<CandidatosVaga/>}/>
-            <Route path="banco-de-talentos" element={<BancoTalentos/>}/>
-          </Route>
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
-      </Router>
-    </main>
+    <ThemeProvider>
+      <main className="h-screen">
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="cadastro" element={<Cadastrar />} />
+            <Route path="esqueci-senha" element={<EsqueciSenha />} />
+            <Route path="ponto" element={<Ponto />} />
+            <Route path="recrutamento" element={<Recrutamento />} />
+            <Route path="portal-vagas" element={<PortalVagas />} />
+            <Route path="portal-vagas/vaga/:id" element={<Vaga />} />
+            <Route path="painel" element={<Painel />}>
+              <Route index element={<Dashboard />} />
+              <Route path="gestao-vagas" element={<GestaoVagas />} />
+              <Route path="gestao-vagas/nova-vaga" element={<NovaVaga />} />
+              <Route path="gestao-vagas/vaga/:id" element={<CandidatosVaga />} />
+              <Route path="banco-de-talentos" element={<BancoTalentos />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </main>
+    </ThemeProvider>
   );
 }
 

@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect, useState } from "react";
 import Timer from "../components/Timer";
 import Input from "../components/Input";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 interface TimeType {
   hours: number;
@@ -74,6 +75,7 @@ const Ponto: FunctionComponent = () => {
           <h2 className="text-green-300">Ponto registrado com sucesso</h2>
         )}
       </main>
+      <Footer />
     </div>
     </>
   );

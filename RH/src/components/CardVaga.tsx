@@ -1,65 +1,68 @@
 import { FunctionComponent } from "react";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaUsers } from "react-icons/fa6";
-import { IoMdBriefcase } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { MdEdit } from "react-icons/md";
-import { MdDeleteForever } from "react-icons/md";
 
 interface CardVagaProps {
   id: number;
   Cargo: string | undefined;
-  Descriçao: string | undefined;
-  DataCriacao: string | undefined;
-  Localizacao: string | undefined;
-  Vagas: number | 1;
-  setor: string | undefined;
-  to: string | "";
-  Candidato: true | false;
+  Descriçao?: string | undefined;
+  DataCriacao?: string | undefined;
+  Localizacao?: string | undefined;
+  Vagas?: number;
+  setor?: string | undefined;
+  to?: string;
+  Candidato?: boolean;
 }
 
 const CardVaga: FunctionComponent<CardVagaProps> = (props) => {
   return (
-    <div
-      className="bg-white p-5 rounded-md flex flex-col shadow-mdlg:w-auto"
-      key={props.id}
-    >
-      {!props.Candidato && (
-        <div className="flex items-center justify-between group">
-          <p className="bg-green-300 px-3 py-1 rounded-md">Em andamento</p>
-          <BsThreeDotsVertical className="text-4xl  rounded-full p-2 hover:bg-gray-100  cursor-pointer group" />
-
-          <div className="invisible bg-white shadow-md rounded-lg absolute left-2/4 top-2/4 group-hover:visible flex flex-col p-5">
-            <button className="flex gap-2 items-center rounded-lg hover:bg-slate-200 hover:font-semibold p-2">
-              <MdEdit /> Editar
-            </button>
-            <button className="flex gap-2 items-center rounded-lg hover:bg-slate-200 hover:font-semibold p-2">
-              <MdDeleteForever className="text-red-500" /> Excluir
-            </button>
+    <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-primary/50 transition-all group">
+      <div className="flex items-start justify-between">
+        <div className="flex gap-5">
+          <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+            <span className="material-symbols-outlined text-3xl">work</span>
+          </div>
+          <div>
+            <div className="flex items-center gap-3 mb-1">
+              <Link to={props.to || "#"}>
+                <h4 className="dark:text-white text-lg font-bold group-hover:text-primary transition-colors">{props.Cargo}</h4>
+              </Link>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+                Em andamento
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-1">
+                <span className="material-symbols-outlined text-[18px]">location_on</span>
+                {props.Localizacao || "Remoto"}
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="material-symbols-outlined text-[18px]">calendar_today</span>
+                {props.DataCriacao || "Recente"}
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="material-symbols-outlined text-[18px]">group</span>
+                {props.Vagas || 1} vagas
+              </div>
+            </div>
           </div>
         </div>
-      )}
-      <div className="flex flex-col gap-3">
-        <Link to={props.to}>
-          <h1 className="text-xl text-zinc-800 font-semibold">{props.Cargo}</h1>
-        </Link>
-        <h2>Criada em: {props.DataCriacao}</h2>
+        <button className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors outline-none">
+          <span className="material-symbols-outlined text-slate-400">more_vert</span>
+        </button>
+      </div>
 
-        <div className="flex gap-5 flex-wrap">
-          <p className="flex gap-5">
-            <FaLocationDot />
-            {props.Localizacao}
-          </p>
-          <p className="flex gap-5">
-            <FaUsers />
-            {props.Vagas} vaga(as)
-          </p>
-          <p className="flex gap-5">
-            <IoMdBriefcase />
-            {props.setor}
-          </p>
+      <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div className="flex -space-x-2">
+          <img alt="Applicant" className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900" src="https://i.pravatar.cc/150?u=1" />
+          <img alt="Applicant" className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900" src="https://i.pravatar.cc/150?u=2" />
+          <img alt="Applicant" className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900" src="https://i.pravatar.cc/150?u=3" />
+          <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px] font-bold text-slate-500">+12</div>
         </div>
+        <Link to={props.to || "#"}>
+          <button className="text-primary font-bold text-sm px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors">
+            Ver Candidatos
+          </button>
+        </Link>
       </div>
     </div>
   );

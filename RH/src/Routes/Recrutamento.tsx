@@ -4,6 +4,7 @@ import { FaPlus } from "react-icons/fa";
 import Input from "../components/Input";
 import { IoIosCloseCircle } from "react-icons/io";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 interface VagasType {
   id: number;
@@ -128,12 +129,12 @@ const Recrutamento: FunctionComponent = () => {
             <CardVaga
               id={vaga.id}
               Cargo={vaga.Cargo}
-              Criador="Vinicius"
               Descriçao={vaga.Descriçao}
             />
           ))}
         </div>
       </main>
+      <Footer />
     </div>
     </>
   );
